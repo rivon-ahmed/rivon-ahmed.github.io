@@ -283,25 +283,44 @@ document.getElementById('gallery').addEventListener('touchend',e=>{
 async function load(){
   if(!postId){show('state-notfound');hide('state-loading');return;}
   try{
-    const select=[
-      'id','title','writer_name','edition','description',
-      'is_set','total_set','set_names',
-      'book_condition','binding_condition',
-      'has_missing_page','has_highlight','has_handwritten_notes',
-      'post_type','price','is_negotiable',
-      'delivery_type','meetup_location',
-      'photo_urls','view_count','created_at','book_status',
-      'districts(name)','book_categories(name)','campuses(name)','users(full_name)'
-    ].join(',');
-    const res=await fetch(
-      `${SUPABASE_URL}/rest/v1/posts?id=eq.${encodeURIComponent(postId)}&select=${encodeURIComponent(select)}&limit=1`,
-      {headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}}
-    );
-    const rows=await res.json();
-    if(!rows||rows.length===0){hide('state-loading');show('state-notfound');return;}
+    // Build URL manually — do NOT encodeURIComponent the select string
+    // because Supabase needs literal parentheses for joins like districts(name)
+    const select=
+      'id,title,writer_name,edition,description,' +
+      'is_set,total_set,set_names,' +
+      'book_condition,binding_condition,' +
+      'has_missing_page,has_highlight,has_handwritten_notes,' +
+      'post_type,price,is_negotiable,' +
+      'delivery_type,meetup_location,' +
+      'photo_urls,view_count,created_at,book_status,' +
+      'districts(name),book_categories(name),campuses(name),users(full_name)';
+
+    const url =
+      SUPABASE_URL + '/rest/v1/posts' +
+      '?id=eq.' + encodeURIComponent(postId) +
+      '&select=' + select +   // parentheses left as-is for Supabase joins
+      '&limit=1';
+
+    const res = await fetch(url, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+      }
+    });
+
+    if(!res.ok){
+      console.error('Supabase error:', res.status, await res.text());
+      hide('state-loading'); show('state-error'); return;
+    }
+
+    const rows = await res.json();
+    if(!rows || rows.length === 0){
+      hide('state-loading'); show('state-notfound'); return;
+    }
     render(rows[0]);
   }catch(e){
-    console.error(e);hide('state-loading');show('state-error');
+    console.error('Fetch failed:', e);
+    hide('state-loading'); show('state-error');
   }
 }
 
