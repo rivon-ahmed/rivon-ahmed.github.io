@@ -172,9 +172,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);padding
     <p id="desc-t" class="desc-text mb-0"></p>
   </div>
 
-  <!-- Delivery -->
-  <div id="del-card" class="sec">
-    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.9px;margin-bottom:10px"><i class="bi bi-truck me-1"></i>Delivery</div>
+  <!-- Delivery: hidden by default, shown only if meetup location exists -->
+  <div id="del-card" class="sec d-none">
     <div id="del-c"></div>
   </div>
 
@@ -305,10 +304,11 @@ function render(p){
   // Description
   if(p.description?.trim()){$('desc-t').textContent=p.description;show('desc-card');}
 
-  // Delivery
-  let del=`<div style="font-size:14px;font-weight:500;color:var(--t1)">${esc(delivLabels[p.delivery_type]||p.delivery_type)}</div>`;
-  if(p.meetup_location)del+=arow('Meetup at',esc(p.meetup_location));
-  $('del-c').innerHTML=del;
+  // Delivery — only show if there is a meetup location (no section label)
+  if(p.meetup_location){
+    $('del-c').innerHTML=arow('Meetup at',`<i class="bi bi-geo-alt-fill me-1" style="color:var(--green)"></i>${esc(p.meetup_location)}`);
+    show('del-card');
+  }
 
   // Seller
   const sn=p.users?.full_name||'Seller';
