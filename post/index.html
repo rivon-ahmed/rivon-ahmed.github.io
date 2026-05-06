@@ -293,7 +293,8 @@ async function load(){
       'post_type,price,is_negotiable,' +
       'delivery_type,meetup_location,' +
       'photo_urls,view_count,created_at,book_status,' +
-      'districts(name),book_categories(name),campuses(name),users(full_name)';
+      'districts(name),book_categories(name),campuses(name),' +
+      'users!posts_seller_id_fkey(full_name)';  // explicit FK — avoids PGRST201
 
     const url =
       SUPABASE_URL + '/rest/v1/posts' +
