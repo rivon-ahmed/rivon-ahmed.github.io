@@ -2,7 +2,7 @@
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "com.boicampus.app",
+    "package_name": "com.boicampustrn.app",
     "sha256_cert_fingerprints": [
       "27:87:6F:AD:9C:F6:D1:18:70:B4:EA:6B:DF:DF:71:BE:01:1D:C7:87:93:95:66:C5:AA:93:F0:A3:82:4C:B4:37"
     ]
