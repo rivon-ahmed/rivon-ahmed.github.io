@@ -241,6 +241,9 @@ const postId=new URLSearchParams(location.search).get('id');
 const show=id=>document.getElementById(id).classList.remove('d-none');
 const hide=id=>document.getElementById(id).classList.add('d-none');
 
+// XSS protection — escape all user-supplied strings before innerHTML
+function esc(s){const d=document.createElement('div');d.textContent=String(s??'');return d.innerHTML;}
+
 const condLabel={new:'New 🌟',like_new:'Like New ✨',used:'Used',poor:'Poor Condition'};
 const condCls={new:'cond-new',like_new:'cond-like_new',used:'cond-used',poor:'cond-poor'};
 const bindLabel={good:'Good',fair:'Fair',poor:'Poor'};
@@ -253,8 +256,8 @@ function timeAgo(iso){
   return~~(d/2592000)+'mo ago';
 }
 function fmtN(n){return n>=1000?(n/1000).toFixed(1)+'K':n}
-function inRow(label,val,icon=''){
-  return`<div class="info-row"><div class="info-row-label">${icon?`<i class="bi ${icon} me-1" style="color:var(--green)"></i>`:''}${label}</div><div class="info-row-value">${val}</div></div>`;
+function inRow(label,val){
+  return`<div class="info-row"><div class="info-row-label">${label}</div><div class="info-row-value">${val}</div></div>`;
 }
 function boolVal(v){return`<span class="${v?'bool-yes':'bool-no'}">${v?'<i class="bi bi-check-circle-fill me-1"></i>Yes':'<i class="bi bi-dash-circle me-1"></i>No'}</span>`}
 function initials(n){return n?n.trim().split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase():'?'}
@@ -272,7 +275,8 @@ async function load(){
       'photo_urls,view_count,created_at,book_status,'+
       'districts(name),book_categories(name),campuses(name),'+
       'users!posts_seller_id_fkey(full_name)';
-    const url=`${SB}/rest/v1/posts?id=eq.${encodeURIComponent(postId)}&select=${sel}&limit=1`;
+    // book_status=eq.active — only fetch active posts (double safety alongside RLS)
+    const url=`${SB}/rest/v1/posts?id=eq.${encodeURIComponent(postId)}&book_status=eq.active&select=${sel}&limit=1`;
     const res=await fetch(url,{headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}});
     if(!res.ok){hide('s-loading');show('s-error');return;}
     const rows=await res.json();
@@ -309,16 +313,18 @@ function render(p){
     show('status-banner');
   }
 
-  // Title
+  // Title (textContent = XSS safe)
   document.getElementById('book-title').textContent=p.title;
-  document.getElementById('book-author').innerHTML=p.writer_name?`<i class="bi bi-pencil-fill me-1" style="color:var(--green);font-size:12px"></i>${p.writer_name}`:'';
+  document.getElementById('book-author').innerHTML=p.writer_name
+    ?`<i class="bi bi-pencil-fill me-1" style="color:var(--green);font-size:12px"></i>${esc(p.writer_name)}`
+    :'';
 
   // Chips
   const chips=[
     `<span class="meta-chip"><i class="bi bi-clock me-1" style="color:var(--green)"></i>${timeAgo(p.created_at)}</span>`,
     `<span class="meta-chip"><i class="bi bi-eye me-1" style="color:var(--green)"></i>${fmtN(p.view_count)} views</span>`,
   ];
-  if(p.edition)chips.splice(1,0,`<span class="meta-chip"><i class="bi bi-calendar3 me-1" style="color:var(--green)"></i>Edition ${p.edition}</span>`);
+  if(p.edition)chips.splice(1,0,`<span class="meta-chip"><i class="bi bi-calendar3 me-1" style="color:var(--green)"></i>Edition ${esc(p.edition)}</span>`);
   document.getElementById('chips').innerHTML=chips.join('');
 
   // Price
@@ -331,26 +337,30 @@ function render(p){
   }
   document.getElementById('price-content').innerHTML=ph;
 
-  // Book info
+  // Book info (esc() all user strings in innerHTML)
   let info='';
-  if(p.districts?.name)info+=inRow('Location',`<i class="bi bi-geo-alt-fill me-1" style="color:var(--green)"></i>${p.districts.name}`);
-  if(p.book_categories?.name)info+=inRow('Category',p.book_categories.name);
-  if(p.is_set&&p.total_set)info+=inRow('Set','📦 '+p.total_set+' books in set');
-  if(p.campuses?.name)info+=inRow('Campus',`<i class="bi bi-building me-1" style="color:var(--green)"></i>${p.campuses.name}`);
+  if(p.districts?.name)info+=inRow('Location',`<i class="bi bi-geo-alt-fill me-1" style="color:var(--green)"></i>${esc(p.districts.name)}`);
+  if(p.book_categories?.name)info+=inRow('Category',esc(p.book_categories.name));
+  if(p.is_set&&p.total_set)info+=inRow('Set','📦 '+esc(p.total_set)+' books in set');
+  if(p.campuses?.name)info+=inRow('Campus',`<i class="bi bi-building me-1" style="color:var(--green)"></i>${esc(p.campuses.name)}`);
   document.getElementById('book-info-rows').innerHTML=info||`<div style="font-size:13px;color:var(--muted)">No additional info</div>`;
 
-  // Condition
-  const cBadge=`<span class="badge rounded-pill ${condCls[p.book_condition]||''}" style="font-size:12px;font-weight:600;padding:5px 12px">${condLabel[p.book_condition]||p.book_condition}</span>`;
-  let cond=`<div class="info-row"><div class="info-row-label">Overall</div><div class="info-row-value">${cBadge}</div></div>`;
-  cond+=inRow('Binding',`<span class="badge rounded-pill bg-light text-dark border" style="font-size:12px;font-weight:600;padding:5px 12px">${bindLabel[p.binding_condition]||p.binding_condition}</span>`);
-  cond+=inRow('Missing Pages',boolVal(p.has_missing_page));
-  cond+=inRow('Highlights',boolVal(p.has_highlight));
-  cond+=inRow('Handwritten',boolVal(p.has_handwritten_notes));
+  // Condition — top row: overall badge + binding badge side by side
+  // bottom: 2-col grid for the 3 boolean flags
+  const cBadge=`<span class="badge rounded-pill ${condCls[p.book_condition]||''}" style="font-size:12px;font-weight:600;padding:5px 12px">${condLabel[p.book_condition]||esc(p.book_condition)}</span>`;
+  const bBadge=`<span class="badge rounded-pill bg-light text-dark border" style="font-size:12px;font-weight:600;padding:5px 12px">${bindLabel[p.binding_condition]||esc(p.binding_condition)}</span>`;
+  let cond=`
+    <div class="d-flex gap-2 flex-wrap mb-3">${cBadge}${bBadge}</div>
+    <div class="row g-2">
+      <div class="col-6"><div class="p-2 rounded-3" style="background:var(--bg);font-size:12px"><div style="color:var(--muted);font-weight:500;margin-bottom:3px">Missing Pages</div>${boolVal(p.has_missing_page)}</div></div>
+      <div class="col-6"><div class="p-2 rounded-3" style="background:var(--bg);font-size:12px"><div style="color:var(--muted);font-weight:500;margin-bottom:3px">Highlights</div>${boolVal(p.has_highlight)}</div></div>
+      <div class="col-6"><div class="p-2 rounded-3" style="background:var(--bg);font-size:12px"><div style="color:var(--muted);font-weight:500;margin-bottom:3px">Handwritten Notes</div>${boolVal(p.has_handwritten_notes)}</div></div>
+    </div>`;
   document.getElementById('condition-rows').innerHTML=cond;
 
-  // Set list
+  // Set list (esc each name)
   if(p.is_set&&p.set_names?.length){
-    document.getElementById('set-list').innerHTML=p.set_names.map((n,i)=>`<div class="set-item"><div class="set-num">${i+1}</div>${n}</div>`).join('');
+    document.getElementById('set-list').innerHTML=p.set_names.map((n,i)=>`<div class="set-item"><div class="set-num">${i+1}</div>${esc(n)}</div>`).join('');
     show('set-card');
   }
 
@@ -360,9 +370,10 @@ function render(p){
     show('desc-card');
   }
 
-  // Delivery
-  let del=inRow('Method',`<i class="bi bi-truck me-1" style="color:var(--green)"></i>${delivLabel[p.delivery_type]||p.delivery_type}`);
-  if(p.meetup_location)del+=inRow('Meetup at',`<i class="bi bi-geo-alt me-1" style="color:var(--green)"></i>${p.meetup_location}`);
+  // Delivery — show type as badge chip, no 'Method' label row
+  const dLabel=delivLabel[p.delivery_type]||esc(p.delivery_type);
+  let del=`<div class="mb-2"><span class="badge rounded-pill" style="background:var(--green-pale);color:var(--green);font-size:13px;font-weight:600;padding:6px 14px"><i class="bi bi-truck me-1"></i>${dLabel}</span></div>`;
+  if(p.meetup_location)del+=inRow('Meetup at',`<i class="bi bi-geo-alt me-1" style="color:var(--green)"></i>${esc(p.meetup_location)}`);
   document.getElementById('delivery-rows').innerHTML=del;
 
   // Seller
