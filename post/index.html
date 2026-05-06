@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Details — Boi Campus</title>
+  <meta name="description" content="View book details on Boi Campus"/>
+  <!-- Open Graph for WhatsApp/social previews -->
+  <meta property="og:site_name" content="Boi Campus"/>
+  <meta property="og:type" content="product"/>
+  <meta id="og-title" property="og:title" content="Book on Boi Campus"/>
+  <meta id="og-desc" property="og:description" content="Find books near you on Boi Campus"/>
+  <meta id="og-image" property="og:image" content=""/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:#F2F4F0;color:#1C1C0E;min-height:100vh}
+    /* ── Top bar ── */
+    .topbar{background:#7A9E5C;padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+    .topbar-logo{width:32px;height:32px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}
+    .topbar-name{color:#fff;font-weight:700;font-size:17px;letter-spacing:.3px}
+    .topbar-badge{margin-left:auto;background:rgba(255,255,255,.2);color:#fff;font-size:11px;padding:4px 10px;border-radius:20px;font-weight:500}
+    /* ── States ── */
+    .state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:12px;padding:24px}
+    .state-icon{font-size:48px}
+    .state-title{font-size:18px;font-weight:600;color:#1C1C0E}
+    .state-sub{font-size:14px;color:#6B7280;text-align:center;max-width:280px;line-height:1.5}
+    /* ── Gallery ── */
+    .gallery{position:relative;background:#000;aspect-ratio:4/3;overflow:hidden;max-height:300px}
+    .gallery-slides{display:flex;transition:transform .35s ease;height:100%}
+    .gallery-slide{min-width:100%;height:100%;object-fit:cover}
+    .gallery-slide-placeholder{min-width:100%;height:100%;background:#D1D5DB;display:flex;align-items:center;justify-content:center;font-size:48px}
+    .gallery-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px}
+    .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);transition:.2s}
+    .dot.active{background:#fff;width:18px;border-radius:3px}
+    .gallery-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.35);border:none;color:#fff;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+    .gallery-btn.prev{left:10px}
+    .gallery-btn.next{right:10px}
+    /* ── Card ── */
+    .card{background:#fff;margin:10px 0;padding:16px}
+    .card:first-of-type{margin-top:0}
+    .section-label{font-size:11px;font-weight:600;color:#7A9E5C;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+    /* ── Book title / author ── */
+    .book-title{font-size:20px;font-weight:700;color:#1C1C0E;line-height:1.35;margin-bottom:6px}
+    .book-author{font-size:14px;color:#6B7280;margin-bottom:12px}
+    /* ── Meta chips ── */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+    .chip{display:inline-flex;align-items:center;gap:5px;background:#F2F4F0;border-radius:20px;padding:5px 10px;font-size:12px;color:#4B5563;font-weight:500}
+    .chip-icon{font-size:13px}
+    /* ── Attr row ── */
+    .attr-row{display:flex;align-items:flex-start;padding:9px 0;border-bottom:1px solid #F0F0EC}
+    .attr-row:last-child{border-bottom:none}
+    .attr-label{font-size:13px;color:#6B7280;width:90px;flex-shrink:0;font-weight:500}
+    .attr-colon{color:#9CA3AF;margin:0 6px;font-size:13px}
+    .attr-value{font-size:13px;color:#1C1C0E;font-weight:500;flex:1}
+    /* ── Price ── */
+    .price-box{display:flex;align-items:baseline;gap:8px}
+    .price-amount{font-size:28px;font-weight:700;color:#5B7C42}
+    .price-unit{font-size:15px;color:#6B7280;font-weight:500}
+    .price-tag{display:inline-flex;align-items:center;gap:4px;background:#EBF4E1;color:#5B7C42;font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:8px}
+    .free-tag{background:#EBF4E1;color:#5B7C42;font-size:22px;font-weight:700;padding:6px 0}
+    /* ── Condition badges ── */
+    .cond-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:600}
+    .cond-new{background:#EBF4E1;color:#3E6B27}
+    .cond-like_new{background:#E8F5E9;color:#2E7D32}
+    .cond-used{background:#FFF8E1;color:#F57F17}
+    .cond-poor{background:#FFEBEE;color:#C62828}
+    /* ── Bool rows ── */
+    .bool-yes{color:#2E7D32;font-weight:600}
+    .bool-no{color:#6B7280;font-weight:500}
+    /* ── Description ── */
+    .desc-text{font-size:14px;color:#374151;line-height:1.7;white-space:pre-wrap}
+    /* ── Set list ── */
+    .set-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #F0F0EC;font-size:13px;color:#374151}
+    .set-item:last-child{border-bottom:none}
+    .set-num{width:22px;height:22px;background:#EBF4E1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#5B7C42;flex-shrink:0}
+    /* ── Warning banner (sold/removed) ── */
+    .banner{background:#FFF3CD;border-left:4px solid #F59E0B;padding:12px 14px;margin:10px 0;border-radius:0 6px 6px 0;font-size:13px;color:#92400E;font-weight:500}
+    /* ── CTA ── */
+    .cta-bar{background:#fff;padding:16px;border-top:1px solid #E5E7EB;position:sticky;bottom:0;z-index:99}
+    .cta-title{font-size:13px;color:#6B7280;text-align:center;margin-bottom:12px;font-weight:500}
+    .cta-row{display:flex;gap:10px}
+    .cta-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 12px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:600;transition:.2s}
+    .cta-btn-play{background:#1C1C0E;color:#fff}
+    .cta-btn-apple{background:#5B7C42;color:#fff}
+    .cta-btn svg{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+    .cta-btn:active{opacity:.85;transform:scale(.98)}
+    /* ── Seller row ── */
+    .seller-row{display:flex;align-items:center;gap:12px}
+    .seller-avatar{width:44px;height:44px;border-radius:50%;background:#D6E8C4;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#5B7C42;flex-shrink:0}
+    .seller-name{font-size:15px;font-weight:600;color:#1C1C0E}
+    .seller-sub{font-size:12px;color:#6B7280;margin-top:2px}
+    /* ── Contact hidden notice ── */
+    .contact-hidden{background:#F2F4F0;border-radius:10px;padding:12px 14px;font-size:13px;color:#6B7280;text-align:center;margin-top:10px}
+    /* ── Shimmer ── */
+    @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+    .shimmer{background:linear-gradient(90deg,#E8EBE4 25%,#F2F4F0 50%,#E8EBE4 75%);background-size:800px 100%;animation:shimmer 1.4s infinite linear;border-radius:6px}
+    /* ── Footer ── */
+    .footer{text-align:center;font-size:12px;color:#9CA3AF;padding:16px 0 8px}
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">📚</div>
+  <span class="topbar-name">Boi Campus</span>
+  <span class="topbar-badge">বই ক্যাম্পাস</span>
+</div>
+
+<!-- Loading state -->
+<div id="state-loading" class="state">
+  <div class="state-icon">⏳</div>
+  <div class="state-title">Loading...</div>
+</div>
+
+<!-- Error state -->
+<div id="state-error" class="state" style="display:none">
+  <div class="state-icon">😕</div>
+  <div class="state-title">Something went wrong</div>
+  <div class="state-sub">Could not load this post. Please try again later.</div>
+</div>
+
+<!-- Not found state -->
+<div id="state-notfound" class="state" style="display:none">
+  <div class="state-icon">📭</div>
+  <div class="state-title">Post not available</div>
+  <div class="state-sub">This book post may have been removed or sold. Install the app to find more books near you.</div>
+</div>
+
+<!-- Main content -->
+<div id="content" style="display:none;padding-bottom:140px">
+
+  <!-- Image Gallery -->
+  <div class="gallery" id="gallery">
+    <div class="gallery-slides" id="slides"></div>
+    <div class="gallery-dots" id="dots"></div>
+    <button class="gallery-btn prev" id="btn-prev" onclick="slide(-1)">‹</button>
+    <button class="gallery-btn next" id="btn-next" onclick="slide(1)">›</button>
+  </div>
+
+  <!-- Book title & author -->
+  <div class="card">
+    <div id="book-title" class="book-title"></div>
+    <div id="book-author" class="book-author"></div>
+    <div class="chips" id="chips"></div>
+  </div>
+
+  <!-- Sold/removed banner -->
+  <div class="banner" id="status-banner" style="display:none">
+    ⚠️ This book has been <strong id="status-word"></strong>. Contact info is no longer available.
+  </div>
+
+  <!-- Price -->
+  <div class="card" id="price-card">
+    <div class="section-label">Price</div>
+    <div id="price-content"></div>
+  </div>
+
+  <!-- Book Info -->
+  <div class="card">
+    <div class="section-label">Book Info</div>
+    <div id="book-info-rows"></div>
+  </div>
+
+  <!-- Condition -->
+  <div class="card">
+    <div class="section-label">Condition</div>
+    <div id="condition-rows"></div>
+  </div>
+
+  <!-- Set list (shown only if is_set) -->
+  <div class="card" id="set-card" style="display:none">
+    <div class="section-label">Books in Set</div>
+    <div id="set-list"></div>
+  </div>
+
+  <!-- Description -->
+  <div class="card" id="desc-card" style="display:none">
+    <div class="section-label">Description</div>
+    <div class="desc-text" id="desc-text"></div>
+  </div>
+
+  <!-- Delivery -->
+  <div class="card">
+    <div class="section-label">Delivery</div>
+    <div id="delivery-rows"></div>
+  </div>
+
+  <!-- Seller -->
+  <div class="card">
+    <div class="section-label">Posted By</div>
+    <div class="seller-row">
+      <div class="seller-avatar" id="seller-avatar"></div>
+      <div>
+        <div class="seller-name" id="seller-name"></div>
+        <div class="seller-sub">Seller on Boi Campus</div>
+      </div>
+    </div>
+    <div class="contact-hidden">
+      🔒 Contact info is only available in the app
+    </div>
+  </div>
+
+  <div class="footer">Boi Campus — বই ক্যাম্পাস</div>
+</div>
+
+<!-- CTA sticky bar -->
+<div class="cta-bar" id="cta-bar" style="display:none">
+  <div class="cta-title">📲 Install the app to contact the seller</div>
+  <div class="cta-row">
+    <a class="cta-btn cta-btn-play" href="https://play.google.com/store/apps/details?id=com.boicampus.app" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
+      Google Play
+    </a>
+    <a class="cta-btn cta-btn-apple" href="https://apps.apple.com/app/boi-campus" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5C13.73 2.67 14.94 2.04 15.94 2c.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      App Store
+    </a>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://epvzxxujxbamxyvoujlc.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwdnp4eHVqeGJhbXh5dm91amxjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwMTAzODYsImV4cCI6MjA5MTU4NjM4Nn0.edYgGONobrO2Rp4aSA8_6d65iFUj4gHBI2BGMMGaoTs';
+
+const params = new URLSearchParams(location.search);
+const postId = params.get('id');
+
+// ── Helpers ──────────────────────────────────────────────────
+function show(id){document.getElementById(id).style.display=''}
+function hide(id){document.getElementById(id).style.display='none'}
+
+function condLabel(c){return{new:'New 🌟',like_new:'Like New ✨',used:'Used',poor:'Poor Condition'}[c]||c}
+function condClass(c){return'cond-'+c}
+function bindLabel(b){return{good:'Good',fair:'Fair',poor:'Poor'}[b]||b}
+function deliveryLabel(d){return{meetup:'Meetup Only',courier_cod:'Courier (Cash on Delivery)',both:'Meetup & Courier'}[d]||d}
+function timeAgo(iso){
+  const diff=Math.floor((Date.now()-new Date(iso))/1000);
+  if(diff<60)return'Just now';
+  if(diff<3600)return Math.floor(diff/60)+'m ago';
+  if(diff<86400)return Math.floor(diff/3600)+'h ago';
+  if(diff<2592000)return Math.floor(diff/86400)+'d ago';
+  return Math.floor(diff/2592000)+'mo ago';
+}
+function fmtViews(n){return n>=1000?(n/1000).toFixed(1)+'K':n}
+function attrRow(label,value){
+  return`<div class="attr-row"><span class="attr-label">${label}</span><span class="attr-colon">:</span><span class="attr-value">${value}</span></div>`;
+}
+function boolRow(label,yes){
+  return attrRow(label,`<span class="${yes?'bool-yes':'bool-no'}">${yes?'Yes':'No'}</span>`);
+}
+function initials(name){return name?name.trim().split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase():'?'}
+
+// ── Gallery ──────────────────────────────────────────────────
+let curSlide=0,totalSlides=0;
+function buildGallery(urls){
+  const slides=document.getElementById('slides');
+  const dots=document.getElementById('dots');
+  if(!urls||urls.length===0){
+    slides.innerHTML=`<div class="gallery-slide-placeholder">📖</div>`;
+    hide('btn-prev');hide('btn-next');hide('dots');return;
+  }
+  totalSlides=urls.length;
+  slides.innerHTML=urls.map(u=>`<img class="gallery-slide" src="${u}" loading="lazy" onerror="this.src=''">`).join('');
+  dots.innerHTML=urls.map((_,i)=>`<div class="dot${i===0?' active':''}" id="dot-${i}"></div>`).join('');
+  if(urls.length===1){hide('btn-prev');hide('btn-next');}
+}
+function slide(dir){
+  curSlide=(curSlide+dir+totalSlides)%totalSlides;
+  document.getElementById('slides').style.transform=`translateX(-${curSlide*100}%)`;
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===curSlide));
+}
+// touch swipe
+let tx=0;
+document.getElementById('gallery').addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.getElementById('gallery').addEventListener('touchend',e=>{
+  const dx=tx-e.changedTouches[0].clientX;
+  if(Math.abs(dx)>40)slide(dx>0?1:-1);
+},{passive:true});
+
+// ── Fetch & render ───────────────────────────────────────────
+async function load(){
+  if(!postId){show('state-notfound');hide('state-loading');return;}
+  try{
+    const select=[
+      'id','title','writer_name','edition','description',
+      'is_set','total_set','set_names',
+      'book_condition','binding_condition',
+      'has_missing_page','has_highlight','has_handwritten_notes',
+      'post_type','price','is_negotiable',
+      'delivery_type','meetup_location',
+      'photo_urls','view_count','created_at','book_status',
+      'districts(name)','book_categories(name)','campuses(name)','users(full_name)'
+    ].join(',');
+    const res=await fetch(
+      `${SUPABASE_URL}/rest/v1/posts?id=eq.${encodeURIComponent(postId)}&select=${encodeURIComponent(select)}&limit=1`,
+      {headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}}
+    );
+    const rows=await res.json();
+    if(!rows||rows.length===0){hide('state-loading');show('state-notfound');return;}
+    render(rows[0]);
+  }catch(e){
+    console.error(e);hide('state-loading');show('state-error');
+  }
+}
+
+function render(p){
+  // OG tags
+  document.getElementById('og-title').content=p.title;
+  if(p.photo_urls&&p.photo_urls.length>0)document.getElementById('og-image').content=p.photo_urls[0];
+
+  // Gallery
+  buildGallery(p.photo_urls);
+
+  // Title & author
+  document.getElementById('book-title').textContent=p.title;
+  document.getElementById('book-author').textContent=p.writer_name?'✍️ '+p.writer_name:'';
+
+  // Chips
+  const chips=[];
+  chips.push(`<span class="chip"><span class="chip-icon">🕐</span>${timeAgo(p.created_at)}</span>`);
+  if(p.edition)chips.push(`<span class="chip"><span class="chip-icon">📅</span>Edition: ${p.edition}</span>`);
+  chips.push(`<span class="chip"><span class="chip-icon">👁️</span>${fmtViews(p.view_count)} views</span>`);
+  document.getElementById('chips').innerHTML=chips.join('');
+
+  // Status banner
+  if(p.book_status!=='active'){
+    document.getElementById('status-word').textContent=p.book_status;
+    show('status-banner');
+  }
+
+  // Price
+  let pHtml='';
+  if(p.post_type==='free'){
+    pHtml=`<div class="free-tag">🎁 FREE</div>`;
+  }else{
+    pHtml=`<div class="price-box"><span class="price-amount">৳${Number(p.price).toLocaleString()}</span><span class="price-unit">BDT</span></div>`;
+    if(p.is_negotiable)pHtml+=`<div><span class="price-tag">🤝 Negotiable</span></div>`;
+  }
+  document.getElementById('price-content').innerHTML=pHtml;
+
+  // Book info rows
+  let infoHtml='';
+  if(p.districts?.name)infoHtml+=attrRow('Location',`📍 ${p.districts.name}`);
+  if(p.book_categories?.name)infoHtml+=attrRow('Category',p.book_categories.name);
+  if(p.is_set&&p.total_set)infoHtml+=attrRow('Set','📦 '+p.total_set+' books in set');
+  if(p.campuses?.name)infoHtml+=attrRow('Campus',p.campuses.name);
+  document.getElementById('book-info-rows').innerHTML=infoHtml||'<div class="attr-row"><span class="attr-value" style="color:#9CA3AF">No additional info</span></div>';
+
+  // Condition
+  let condHtml=`<div class="attr-row"><span class="attr-label">Overall</span><span class="attr-colon">:</span><span class="attr-value"><span class="cond-badge ${condClass(p.book_condition)}">${condLabel(p.book_condition)}</span></span></div>`;
+  condHtml+=attrRow('Binding',bindLabel(p.binding_condition));
+  condHtml+=boolRow('Missing Pages',p.has_missing_page);
+  condHtml+=boolRow('Highlights',p.has_highlight);
+  condHtml+=boolRow('Handwritten Notes',p.has_handwritten_notes);
+  document.getElementById('condition-rows').innerHTML=condHtml;
+
+  // Set list
+  if(p.is_set&&p.set_names&&p.set_names.length>0){
+    document.getElementById('set-list').innerHTML=p.set_names.map((n,i)=>
+      `<div class="set-item"><div class="set-num">${i+1}</div>${n}</div>`).join('');
+    show('set-card');
+  }
+
+  // Description
+  if(p.description&&p.description.trim()){
+    document.getElementById('desc-text').textContent=p.description;
+    show('desc-card');
+  }
+
+  // Delivery
+  let delHtml=attrRow('Method',deliveryLabel(p.delivery_type));
+  if(p.meetup_location)delHtml+=attrRow('Meetup at',`📍 ${p.meetup_location}`);
+  document.getElementById('delivery-rows').innerHTML=delHtml;
+
+  // Seller (name only — no contact)
+  const sName=p.users?.full_name||'Seller';
+  document.getElementById('seller-name').textContent=sName;
+  document.getElementById('seller-avatar').textContent=initials(sName);
+
+  // Show content
+  hide('state-loading');
+  show('content');
+  show('cta-bar');
+}
+
+load();
+</script>
+</body>
+</html>
