@@ -1,232 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Book Details — Boi Campus</title>
-<meta name="description" content="View book details on Boi Campus — বই ক্যাম্পাস"/>
+<meta name="description" content="View book details on Boi Campus"/>
 <meta id="og-title" property="og:title" content="Book on Boi Campus"/>
-<meta id="og-desc" property="og:description" content="Find books near your campus"/>
 <meta id="og-image" property="og:image" content=""/>
 <meta property="og:type" content="product"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
 <style>
-:root{--green:#5B7C42;--green-light:#7A9E5C;--green-pale:#EBF4E1;--green-dark:#3E5A2B;--bg:#F4F6F2;--card:#fff;--text:#1C1C0E;--muted:#6B7280;--border:#E5E7EB}
-*{box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);padding-bottom:130px}
-/* Navbar */
-.navbar{background:linear-gradient(135deg,var(--green-light),var(--green-dark));box-shadow:0 2px 12px rgba(0,0,0,.18)}
-.brand-logo{width:36px;height:36px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.brand-name{color:#fff;font-weight:800;font-size:18px;letter-spacing:.3px}
-.brand-sub{color:rgba(255,255,255,.75);font-size:11px;font-weight:500}
-/* State screens */
-.state-screen{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:32px}
-.state-icon{font-size:56px}
-.state-title{font-size:20px;font-weight:700}
-.state-sub{font-size:14px;color:var(--muted);text-align:center;max-width:300px;line-height:1.6}
+:root{
+  --green:#5B7C42;--green-l:#7A9E5C;--green-d:#3E5A2B;--green-pale:#EBF4E1;
+  --bg:#F4F6F2;--white:#fff;
+  --t1:#1C1C0E;--t2:#616161;--t3:#9E9E9E;
+  --divider:#E0E0E0;--border:#E0E0E0;
+  --success:#4CAF50;--warning:#FF9800;--error:#E53935;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);padding-bottom:120px}
+
+/* Topbar */
+.topbar{background:linear-gradient(135deg,var(--green-l),var(--green-d));padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.t-logo{width:34px;height:34px;background:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.t-name{color:#fff;font-weight:800;font-size:17px}
+.t-sub{color:rgba(255,255,255,.7);font-size:11px;font-weight:500}
+
+/* States */
+.state{min-height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center}
+.s-icon{font-size:52px}.s-title{font-size:19px;font-weight:700}.s-sub{font-size:14px;color:var(--t3);max-width:280px;line-height:1.6}
+
 /* Gallery */
-#gallery-wrap{background:#000;position:relative}
-.carousel-item img{width:100%;height:300px;object-fit:cover}
-.carousel-item .placeholder-img{width:100%;height:300px;background:#D1D5DB;display:flex;align-items:center;justify-content:center;font-size:72px}
-.img-count-badge{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;backdrop-filter:blur(4px);z-index:10}
-/* Cards */
-.info-card{background:var(--card);border-radius:0;border:none;border-bottom:1px solid var(--border);margin-bottom:0}
-.info-card .card-body{padding:18px 16px}
-.section-label{font-size:10.5px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-/* Book title */
-.book-title{font-size:21px;font-weight:800;line-height:1.3;color:var(--text)}
-.book-author{font-size:14px;color:var(--muted);margin-top:4px}
-/* Chips */
-.meta-chip{display:inline-flex;align-items:center;gap:5px;background:var(--bg);border-radius:20px;padding:5px 11px;font-size:12px;color:#4B5563;font-weight:500;border:1px solid var(--border)}
+.carousel-item img{width:100%;height:290px;object-fit:cover}
+.carousel-item .ph{width:100%;height:290px;background:#D5D8D0;display:flex;align-items:center;justify-content:center;font-size:64px}
+.img-badge{position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.5);color:#fff;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;backdrop-filter:blur(3px);z-index:9}
+
+/* Section card */
+.sec{background:var(--white);padding:16px}
+.sec+.sec{border-top:8px solid var(--bg)}
+.sec-last{border-top:8px solid var(--bg)}
+
+/* Book title block */
+.book-title{font-size:20px;font-weight:800;line-height:1.35;color:var(--t1)}
+.book-by{font-size:13px;color:var(--t2);margin-top:4px}
+.chip-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:var(--t3)}
+.chip i{font-size:12px}
+
+/* Attr rows (location, category etc.) */
+.attrs{margin-top:14px;border-top:1px solid var(--divider);padding-top:12px}
+.arow{display:flex;padding:5px 0;font-size:13px}
+.arow-l{width:80px;flex-shrink:0;color:var(--t3);font-weight:500}
+.arow-sep{color:var(--t3);margin-right:8px}
+.arow-v{color:var(--t1);font-weight:500;flex:1}
+.arow-v.green{color:var(--green)}
+
 /* Price */
-.price-amount{font-size:32px;font-weight:800;color:var(--green);line-height:1}
-.price-currency{font-size:16px;color:var(--muted);font-weight:500}
-.negotiable-badge{display:inline-flex;align-items:center;gap:5px;background:var(--green-pale);color:var(--green);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
-.free-badge{font-size:26px;font-weight:800;color:var(--green)}
-/* Info rows */
-.info-row{display:flex;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--bg)}
-.info-row:last-child{border-bottom:none;padding-bottom:0}
-.info-row-label{font-size:13px;color:var(--muted);width:100px;flex-shrink:0;font-weight:500;padding-top:1px}
-.info-row-value{font-size:13px;color:var(--text);font-weight:600;flex:1}
-/* Condition badges */
-.cond-new{background:#DCFCE7;color:#166534}
-.cond-like_new{background:#D1FAE5;color:#065F46}
-.cond-used{background:#FEF9C3;color:#854D0E}
-.cond-poor{background:#FEE2E2;color:#991B1B}
-.bool-yes{color:#16A34A;font-weight:700}
-.bool-no{color:var(--muted);font-weight:500}
+.price-num{font-size:30px;font-weight:800;color:var(--green)}
+.price-cur{font-size:15px;color:var(--t2);font-weight:500;margin-left:4px}
+.neg-badge{display:inline-flex;align-items:center;gap:5px;background:var(--green-pale);color:var(--green);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin-top:8px}
+.free-lbl{font-size:26px;font-weight:800;color:var(--green)}
+
+/* Condition outer card */
+.cond-outer{background:#F5F5F5;border-radius:12px;padding:14px}
+.cond-header{display:flex;align-items:center}
+.cond-header-lbl{font-size:14px;color:var(--t3);font-weight:400;flex:1;margin-left:6px}
+.cond-chip{display:flex;align-items:center;gap:6px;background:#E0E0E0;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500;color:var(--t2)}
+.cond-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+/* Condition inner card */
+.cond-inner{background:#fff;border:1px solid #E0E0E0;border-radius:10px;padding:14px;margin-top:12px}
+.cond-inner-hdr{display:flex;align-items:center;margin-bottom:12px}
+.cond-inner-hdr i{color:#616161;font-size:16px}
+.cond-inner-hdr span{font-size:13px;font-weight:600;color:var(--t1);margin-left:6px}
+.drow{display:flex;align-items:center;padding:9px 0;border-bottom:1px solid var(--divider);font-size:13px}
+.drow:last-child{border-bottom:none;padding-bottom:0}
+.drow i{color:#9E9E9E;font-size:15px;flex-shrink:0}
+.drow-lbl{flex:1;color:#424242;margin-left:8px}
+.drow-val{font-weight:600;font-size:13px}
+
+/* Description */
+.desc-text{font-size:14px;color:#374151;line-height:1.75;white-space:pre-wrap}
+
 /* Set list */
-.set-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bg);font-size:13px;color:var(--text)}
+.set-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bg);font-size:13px;color:var(--t1)}
 .set-item:last-child{border-bottom:none}
-.set-num{width:26px;height:26px;background:var(--green-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--green);flex-shrink:0}
+.set-n{width:24px;height:24px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--green);flex-shrink:0}
+
 /* Seller */
-.seller-avatar{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--green-light),var(--green-dark));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;flex-shrink:0}
-.contact-notice{background:var(--bg);border-radius:12px;padding:14px;font-size:13px;color:var(--muted);text-align:center;border:1px dashed var(--border)}
+.seller-av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--green-l),var(--green-d));display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:#fff;flex-shrink:0}
+.lock-box{background:var(--bg);border-radius:10px;padding:12px;font-size:13px;color:var(--t3);text-align:center;margin-top:12px;border:1px dashed var(--border)}
+
 /* Status banner */
-.status-banner{background:#FFF7ED;border-left:4px solid #F59E0B;padding:12px 16px;font-size:13px;color:#92400E;font-weight:500}
-/* CTA bar */
-.cta-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);padding:14px 16px;z-index:1000;box-shadow:0 -4px 20px rgba(0,0,0,.08)}
-.cta-title{font-size:12px;color:var(--muted);text-align:center;margin-bottom:10px;font-weight:500}
-.btn-play{background:#1C1C0E;color:#fff;border-radius:12px;font-size:14px;font-weight:700;padding:13px 0;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:.2s;flex:1}
-.btn-apple{background:linear-gradient(135deg,var(--green-light),var(--green-dark));color:#fff;border-radius:12px;font-size:14px;font-weight:700;padding:13px 0;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:.2s;flex:1}
-.btn-play:hover,.btn-apple:hover{opacity:.88;color:#fff}
-/* Animate in */
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.animate-in{animation:fadeUp .4s ease forwards}
-/* Shimmer placeholder */
-@keyframes shimmer{0%{background-position:-600px 0}100%{background-position:600px 0}}
-.shimmer-box{background:linear-gradient(90deg,#E8EBE4 25%,#F2F4F0 50%,#E8EBE4 75%);background-size:1200px 100%;animation:shimmer 1.5s infinite linear;border-radius:8px}
+.st-banner{background:#FFF8E1;border-left:4px solid #FFC107;padding:10px 14px;font-size:13px;color:#7B5800;font-weight:500}
+
+/* CTA */
+.cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--divider);padding:12px 14px;z-index:1000;box-shadow:0 -3px 16px rgba(0,0,0,.07)}
+.cta-hint{font-size:12px;color:var(--t3);text-align:center;margin-bottom:10px;font-weight:500}
+.btn-gp{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:700;background:#1C1C0E;color:#fff;transition:.15s}
+.btn-as{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:700;background:linear-gradient(135deg,var(--green-l),var(--green-d));color:#fff;transition:.15s}
+.btn-gp:hover,.btn-as:hover{opacity:.88;color:#fff}
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar px-3 py-2">
-  <div class="d-flex align-items-center gap-2">
-    <div class="brand-logo">📚</div>
-    <div>
-      <div class="brand-name">Boi Campus</div>
-      <div class="brand-sub">বই ক্যাম্পাস</div>
-    </div>
-  </div>
-</nav>
-
-<!-- Loading -->
-<div id="s-loading" class="state-screen">
-  <div style="width:56px;height:56px" class="shimmer-box rounded-circle"></div>
-  <div style="width:160px;height:20px;margin-top:8px" class="shimmer-box"></div>
-  <div style="width:220px;height:14px" class="shimmer-box"></div>
+<div class="topbar">
+  <div class="t-logo">📚</div>
+  <div><div class="t-name">Boi Campus</div><div class="t-sub">বই ক্যাম্পাস</div></div>
 </div>
 
-<!-- Error -->
-<div id="s-error" class="state-screen d-none">
-  <div class="state-icon">😕</div>
-  <div class="state-title">Something went wrong</div>
-  <div class="state-sub">Could not load this post. Please try again later.</div>
-</div>
+<div id="s-loading" class="state"><div class="s-icon">⏳</div><div class="s-title" style="color:var(--t2)">Loading...</div></div>
+<div id="s-error" class="state d-none"><div class="s-icon">😕</div><div class="s-title">Something went wrong</div><div class="s-sub">Could not load this post. Please try again later.</div></div>
+<div id="s-notfound" class="state d-none"><div class="s-icon">📭</div><div class="s-title">Post not available</div><div class="s-sub">This book may have been removed or sold. Install the app to find more books.</div></div>
 
-<!-- Not found -->
-<div id="s-notfound" class="state-screen d-none">
-  <div class="state-icon">📭</div>
-  <div class="state-title">Post not available</div>
-  <div class="state-sub">This book may have been removed or sold. Install the app to discover more books near you.</div>
-</div>
-
-<!-- Content -->
 <div id="content" class="d-none">
 
   <!-- Gallery -->
-  <div id="gallery-wrap">
-    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner" id="carousel-inner"></div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </button>
+  <div id="gallery-wrap" style="background:#000;position:relative">
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-inner" id="ci"></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
     </div>
-    <div class="img-count-badge d-none" id="img-count"></div>
+    <div class="img-badge d-none" id="img-c"></div>
   </div>
 
-  <!-- Status banner -->
-  <div id="status-banner" class="status-banner d-none">
-    <i class="bi bi-exclamation-triangle-fill me-1"></i>
-    This book has been <strong id="status-word"></strong>. Contact info is no longer available.
-  </div>
+  <!-- Status -->
+  <div id="st-banner" class="st-banner d-none"><i class="bi bi-exclamation-triangle-fill me-1"></i>This book has been <strong id="st-word"></strong>.</div>
 
-  <!-- Title card -->
-  <div class="info-card animate-in" style="animation-delay:.05s">
-    <div class="card-body">
-      <div id="book-title" class="book-title"></div>
-      <div id="book-author" class="book-author"></div>
-      <div id="chips" class="d-flex flex-wrap gap-2 mt-3"></div>
-    </div>
+  <!-- Book info -->
+  <div class="sec">
+    <div id="book-title" class="book-title"></div>
+    <div id="book-by" class="book-by"></div>
+    <div class="chip-row" id="chips"></div>
+    <div id="attrs" class="attrs"></div>
   </div>
 
   <!-- Price -->
-  <div class="info-card animate-in" style="animation-delay:.1s">
-    <div class="card-body">
-      <div class="section-label"><i class="bi bi-tag-fill me-1"></i>Price</div>
-      <div id="price-content"></div>
-    </div>
-  </div>
-
-  <!-- Book info -->
-  <div class="info-card animate-in" style="animation-delay:.15s">
-    <div class="card-body">
-      <div class="section-label"><i class="bi bi-book-fill me-1"></i>Book Info</div>
-      <div id="book-info-rows"></div>
-    </div>
-  </div>
+  <div class="sec"><div id="price-c"></div></div>
 
   <!-- Condition -->
-  <div class="info-card animate-in" style="animation-delay:.2s">
-    <div class="card-body">
-      <div class="section-label"><i class="bi bi-shield-check-fill me-1"></i>Condition</div>
-      <div id="condition-rows"></div>
+  <div class="sec">
+    <div class="cond-outer">
+      <div class="cond-header">
+        <i class="bi bi-patch-check" style="color:var(--t3);font-size:18px"></i>
+        <span class="cond-header-lbl">Book Condition</span>
+        <div class="cond-chip"><div class="cond-dot" id="cond-dot"></div><span id="cond-lbl"></span></div>
+      </div>
+      <div class="cond-inner">
+        <div class="cond-inner-hdr">
+          <i class="bi bi-list-check"></i>
+          <span>Detailed Condition</span>
+        </div>
+        <div class="drow"><i class="bi bi-book"></i><span class="drow-lbl">Binding Condition</span><span class="drow-val" id="bind-v"></span></div>
+        <div class="drow"><i class="bi bi-file-earmark"></i><span class="drow-lbl">Missing Pages</span><span class="drow-val" id="miss-v"></span></div>
+        <div class="drow"><i class="bi bi-highlighter"></i><span class="drow-lbl">Highlight / Underline</span><span class="drow-val" id="hi-v"></span></div>
+        <div class="drow"><i class="bi bi-pencil"></i><span class="drow-lbl">Handwritten Notes</span><span class="drow-val" id="hw-v"></span></div>
+      </div>
     </div>
   </div>
 
   <!-- Set list -->
-  <div id="set-card" class="info-card d-none animate-in" style="animation-delay:.22s">
-    <div class="card-body">
-      <div class="section-label"><i class="bi bi-collection-fill me-1"></i>Books in Set</div>
-      <div id="set-list"></div>
-    </div>
+  <div id="set-card" class="sec d-none">
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.9px;margin-bottom:10px"><i class="bi bi-collection me-1"></i>Books in Set</div>
+    <div id="set-list"></div>
   </div>
 
   <!-- Description -->
-  <div id="desc-card" class="info-card d-none animate-in" style="animation-delay:.25s">
-    <div class="card-body">
-      <div class="section-label"><i class="bi bi-chat-left-text-fill me-1"></i>Description</div>
-      <p id="desc-text" class="mb-0" style="font-size:14px;line-height:1.75;color:#374151;white-space:pre-wrap"></p>
-    </div>
+  <div id="desc-card" class="sec d-none">
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.9px;margin-bottom:10px"><i class="bi bi-chat-left-text me-1"></i>Description</div>
+    <p id="desc-t" class="desc-text mb-0"></p>
   </div>
 
   <!-- Delivery -->
-  <div class="info-card animate-in" style="animation-delay:.3s">
-    <div class="card-body">
-      <div class="section-label"><i class="bi bi-truck-fill me-1"></i>Delivery</div>
-      <div id="delivery-rows"></div>
-    </div>
+  <div id="del-card" class="sec">
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.9px;margin-bottom:10px"><i class="bi bi-truck me-1"></i>Delivery</div>
+    <div id="del-c"></div>
   </div>
 
   <!-- Seller -->
-  <div class="info-card animate-in" style="animation-delay:.35s">
-    <div class="card-body">
-      <div class="section-label"><i class="bi bi-person-fill me-1"></i>Posted By</div>
-      <div class="d-flex align-items-center gap-3 mb-3">
-        <div class="seller-avatar" id="seller-avatar"></div>
-        <div>
-          <div id="seller-name" class="fw-700" style="font-size:16px;font-weight:700"></div>
-          <div style="font-size:12px;color:var(--muted)">Seller on Boi Campus</div>
-        </div>
-      </div>
-      <div class="contact-notice">
-        <i class="bi bi-lock-fill me-1" style="color:var(--green)"></i>
-        Contact info is only available in the app
-      </div>
+  <div class="sec sec-last">
+    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.9px;margin-bottom:12px"><i class="bi bi-person me-1"></i>Posted By</div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="seller-av" id="seller-av"></div>
+      <div><div id="seller-nm" style="font-size:15px;font-weight:700;color:var(--t1)"></div><div style="font-size:12px;color:var(--t3)">Seller on Boi Campus</div></div>
     </div>
+    <div class="lock-box"><i class="bi bi-lock-fill me-1" style="color:var(--green)"></i>Contact info is only available in the app</div>
   </div>
 
-  <div class="text-center py-4" style="font-size:12px;color:#9CA3AF">
-    © Boi Campus — বই ক্যাম্পাস
-  </div>
+  <div style="text-align:center;font-size:11px;color:var(--t3);padding:14px 0">© Boi Campus — বই ক্যাম্পাস</div>
 </div>
 
-<!-- CTA Bar -->
-<div id="cta-bar" class="cta-bar d-none">
-  <div class="cta-title"><i class="bi bi-phone-fill me-1"></i>Install the app to contact the seller</div>
-  <div class="d-flex gap-2">
-    <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
+<!-- CTA -->
+<div id="cta" class="cta d-none">
+  <div class="cta-hint"><i class="bi bi-phone-fill me-1"></i>Install the app to contact the seller</div>
+  <div style="display:flex;gap:10px">
+    <a class="btn-gp" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank">
+      <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
       Google Play
     </a>
-    <a class="btn-apple" href="https://apps.apple.com/app/boi-campus" target="_blank">
-      <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5C13.73 2.67 14.94 2.04 15.94 2c.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    <a class="btn-as" href="https://apps.apple.com/app/boi-campus" target="_blank">
+      <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5C13.73 2.67 14.94 2.04 15.94 2c.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       App Store
     </a>
   </div>
@@ -236,156 +210,113 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);paddi
 <script>
 const SB='https://epvzxxujxbamxyvoujlc.supabase.co';
 const KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwdnp4eHVqeGJhbXh5dm91amxjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwMTAzODYsImV4cCI6MjA5MTU4NjM4Nn0.edYgGONobrO2Rp4aSA8_6d65iFUj4gHBI2BGMMGaoTs';
-const postId=new URLSearchParams(location.search).get('id');
-
-const show=id=>document.getElementById(id).classList.remove('d-none');
-const hide=id=>document.getElementById(id).classList.add('d-none');
-
-// XSS protection — escape all user-supplied strings before innerHTML
+const pid=new URLSearchParams(location.search).get('id');
+const $=id=>document.getElementById(id);
+const show=id=>$(id).classList.remove('d-none');
+const hide=id=>$(id).classList.add('d-none');
 function esc(s){const d=document.createElement('div');d.textContent=String(s??'');return d.innerHTML;}
+function timeAgo(iso){const d=~~((Date.now()-new Date(iso))/1000);if(d<60)return'Just now';if(d<3600)return~~(d/60)+'m ago';if(d<86400)return~~(d/3600)+'h ago';if(d<2592000)return~~(d/86400)+'d ago';return~~(d/2592000)+'mo ago';}
+function fmtN(n){return n>=1000?(n/1000).toFixed(1)+'K':String(n);}
+function initials(n){return n?n.trim().split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase():'?';}
+function arow(l,v,green){return`<div class="arow"><span class="arow-l">${l}</span><span class="arow-sep">: </span><span class="arow-v${green?' green':''}">${v}</span></div>`;}
 
-const condLabel={new:'New 🌟',like_new:'Like New ✨',used:'Used',poor:'Poor Condition'};
-const condCls={new:'cond-new',like_new:'cond-like_new',used:'cond-used',poor:'cond-poor'};
-const bindLabel={good:'Good',fair:'Fair',poor:'Poor'};
-const delivLabel={meetup:'Meetup Only',courier_cod:'Courier (Cash on Delivery)',both:'Meetup & Courier'};
-
-function timeAgo(iso){
-  const d=Math.floor((Date.now()-new Date(iso))/1000);
-  if(d<60)return'Just now';if(d<3600)return~~(d/60)+'m ago';
-  if(d<86400)return~~(d/3600)+'h ago';if(d<2592000)return~~(d/86400)+'d ago';
-  return~~(d/2592000)+'mo ago';
-}
-function fmtN(n){return n>=1000?(n/1000).toFixed(1)+'K':n}
-function inRow(label,val){
-  return`<div class="info-row"><div class="info-row-label">${label}</div><div class="info-row-value">${val}</div></div>`;
-}
-function boolVal(v){return`<span class="${v?'bool-yes':'bool-no'}">${v?'<i class="bi bi-check-circle-fill me-1"></i>Yes':'<i class="bi bi-dash-circle me-1"></i>No'}</span>`}
-function initials(n){return n?n.trim().split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase():'?'}
+const condLabels={new:'New',like_new:'Like New',used:'Used',poor:'Poor'};
+const condDots={new:'#4CAF50',like_new:'#4CAF50',used:'#FF9800',poor:'#E53935'};
+const bindLabels={good:'GOOD',fair:'FAIR',poor:'POOR'};
+const bindColors={good:'#4CAF50',fair:'#FF9800',poor:'#E53935'};
+const delivLabels={meetup:'Meetup Only',courier_cod:'Courier (Cash on Delivery)',both:'Meetup & Courier'};
 
 async function load(){
-  if(!postId){hide('s-loading');show('s-notfound');return;}
+  if(!pid){hide('s-loading');show('s-notfound');return;}
   try{
-    const sel=
-      'id,title,writer_name,edition,description,'+
-      'is_set,total_set,set_names,'+
-      'book_condition,binding_condition,'+
-      'has_missing_page,has_highlight,has_handwritten_notes,'+
-      'post_type,price,is_negotiable,'+
-      'delivery_type,meetup_location,'+
-      'photo_urls,view_count,created_at,book_status,'+
-      'districts(name),book_categories(name),campuses(name),'+
-      'users!posts_seller_id_fkey(full_name)';
-    // book_status=eq.active — only fetch active posts (double safety alongside RLS)
-    const url=`${SB}/rest/v1/posts?id=eq.${encodeURIComponent(postId)}&book_status=eq.active&select=${sel}&limit=1`;
-    const res=await fetch(url,{headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}});
+    const sel='id,title,writer_name,edition,description,is_set,total_set,set_names,book_condition,binding_condition,has_missing_page,has_highlight,has_handwritten_notes,post_type,price,is_negotiable,delivery_type,meetup_location,photo_urls,view_count,created_at,book_status,districts(name),book_categories(name),campuses(name),users!posts_seller_id_fkey(full_name)';
+    const res=await fetch(`${SB}/rest/v1/posts?id=eq.${encodeURIComponent(pid)}&book_status=eq.active&select=${sel}&limit=1`,{headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}});
     if(!res.ok){hide('s-loading');show('s-error');return;}
     const rows=await res.json();
     if(!rows||!rows.length){hide('s-loading');show('s-notfound');return;}
     render(rows[0]);
-  }catch(e){console.error(e);hide('s-loading');show('s-error');}
+  }catch(e){hide('s-loading');show('s-error');}
 }
 
 function render(p){
-  // OG
-  document.getElementById('og-title').content=p.title;
-  if(p.photo_urls?.length)document.getElementById('og-image').content=p.photo_urls[0];
   document.title=p.title+' — Boi Campus';
+  $('og-title').content=p.title;
+  if(p.photo_urls?.length)$('og-image').content=p.photo_urls[0];
 
   // Gallery
-  const ci=document.getElementById('carousel-inner');
-  if(p.photo_urls&&p.photo_urls.length){
-    ci.innerHTML=p.photo_urls.map((u,i)=>`<div class="carousel-item${i===0?' active':''}"><img src="${u}" alt="Book photo ${i+1}" loading="lazy"></div>`).join('');
+  const ci=$('ci');
+  if(p.photo_urls?.length){
+    ci.innerHTML=p.photo_urls.map((u,i)=>`<div class="carousel-item${i?'':' active'}"><img src="${u}" alt="" loading="lazy"></div>`).join('');
     if(p.photo_urls.length>1){
-      const badge=document.getElementById('img-count');
-      badge.textContent='1 / '+p.photo_urls.length;
-      badge.classList.remove('d-none');
-      document.getElementById('mainCarousel').addEventListener('slid.bs.carousel',e=>{
-        badge.textContent=(e.to+1)+' / '+p.photo_urls.length;
-      });
+      $('img-c').textContent='1 / '+p.photo_urls.length;show('img-c');
+      $('mainCarousel').addEventListener('slid.bs.carousel',e=>{$('img-c').textContent=(e.to+1)+' / '+p.photo_urls.length;});
     }
-  }else{
-    ci.innerHTML=`<div class="carousel-item active"><div class="placeholder-img">📖</div></div>`;
-  }
+  }else{ci.innerHTML='<div class="carousel-item active"><div class="ph">📖</div></div>';}
 
-  // Status
-  if(p.book_status!=='active'){
-    document.getElementById('status-word').textContent=p.book_status;
-    show('status-banner');
-  }
-
-  // Title (textContent = XSS safe)
-  document.getElementById('book-title').textContent=p.title;
-  document.getElementById('book-author').innerHTML=p.writer_name
-    ?`<i class="bi bi-pencil-fill me-1" style="color:var(--green);font-size:12px"></i>${esc(p.writer_name)}`
-    :'';
+  // Title
+  $('book-title').textContent=p.title;
+  $('book-by').textContent=p.writer_name?'by '+p.writer_name:'';
 
   // Chips
   const chips=[
-    `<span class="meta-chip"><i class="bi bi-clock me-1" style="color:var(--green)"></i>${timeAgo(p.created_at)}</span>`,
-    `<span class="meta-chip"><i class="bi bi-eye me-1" style="color:var(--green)"></i>${fmtN(p.view_count)} views</span>`,
+    `<span class="chip"><i class="bi bi-clock"></i>${timeAgo(p.created_at)}</span>`,
+    `<span class="chip"><i class="bi bi-eye"></i>${fmtN(p.view_count)} views</span>`,
   ];
-  if(p.edition)chips.splice(1,0,`<span class="meta-chip"><i class="bi bi-calendar3 me-1" style="color:var(--green)"></i>Edition ${esc(p.edition)}</span>`);
-  document.getElementById('chips').innerHTML=chips.join('');
+  if(p.edition)chips.splice(1,0,`<span class="chip"><i class="bi bi-calendar3"></i>Edition ${esc(p.edition)}</span>`);
+  $('chips').innerHTML=chips.join('');
+
+  // Attrs
+  let at='';
+  if(p.districts?.name||p.book_categories?.name||p.is_set||p.campuses?.name){
+    if(p.districts?.name)at+=arow('Location',esc(p.districts.name));
+    if(p.book_categories?.name)at+=arow('Category',esc(p.book_categories.name));
+    if(p.is_set&&p.total_set)at+=arow('Total Set',esc(p.total_set)+' books',true);
+    if(p.campuses?.name)at+=arow('Campus',esc(p.campuses.name));
+    $('attrs').innerHTML=at;
+  }else{$('attrs').style.display='none';}
 
   // Price
   let ph='';
-  if(p.post_type==='free'){
-    ph=`<div class="free-badge"><i class="bi bi-gift-fill me-2"></i>FREE</div><div class="mt-1" style="font-size:13px;color:var(--muted)">This book is available for free</div>`;
-  }else{
-    ph=`<div class="d-flex align-items-baseline gap-2"><span class="price-amount">৳${Number(p.price).toLocaleString()}</span><span class="price-currency">BDT</span></div>`;
-    if(p.is_negotiable)ph+=`<div class="mt-2"><span class="negotiable-badge"><i class="bi bi-chat-dots-fill me-1"></i>Price is negotiable</span></div>`;
+  if(p.post_type==='free'){ph=`<div class="free-lbl"><i class="bi bi-gift-fill me-2"></i>FREE</div><div style="font-size:13px;color:var(--t3);margin-top:4px">This book is free</div>`;}
+  else{
+    ph=`<div><span class="price-num">৳${Number(p.price).toLocaleString()}</span><span class="price-cur">BDT</span></div>`;
+    if(p.is_negotiable)ph+=`<div class="neg-badge"><i class="bi bi-chat-dots-fill"></i>Price is negotiable</div>`;
   }
-  document.getElementById('price-content').innerHTML=ph;
+  $('price-c').innerHTML=ph;
 
-  // Book info (esc() all user strings in innerHTML)
-  let info='';
-  if(p.districts?.name)info+=inRow('Location',`<i class="bi bi-geo-alt-fill me-1" style="color:var(--green)"></i>${esc(p.districts.name)}`);
-  if(p.book_categories?.name)info+=inRow('Category',esc(p.book_categories.name));
-  if(p.is_set&&p.total_set)info+=inRow('Set','📦 '+esc(p.total_set)+' books in set');
-  if(p.campuses?.name)info+=inRow('Campus',`<i class="bi bi-building me-1" style="color:var(--green)"></i>${esc(p.campuses.name)}`);
-  document.getElementById('book-info-rows').innerHTML=info||`<div style="font-size:13px;color:var(--muted)">No additional info</div>`;
+  // Condition header chip
+  $('cond-dot').style.background=condDots[p.book_condition]||'#9E9E9E';
+  $('cond-lbl').textContent=condLabels[p.book_condition]||p.book_condition;
+  // Detail rows
+  const bc=bindColors[p.binding_condition]||'#9E9E9E';
+  $('bind-v').textContent=bindLabels[p.binding_condition]||p.binding_condition;
+  $('bind-v').style.color=bc;
+  function boolV(el,v){el.textContent=v?'Yes':'No';el.style.color=v?'#E53935':'#4CAF50';}
+  boolV($('miss-v'),p.has_missing_page);
+  boolV($('hi-v'),p.has_highlight);
+  boolV($('hw-v'),p.has_handwritten_notes);
 
-  // Condition — top row: overall badge + binding badge side by side
-  // bottom: 2-col grid for the 3 boolean flags
-  const cBadge=`<span class="badge rounded-pill ${condCls[p.book_condition]||''}" style="font-size:12px;font-weight:600;padding:5px 12px">${condLabel[p.book_condition]||esc(p.book_condition)}</span>`;
-  const bBadge=`<span class="badge rounded-pill bg-light text-dark border" style="font-size:12px;font-weight:600;padding:5px 12px">${bindLabel[p.binding_condition]||esc(p.binding_condition)}</span>`;
-  let cond=`
-    <div class="d-flex gap-2 flex-wrap mb-3">${cBadge}${bBadge}</div>
-    <div class="row g-2">
-      <div class="col-6"><div class="p-2 rounded-3" style="background:var(--bg);font-size:12px"><div style="color:var(--muted);font-weight:500;margin-bottom:3px">Missing Pages</div>${boolVal(p.has_missing_page)}</div></div>
-      <div class="col-6"><div class="p-2 rounded-3" style="background:var(--bg);font-size:12px"><div style="color:var(--muted);font-weight:500;margin-bottom:3px">Highlights</div>${boolVal(p.has_highlight)}</div></div>
-      <div class="col-6"><div class="p-2 rounded-3" style="background:var(--bg);font-size:12px"><div style="color:var(--muted);font-weight:500;margin-bottom:3px">Handwritten Notes</div>${boolVal(p.has_handwritten_notes)}</div></div>
-    </div>`;
-  document.getElementById('condition-rows').innerHTML=cond;
-
-  // Set list (esc each name)
+  // Set list
   if(p.is_set&&p.set_names?.length){
-    document.getElementById('set-list').innerHTML=p.set_names.map((n,i)=>`<div class="set-item"><div class="set-num">${i+1}</div>${esc(n)}</div>`).join('');
+    $('set-list').innerHTML=p.set_names.map((n,i)=>`<div class="set-item"><div class="set-n">${i+1}</div>${esc(n)}</div>`).join('');
     show('set-card');
   }
 
   // Description
-  if(p.description?.trim()){
-    document.getElementById('desc-text').textContent=p.description;
-    show('desc-card');
-  }
+  if(p.description?.trim()){$('desc-t').textContent=p.description;show('desc-card');}
 
-  // Delivery — show type as badge chip, no 'Method' label row
-  const dLabel=delivLabel[p.delivery_type]||esc(p.delivery_type);
-  let del=`<div class="mb-2"><span class="badge rounded-pill" style="background:var(--green-pale);color:var(--green);font-size:13px;font-weight:600;padding:6px 14px"><i class="bi bi-truck me-1"></i>${dLabel}</span></div>`;
-  if(p.meetup_location)del+=inRow('Meetup at',`<i class="bi bi-geo-alt me-1" style="color:var(--green)"></i>${esc(p.meetup_location)}`);
-  document.getElementById('delivery-rows').innerHTML=del;
+  // Delivery
+  let del=`<div style="font-size:14px;font-weight:500;color:var(--t1)">${esc(delivLabels[p.delivery_type]||p.delivery_type)}</div>`;
+  if(p.meetup_location)del+=arow('Meetup at',esc(p.meetup_location));
+  $('del-c').innerHTML=del;
 
   // Seller
   const sn=p.users?.full_name||'Seller';
-  document.getElementById('seller-name').textContent=sn;
-  document.getElementById('seller-avatar').textContent=initials(sn);
+  $('seller-nm').textContent=sn;
+  $('seller-av').textContent=initials(sn);
 
-  hide('s-loading');
-  show('content');
-  show('cta-bar');
+  hide('s-loading');show('content');show('cta');
 }
-
 load();
 </script>
 </body>
