@@ -1,35 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Boi Campus — বই ক্যাম্পাস</title>
-  <meta name="description" content="Buy and sell books near your campus. Download the Boi Campus app."/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Inter',sans-serif;background:#F2F4F0;color:#1C1C0E;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center}
-    .logo{font-size:64px;margin-bottom:16px}
-    h1{font-size:28px;font-weight:800;color:#5B7C42;margin-bottom:8px}
-    .sub{font-size:16px;color:#6B7280;margin-bottom:32px;line-height:1.5}
-    .btns{display:flex;flex-direction:column;gap:12px;width:100%;max-width:300px}
-    .btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:14px;text-decoration:none;font-size:15px;font-weight:600;transition:.2s}
-    .btn-play{background:#1C1C0E;color:#fff}
-    .btn svg{width:22px;height:22px;fill:currentColor}
-    .btn:active{opacity:.85;transform:scale(.97)}
-    .footer{margin-top:32px;font-size:12px;color:#9CA3AF}
-  </style>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Boi Campus — বই ক্যাম্পাস</title>
+<meta name="description" content="Buy and sell second-hand books near your campus. Free, easy, and trusted by students across Bangladesh."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<style>
+:root{
+  --primary:#5B7C42;--primary-l:#7A9E5C;--primary-d:#3E5A2B;
+  --primary-ctr:#D6E8C4;--on-primary-ctr:#1A3109;
+  --bg:#F4F6F1;--t1:#1C1C0E;--t2:#5A5A48;--t3:#9E9E9E;
+  --white:#fff;--divider:#E0E0E0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);min-height:100vh}
+
+/* ── Nav ── */
+nav{background:var(--white);border-bottom:1px solid var(--divider);padding:14px 24px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100}
+.nav-logo{width:34px;height:34px;background:linear-gradient(135deg,var(--primary-l),var(--primary-d));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.nav-brand{font-size:17px;font-weight:800;color:var(--primary)}
+.nav-brand-bn{font-size:11px;font-weight:500;color:var(--t3);margin-left:2px}
+.nav-dl{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--t1);color:#fff;padding:8px 16px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;transition:.15s}
+.nav-dl:hover{opacity:.85;color:#fff}
+.nav-dl svg{width:15px;height:15px;fill:currentColor}
+
+/* ── Hero ── */
+.hero{background:linear-gradient(160deg,var(--primary-d) 0%,var(--primary) 55%,var(--primary-l) 100%);padding:64px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-icon{width:88px;height:88px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:44px;margin:0 auto 24px;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.hero h1{font-size:36px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.2;margin-bottom:6px}
+.hero-bn{font-size:18px;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:20px}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:340px;margin:0 auto 36px;line-height:1.7}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--primary-d);padding:14px 28px;border-radius:14px;text-decoration:none;font-size:16px;font-weight:800;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:.2s}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(0,0,0,.25);color:var(--primary-d)}
+.hero-cta svg{width:20px;height:20px;fill:var(--primary-d)}
+.hero-note{margin-top:14px;font-size:12px;color:rgba(255,255,255,.55)}
+
+/* ── Wave divider ── */
+.wave{display:block;width:100%;height:40px;background:var(--bg);margin-top:-1px}
+
+/* ── Stats strip ── */
+.stats{display:flex;justify-content:center;gap:0;background:var(--white);border-radius:16px;margin:-32px 20px 0;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden;position:relative;z-index:10}
+.stat{flex:1;padding:20px 12px;text-align:center;border-right:1px solid var(--divider)}
+.stat:last-child{border-right:none}
+.stat-n{font-size:22px;font-weight:800;color:var(--primary)}
+.stat-l{font-size:11px;font-weight:500;color:var(--t3);margin-top:2px}
+
+/* ── Section title ── */
+.sec-title{text-align:center;margin-bottom:24px}
+.sec-title h2{font-size:22px;font-weight:800;color:var(--t1);margin-bottom:6px}
+.sec-title p{font-size:14px;color:var(--t2);line-height:1.6}
+
+/* ── Features ── */
+.features{padding:52px 20px 20px}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:480px;margin:0 auto}
+.feat{background:var(--white);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.feat-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.feat h3{font-size:14px;font-weight:700;color:var(--t1);line-height:1.3}
+.feat p{font-size:12px;color:var(--t2);line-height:1.6}
+
+/* ── How it works ── */
+.how{padding:40px 20px}
+.steps{max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--divider)}
+.step:last-child{border-bottom:none}
+.step-n{width:36px;height:36px;border-radius:50%;background:var(--primary-ctr);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--primary-d);flex-shrink:0;margin-top:2px}
+.step h3{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px}
+.step p{font-size:13px;color:var(--t2);line-height:1.6}
+
+/* ── Download section ── */
+.dl-sec{padding:40px 20px 56px;text-align:center}
+.dl-card{background:linear-gradient(135deg,var(--primary-d),var(--primary));border-radius:24px;padding:40px 24px;max-width:420px;margin:0 auto;position:relative;overflow:hidden}
+.dl-card::after{content:'📚';position:absolute;right:-10px;bottom:-16px;font-size:96px;opacity:.12;transform:rotate(15deg)}
+.dl-card h2{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3}
+.dl-card p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:28px;line-height:1.6}
+.btn-play{display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;color:var(--primary-d);padding:15px 24px;border-radius:14px;text-decoration:none;font-size:15px;font-weight:800;transition:.2s;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn-play:hover{opacity:.92;transform:translateY(-1px);color:var(--primary-d)}
+.btn-play svg{width:19px;height:19px;fill:var(--primary-d);flex-shrink:0}
+.dl-note{margin-top:14px;font-size:12px;color:rgba(255,255,255,.55)}
+
+/* ── Footer ── */
+footer{background:var(--t1);padding:24px;text-align:center}
+footer p{font-size:12px;color:rgba(255,255,255,.4)}
+footer a{color:rgba(255,255,255,.5);text-decoration:none}
+footer a:hover{color:rgba(255,255,255,.8)}
+</style>
 </head>
 <body>
-  <div class="logo">📚</div>
-  <h1>Boi Campus</h1>
-  <div class="sub">Buy & sell books near your campus.<br/>বই কিনুন ও বিক্রি করুন সহজে।</div>
-  <div class="btns">
-    <a class="btn btn-play" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank">
-      <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
-      Google Play
-    </a>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">📚</div>
+  <div>
+    <span class="nav-brand">Boi Campus</span>
+    <span class="nav-brand-bn">বই ক্যাম্পাস</span>
   </div>
-  <div class="footer">© Boi Campus 2026</div>
+  <a class="nav-dl" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
+    Download
+  </a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-icon">📚</div>
+  <h1>Boi Campus</h1>
+  <div class="hero-bn">বই ক্যাম্পাস</div>
+  <p class="hero-sub">Buy and sell second-hand books near your campus — fast, free, and trusted by students.</p>
+  <a class="hero-cta" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
+    Get it on Google Play
+  </a>
+  <div class="hero-note">Free download · Android</div>
+</div>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Free to use</div></div>
+  <div class="stat"><div class="stat-n"><i class="bi bi-shield-check" style="font-size:20px;color:var(--primary)"></i></div><div class="stat-l">Verified sellers</div></div>
+  <div class="stat"><div class="stat-n">📍</div><div class="stat-l">Near your campus</div></div>
+</div>
+
+<!-- Features -->
+<div class="features">
+  <div class="sec-title">
+    <h2>Why students love it</h2>
+    <p>Everything you need to buy and sell books on campus</p>
+  </div>
+  <div class="feat-grid">
+    <div class="feat">
+      <div class="feat-icon" style="background:#E8F5E9">📖</div>
+      <h3>Browse Books</h3>
+      <p>Find books near your campus with filters for category, condition & price.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon" style="background:#FFF8E1">💰</div>
+      <h3>Save Money</h3>
+      <p>Buy used books at a fraction of the original price from fellow students.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon" style="background:#E3F2FD">💬</div>
+      <h3>Chat Safely</h3>
+      <p>Message sellers directly through the app — no number sharing needed.</p>
+    </div>
+    <div class="feat">
+      <div class="feat-icon" style="background:#F3E5F5">⭐</div>
+      <h3>Wishlist</h3>
+      <p>Save posts you like and come back to them anytime.</p>
+    </div>
+  </div>
+</div>
+
+<!-- How it works -->
+<div class="how">
+  <div class="sec-title">
+    <h2>How it works</h2>
+    <p>Simple steps to buy or sell your books</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div>
+        <h3>Create an account</h3>
+        <p>Sign up with your phone number and complete your profile with your campus details.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div>
+        <h3>Post or browse</h3>
+        <p>List your books with photos and a price, or browse listings near your campus.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div>
+        <h3>Connect & meet up</h3>
+        <p>Chat with buyers or sellers, agree on a price, and meet up to exchange the book.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Download -->
+<div class="dl-sec">
+  <div class="dl-card">
+    <h2>Ready to save on textbooks?</h2>
+    <p>Join thousands of students buying and selling books near their campus.</p>
+    <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
+      Download on Google Play
+    </a>
+    <div class="dl-note">Free · Android · Bangladesh</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 Boi Campus &nbsp;·&nbsp; বই ক্যাম্পাস &nbsp;·&nbsp; Bangladesh</p>
+</footer>
+
 </body>
 </html>
