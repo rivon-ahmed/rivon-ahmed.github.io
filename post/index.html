@@ -4,119 +4,155 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Book Details — Boi Campus</title>
 <meta name="description" content="View book details on Boi Campus"/>
-<meta id="og-title" property="og:title" content="Book on Boi Campus"/>
-<meta id="og-image" property="og:image" content=""/>
+<meta id="og-title"  property="og:title"  content="Book on Boi Campus"/>
+<meta id="og-image"  property="og:image"  content=""/>
 <meta property="og:type" content="product"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
 <style>
 :root{
-  --green:#5B7C42;--green-l:#7A9E5C;--green-d:#3E5A2B;--green-pale:#EBF4E1;
-  --bg:#F4F6F2;--white:#fff;
-  --t1:#1C1C0E;--t2:#616161;--t3:#9E9E9E;
-  --divider:#E0E0E0;--border:#E0E0E0;
-  --success:#4CAF50;--warning:#FF9800;--error:#E53935;
+  --primary:#5B7C42;--primary-l:#7A9E5C;--primary-d:#3E5A2B;
+  --primary-ctr:#D6E8C4;--on-primary-ctr:#1A3109;
+  --success:#4CAF50;--success-ctr:#CEEFCF;--on-success-ctr:#0A3D0C;
+  --warning:#F59E0B;--error:#BA1A1A;
+  --t1:#1C1C0E;--t2:#5A5A48;--t3:#9E9E9E;
+  --surface:#F5F5F5;--divider:#E0E0E0;--divider-warm:#EDE8D4;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);padding-bottom:120px}
+body{font-family:'Inter',sans-serif;background:#fff;color:var(--t1);padding-bottom:100px;min-height:100vh}
 
-/* Topbar */
-.topbar{background:linear-gradient(135deg,var(--green-l),var(--green-d));padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.2)}
-.t-logo{width:34px;height:34px;background:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.t-name{color:#fff;font-weight:800;font-size:17px}
-.t-sub{color:rgba(255,255,255,.7);font-size:11px;font-weight:500}
+/* ── Topbar ── */
+.topbar{background:var(--primary-l);padding:12px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:200}
+.t-back{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#fff;font-size:20px;text-decoration:none;flex-shrink:0}
+.t-back:hover{background:rgba(255,255,255,.15);color:#fff}
+.t-title{color:#fff;font-weight:700;font-size:17px;flex:1}
 
-/* States */
-.state{min-height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center}
-.s-icon{font-size:52px}.s-title{font-size:19px;font-weight:700}.s-sub{font-size:14px;color:var(--t3);max-width:280px;line-height:1.6}
+/* ── States ── */
+.state{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;text-align:center}
+.s-icon{font-size:56px}
+.s-title{font-size:19px;font-weight:700}
+.s-sub{font-size:14px;color:var(--t3);max-width:280px;line-height:1.7}
 
-/* Gallery */
-.carousel-item img{width:100%;height:290px;object-fit:cover}
-.carousel-item .ph{width:100%;height:290px;background:#D5D8D0;display:flex;align-items:center;justify-content:center;font-size:64px}
-.img-badge{position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.5);color:#fff;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;backdrop-filter:blur(3px);z-index:9}
+/* ── Gallery ── */
+.carousel-item img{width:100%;height:300px;object-fit:cover}
+.carousel-item .ph{width:100%;height:300px;background:#D5D8D0;display:flex;align-items:center;justify-content:center;font-size:72px}
+.img-badge{position:absolute;bottom:12px;right:14px;background:rgba(0,0,0,.48);color:#fff;font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;backdrop-filter:blur(4px);z-index:9}
 
-/* Section card */
-.sec{background:var(--white);padding:16px}
-.sec+.sec{border-top:8px solid var(--bg)}
-.sec-last{border-top:8px solid var(--bg)}
+/* ── Status banner ── */
+.st-banner{background:#FFF8E1;border-left:4px solid #FFC107;padding:10px 16px;font-size:13px;color:#7B5800;font-weight:500}
 
-/* Book title block */
+/* ── Section layout ── */
+.sec{padding:16px;background:#fff}
+.gap{height:16px;background:#fff}
+
+/* ── Book title block ── */
 .book-title{font-size:20px;font-weight:800;line-height:1.35;color:var(--t1)}
 .book-by{font-size:13px;color:var(--t2);margin-top:4px}
-.chip-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
-.chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;color:var(--t3)}
-.chip i{font-size:12px}
+.meta-row{display:flex;align-items:center;gap:4px;margin-top:12px;flex-wrap:wrap}
+.meta-row i{font-size:13px;color:var(--t2)}
+.meta-row .mt{font-size:12px;font-weight:500;color:var(--t2)}
+.meta-dot{width:3px;height:3px;border-radius:50%;background:var(--t3);margin:0 8px;flex-shrink:0}
 
-/* Attr rows (location, category etc.) */
-.attrs{margin-top:14px;border-top:1px solid var(--divider);padding-top:12px}
-.arow{display:flex;padding:5px 0;font-size:13px}
-.arow-l{width:80px;flex-shrink:0;color:var(--t3);font-weight:500}
-.arow-sep{color:var(--t3);margin-right:8px}
-.arow-v{color:var(--t1);font-weight:500;flex:1}
-.arow-v.green{color:var(--green)}
+/* ── Price card ── */
+.price-card{background:var(--surface);border-radius:12px;padding:14px 16px;margin-top:20px}
+.price-lbl{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--t3);font-weight:400;margin-bottom:10px}
+.price-amount{display:flex;align-items:center;gap:10px;font-size:28px;font-weight:800;color:var(--t1)}
+.price-free{font-size:28px;font-weight:800;color:var(--primary)}
+.neg-badge{display:inline-flex;align-items:center;gap:5px;background:var(--success-ctr);color:var(--on-success-ctr);font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
 
-/* Price */
-.price-num{font-size:30px;font-weight:800;color:var(--green)}
-.price-cur{font-size:15px;color:var(--t2);font-weight:500;margin-left:4px}
-.neg-badge{display:inline-flex;align-items:center;gap:5px;background:var(--green-pale);color:var(--green);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin-top:8px}
-.free-lbl{font-size:26px;font-weight:800;color:var(--green)}
+/* ── Section header (gray) ── */
+.sec-hdr{display:flex;align-items:center;gap:6px;margin-bottom:16px}
+.sec-hdr i{font-size:18px;color:var(--t3)}
+.sec-hdr span{font-size:14px;font-weight:400;color:var(--t3);flex:1}
 
-/* Condition outer card */
-.cond-outer{background:#F5F5F5;border-radius:12px;padding:14px}
-.cond-header{display:flex;align-items:center}
-.cond-header-lbl{font-size:14px;color:var(--t3);font-weight:400;flex:1;margin-left:6px}
-.cond-chip{display:flex;align-items:center;gap:6px;background:#E0E0E0;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500;color:var(--t2)}
+/* ── Gray card ── */
+.gray-card{background:var(--surface);border-radius:12px;padding:16px}
+
+/* ── Description ── */
+.desc-body{font-size:14px;color:var(--t1);line-height:1.75;white-space:pre-wrap}
+.desc-toggle{display:inline-flex;align-items:center;gap:5px;margin-top:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--primary)}
+
+/* ── Info grid ── */
+.info-grid{background:var(--surface);border-radius:12px;overflow:hidden}
+.igrow{display:flex;align-items:stretch;min-height:36px;border-bottom:1px solid var(--divider)}
+.igrow:last-child{border-bottom:none}
+.igcell{display:flex;align-items:center;gap:4px;padding:8px 16px;font-size:12px;overflow:hidden;white-space:nowrap}
+.igcell.grow{flex:1}
+.igcell i{font-size:12px;color:var(--t3);flex-shrink:0}
+.ig-lbl{color:var(--t3);font-weight:400;flex-shrink:0}
+.ig-sep{color:var(--t3);margin:0 2px;flex-shrink:0}
+.ig-val{color:var(--t1);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.igdiv{width:1px;background:var(--divider);flex-shrink:0;align-self:stretch}
+
+/* ── Seller ── */
+.seller-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--primary-l),var(--primary-d));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;flex-shrink:0;overflow:hidden}
+.seller-av img{width:100%;height:100%;object-fit:cover}
+.seller-name{font-size:15px;font-weight:700;color:var(--t1)}
+.seller-meta-row{display:flex;align-items:center;gap:4px;margin-top:4px;font-size:12px;color:var(--t2)}
+
+/* ── Condition ── */
+.cond-pill{display:inline-flex;align-items:center;gap:6px;background:#E0E0E0;border-radius:999px;padding:4px 12px}
 .cond-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-/* Condition inner card */
-.cond-inner{background:#fff;border:1px solid #E0E0E0;border-radius:10px;padding:14px;margin-top:12px}
-.cond-inner-hdr{display:flex;align-items:center;margin-bottom:12px}
-.cond-inner-hdr i{color:#616161;font-size:16px}
-.cond-inner-hdr span{font-size:13px;font-weight:600;color:var(--t1);margin-left:6px}
-.drow{display:flex;align-items:center;padding:9px 0;border-bottom:1px solid var(--divider);font-size:13px}
-.drow:last-child{border-bottom:none;padding-bottom:0}
-.drow i{color:#9E9E9E;font-size:15px;flex-shrink:0}
-.drow-lbl{flex:1;color:#424242;margin-left:8px}
-.drow-val{font-weight:600;font-size:13px}
+.cond-pill-lbl{font-size:12px;font-weight:500;color:var(--t2)}
+.white-card{background:#fff;border-radius:10px;overflow:hidden;margin-top:14px}
+.cond-inner-hdr{display:flex;align-items:center;gap:8px;padding:14px 16px 10px}
+.cond-inner-hdr i{font-size:18px;color:var(--t1)}
+.cond-inner-hdr span{font-size:14px;font-weight:700;color:var(--t1)}
+.cond-row{display:flex;align-items:center;padding:10px 16px;border-top:1px solid var(--divider)}
+.cond-row i{font-size:18px;color:var(--t3);flex-shrink:0}
+.cond-row-lbl{flex:1;font-size:13px;color:#424242;margin-left:12px}
+.cond-row-val{font-size:13px;font-weight:600}
 
-/* Description */
-.desc-text{font-size:14px;color:#374151;line-height:1.75;white-space:pre-wrap}
+/* ── Set list ── */
+.set-inner{background:#EDE7F6;border:1px solid #B39DDB;border-radius:10px;padding:14px 16px;margin-top:14px}
+.set-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #CE93D8}
+.set-item:first-child{border-top:none;padding-top:0}
+.set-item:last-child{padding-bottom:0}
+.set-badge{width:24px;height:24px;border-radius:50%;background:#D1C4E9;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#6A1B9A;flex-shrink:0}
+.set-name{font-size:13px;font-weight:500;color:var(--t2);line-height:1.4}
 
-/* Set list */
-.set-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bg);font-size:13px;color:var(--t1)}
-.set-item:last-child{border-bottom:none}
-.set-n{width:24px;height:24px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--green);flex-shrink:0}
+/* ── Meetup ── */
+.meetup-hdr{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.meetup-hdr i{font-size:20px;color:#E53935}
+.meetup-hdr span{font-size:15px;font-weight:700;color:var(--t1)}
+.meetup-inner{background:#E3F2FD;border:1px solid #90CAF9;border-radius:10px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px}
+.meetup-inner>i{font-size:20px;color:#42A5F5;flex-shrink:0;margin-top:1px}
+.meetup-inner span{font-size:14px;color:var(--t2);line-height:1.5}
 
-/* Seller */
-.seller-av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--green-l),var(--green-d));display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700;color:#fff;flex-shrink:0}
-.lock-box{background:var(--bg);border-radius:10px;padding:12px;font-size:13px;color:var(--t3);text-align:center;margin-top:12px;border:1px dashed var(--border)}
+/* ── Footer ── */
+.footer-note{text-align:center;font-size:11px;color:var(--t3);padding:20px 0 8px}
 
-/* Status banner */
-.st-banner{background:#FFF8E1;border-left:4px solid #FFC107;padding:10px 14px;font-size:13px;color:#7B5800;font-weight:500}
-
-/* CTA */
-.cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--divider);padding:12px 14px;z-index:1000;box-shadow:0 -3px 16px rgba(0,0,0,.07)}
-.cta-hint{font-size:12px;color:var(--t3);text-align:center;margin-bottom:10px;font-weight:500}
-.btn-gp{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:700;background:#1C1C0E;color:#fff;transition:.15s}
-.btn-as{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:12px;text-decoration:none;font-size:14px;font-weight:700;background:linear-gradient(135deg,var(--green-l),var(--green-d));color:#fff;transition:.15s}
-.btn-gp:hover,.btn-as:hover{opacity:.88;color:#fff}
+/* ── CTA ── */
+.cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--divider-warm);padding:10px 16px 14px;z-index:1000;box-shadow:0 -2px 12px rgba(0,0,0,.06)}
+.cta-hint{font-size:12px;color:var(--t3);text-align:center;margin-bottom:8px;font-weight:500}
+.btn-play{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;padding:14px;border-radius:12px;text-decoration:none;font-size:15px;font-weight:700;background:var(--t1);color:#fff;transition:.15s}
+.btn-play:hover{opacity:.88;color:#fff}
+.btn-play svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
 </style>
 </head>
 <body>
 
+<!-- Topbar -->
 <div class="topbar">
-  <div class="t-logo">📚</div>
-  <div><div class="t-name">Boi Campus</div><div class="t-sub">বই ক্যাম্পাস</div></div>
+  <a class="t-back" href="/"><i class="bi bi-arrow-left"></i></a>
+  <div class="t-title">Book Details</div>
+  <i class="bi bi-share" style="color:rgba(255,255,255,.7);font-size:18px"></i>
 </div>
 
-<div id="s-loading" class="state"><div class="s-icon">⏳</div><div class="s-title" style="color:var(--t2)">Loading...</div></div>
-<div id="s-error" class="state d-none"><div class="s-icon">😕</div><div class="s-title">Something went wrong</div><div class="s-sub">Could not load this post. Please try again later.</div></div>
+<!-- Loading / Error / Not-found -->
+<div id="s-loading" class="state">
+  <div class="spinner-border" style="color:var(--primary);width:36px;height:36px" role="status"></div>
+  <div style="font-size:14px;color:var(--t3)">Loading...</div>
+</div>
+<div id="s-error"    class="state d-none"><div class="s-icon">😕</div><div class="s-title">Something went wrong</div><div class="s-sub">Could not load this post. Please try again later.</div></div>
 <div id="s-notfound" class="state d-none"><div class="s-icon">📭</div><div class="s-title">Post not available</div><div class="s-sub">This book may have been removed or sold. Install the app to find more books.</div></div>
 
+<!-- Main content -->
 <div id="content" class="d-none">
 
   <!-- Gallery -->
-  <div id="gallery-wrap" style="background:#000;position:relative">
+  <div style="background:#000;position:relative">
     <div id="mainCarousel" class="carousel slide" data-bs-ride="false">
       <div class="carousel-inner" id="ci"></div>
       <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
@@ -125,198 +161,315 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);padding
     <div class="img-badge d-none" id="img-c"></div>
   </div>
 
-  <!-- Status -->
-  <div id="st-banner" class="st-banner d-none"><i class="bi bi-exclamation-triangle-fill me-1"></i>This book has been <strong id="st-word"></strong>.</div>
-
-  <!-- Book info -->
-  <div class="sec">
-    <div id="book-title" class="book-title"></div>
-    <div id="book-by" class="book-by"></div>
-    <div class="chip-row" id="chips"></div>
-    <div id="attrs" class="attrs"></div>
+  <!-- Status banner -->
+  <div id="st-banner" class="st-banner d-none">
+    <i class="bi bi-exclamation-triangle-fill me-1"></i>This book has been <strong id="st-word"></strong>.
   </div>
 
-  <!-- Price -->
-  <div class="sec"><div id="price-c"></div></div>
-
-  <!-- Condition -->
+  <!-- ① Book Info -->
   <div class="sec">
-    <div class="cond-outer">
-      <div class="cond-header">
-        <i class="bi bi-patch-check" style="color:var(--t3);font-size:18px"></i>
-        <span class="cond-header-lbl">Book Condition</span>
-        <div class="cond-chip"><div class="cond-dot" id="cond-dot"></div><span id="cond-lbl"></span></div>
+    <div id="book-title" class="book-title"></div>
+    <div id="book-by" class="book-by" style="display:none"></div>
+    <div class="meta-row">
+      <i class="bi bi-geo-alt" id="loc-icon" style="display:none"></i>
+      <span class="mt" id="loc-txt" style="display:none"></span>
+      <div class="meta-dot" id="loc-dot" style="display:none"></div>
+      <i class="bi bi-clock"></i>
+      <span class="mt" id="time-ago"></span>
+    </div>
+    <div class="price-card">
+      <div class="price-lbl"><i class="bi bi-tag"></i>Price</div>
+      <div id="price-row"></div>
+    </div>
+  </div>
+
+  <!-- ② Description (conditional) -->
+  <div id="desc-sec" class="d-none">
+    <div class="gap"></div>
+    <div class="sec">
+      <div class="sec-hdr"><i class="bi bi-file-text"></i><span>Description</span></div>
+      <div class="gray-card" style="padding:14px 16px">
+        <div id="desc-body" class="desc-body" style="max-height:72px;overflow:hidden"></div>
+        <div id="desc-toggle" class="desc-toggle d-none" onclick="toggleDesc()">
+          <span id="desc-toggle-lbl">Show more</span>
+          <i class="bi bi-chevron-down" id="desc-toggle-icon"></i>
+        </div>
       </div>
-      <div class="cond-inner">
+    </div>
+  </div>
+
+  <!-- ③ Info Grid -->
+  <div class="gap"></div>
+  <div class="sec" style="padding-top:0;padding-bottom:0">
+    <div class="info-grid" id="info-grid"></div>
+  </div>
+
+  <!-- ④ Seller Info -->
+  <div class="gap"></div>
+  <div class="sec">
+    <div class="sec-hdr"><i class="bi bi-person"></i><span>Seller Information</span></div>
+    <div class="gray-card">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div class="seller-av" id="seller-av"></div>
+        <div style="flex:1;min-width:0">
+          <div id="seller-name" class="seller-name"></div>
+          <div id="seller-gender" class="seller-meta-row" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ Book Condition -->
+  <div class="gap"></div>
+  <div class="sec">
+    <div class="gray-card">
+      <div style="display:flex;align-items:center;gap:6px">
+        <i class="bi bi-patch-check" style="font-size:18px;color:var(--t3)"></i>
+        <span style="font-size:14px;font-weight:400;color:var(--t3);flex:1">Book Condition</span>
+        <div class="cond-pill"><div class="cond-dot" id="cond-dot"></div><span class="cond-pill-lbl" id="cond-lbl"></span></div>
+      </div>
+      <div class="white-card">
         <div class="cond-inner-hdr">
           <i class="bi bi-list-check"></i>
           <span>Detailed Condition</span>
         </div>
-        <div class="drow"><i class="bi bi-book"></i><span class="drow-lbl">Binding Condition</span><span class="drow-val" id="bind-v"></span></div>
-        <div class="drow"><i class="bi bi-file-earmark"></i><span class="drow-lbl">Missing Pages</span><span class="drow-val" id="miss-v"></span></div>
-        <div class="drow"><i class="bi bi-highlighter"></i><span class="drow-lbl">Highlight / Underline</span><span class="drow-val" id="hi-v"></span></div>
-        <div class="drow"><i class="bi bi-pencil"></i><span class="drow-lbl">Handwritten Notes</span><span class="drow-val" id="hw-v"></span></div>
+        <div class="cond-row"><i class="bi bi-book"></i><span class="cond-row-lbl">Binding Condition</span><span class="cond-row-val" id="bind-v"></span></div>
+        <div class="cond-row"><i class="bi bi-file-earmark"></i><span class="cond-row-lbl">Missing Pages</span><span class="cond-row-val" id="miss-v"></span></div>
+        <div class="cond-row"><i class="bi bi-highlighter"></i><span class="cond-row-lbl">Highlight / Underline</span><span class="cond-row-val" id="hi-v"></span></div>
+        <div class="cond-row"><i class="bi bi-pencil"></i><span class="cond-row-lbl">Handwritten Notes</span><span class="cond-row-val" id="hw-v"></span></div>
       </div>
     </div>
   </div>
 
-  <!-- Set list -->
-  <div id="set-card" class="sec d-none">
-    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.9px;margin-bottom:10px"><i class="bi bi-collection me-1"></i>Books in Set</div>
-    <div id="set-list"></div>
-  </div>
-
-  <!-- Description -->
-  <div id="desc-card" class="sec d-none">
-    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.9px;margin-bottom:10px"><i class="bi bi-chat-left-text me-1"></i>Description</div>
-    <p id="desc-t" class="desc-text mb-0"></p>
-  </div>
-
-  <!-- Delivery: hidden by default, shown only if meetup location exists -->
-  <div id="del-card" class="sec d-none">
-    <div id="del-c"></div>
-  </div>
-
-  <!-- Seller -->
-  <div class="sec sec-last">
-    <div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.9px;margin-bottom:12px"><i class="bi bi-person me-1"></i>Posted By</div>
-    <div style="display:flex;align-items:center;gap:12px">
-      <div class="seller-av" id="seller-av"></div>
-      <div><div id="seller-nm" style="font-size:15px;font-weight:700;color:var(--t1)"></div><div style="font-size:12px;color:var(--t3)">Seller on Boi Campus</div></div>
+  <!-- ⑥ Set List (conditional) -->
+  <div id="set-sec" class="d-none">
+    <div class="gap"></div>
+    <div class="sec">
+      <div class="gray-card">
+        <div style="display:flex;align-items:center;gap:10px">
+          <i class="bi bi-collection-fill" style="font-size:18px;color:#512DA8"></i>
+          <span style="font-size:15px;font-weight:700;color:var(--t1)">Books in this Set</span>
+        </div>
+        <div class="set-inner" id="set-list"></div>
+      </div>
     </div>
-    <div class="lock-box"><i class="bi bi-lock-fill me-1" style="color:var(--green)"></i>Contact info is only available in the app</div>
   </div>
 
-  <div style="text-align:center;font-size:11px;color:var(--t3);padding:14px 0">© Boi Campus — বই ক্যাম্পাস</div>
+  <!-- ⑦ Meetup Location (conditional) -->
+  <div id="meetup-sec" class="d-none">
+    <div class="gap"></div>
+    <div class="sec">
+      <div class="gray-card">
+        <div class="meetup-hdr">
+          <i class="bi bi-pin-map-fill"></i>
+          <span>Meetup Location</span>
+        </div>
+        <div class="meetup-inner">
+          <i class="bi bi-info-circle"></i>
+          <span id="meetup-txt"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">© Boi Campus 2026</div>
 </div>
 
-<!-- CTA -->
+<!-- Fixed bottom CTA -->
 <div id="cta" class="cta d-none">
-  <div class="cta-hint"><i class="bi bi-phone-fill me-1"></i>Install the app to contact the seller</div>
-  <div style="display:flex;gap:10px">
-    <a class="btn-gp" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank">
-      <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
-      Google Play
-    </a>
-    <a class="btn-as" href="https://apps.apple.com/app/boi-campus" target="_blank">
-      <svg width="17" height="17" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.14-2.18 1.27-2.16 3.8.03 3.02 2.65 4.03 2.68 4.04l-.07.28zM13 3.5C13.73 2.67 14.94 2.04 15.94 2c.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      App Store
-    </a>
-  </div>
+  <div class="cta-hint"><i class="bi bi-phone-fill"></i> Install the app to contact the seller</div>
+  <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
+    Download on Google Play
+  </a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-const SB='https://epvzxxujxbamxyvoujlc.supabase.co';
-const KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwdnp4eHVqeGJhbXh5dm91amxjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwMTAzODYsImV4cCI6MjA5MTU4NjM4Nn0.edYgGONobrO2Rp4aSA8_6d65iFUj4gHBI2BGMMGaoTs';
-const pid=new URLSearchParams(location.search).get('id');
-const $=id=>document.getElementById(id);
-const show=id=>$(id).classList.remove('d-none');
-const hide=id=>$(id).classList.add('d-none');
-function esc(s){const d=document.createElement('div');d.textContent=String(s??'');return d.innerHTML;}
-function timeAgo(iso){const d=~~((Date.now()-new Date(iso))/1000);if(d<60)return'Just now';if(d<3600)return~~(d/60)+'m ago';if(d<86400)return~~(d/3600)+'h ago';if(d<2592000)return~~(d/86400)+'d ago';return~~(d/2592000)+'mo ago';}
-function fmtN(n){return n>=1000?(n/1000).toFixed(1)+'K':String(n);}
-function initials(n){return n?n.trim().split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase():'?';}
-function arow(l,v,green){return`<div class="arow"><span class="arow-l">${l}</span><span class="arow-sep">: </span><span class="arow-v${green?' green':''}">${v}</span></div>`;}
+const SB  = 'https://epvzxxujxbamxyvoujlc.supabase.co';
+const KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVwdnp4eHVqeGJhbXh5dm91amxjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwMTAzODYsImV4cCI6MjA5MTU4NjM4Nn0.edYgGONobrO2Rp4aSA8_6d65iFUj4gHBI2BGMMGaoTs';
 
-const condLabels={new:'New',like_new:'Like New',used:'Used',poor:'Poor'};
-const condDots={new:'#4CAF50',like_new:'#4CAF50',used:'#FF9800',poor:'#E53935'};
+const pid = new URLSearchParams(location.search).get('id');
+const $   = id => document.getElementById(id);
+const show = id => $(id).classList.remove('d-none');
+const hide = id => $(id).classList.add('d-none');
+function esc(s){ const d=document.createElement('div'); d.textContent=String(s??''); return d.innerHTML; }
+
+function timeAgo(iso){
+  const s=~~((Date.now()-new Date(iso))/1000);
+  if(s<60)    return 'Just now';
+  if(s<3600)  return ~~(s/60)+'m ago';
+  if(s<86400) return ~~(s/3600)+'h ago';
+  if(s<2592000) return ~~(s/86400)+'d ago';
+  return ~~(s/2592000)+'mo ago';
+}
+function fmtN(n){ return n>=1000?(n/1000).toFixed(1)+'K':String(n); }
+function initials(n){ return (n||'?').trim().split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
+
+const condLabels={new:'New',like_new:'Like New',used_like_new:'Used (Like New)',used:'Used',poor:'Poor'};
+const condDots  ={new:'#4CAF50',like_new:'#4CAF50',used_like_new:'#F59E0B',used:'#F59E0B'};
 const bindLabels={good:'GOOD',fair:'FAIR',poor:'POOR'};
-const bindColors={good:'#4CAF50',fair:'#FF9800',poor:'#E53935'};
-const delivLabels={meetup:'Meetup Only',courier_cod:'Courier (Cash on Delivery)',both:'Meetup & Courier'};
+const bindColors={good:'#4CAF50',fair:'#F59E0B',poor:'#BA1A1A'};
+
+function boolEl(el,v){ el.textContent=v?'Yes':'No'; el.style.color=v?'#BA1A1A':'#4CAF50'; }
+
+// description expand/collapse
+let _descExpanded=false;
+function toggleDesc(){
+  _descExpanded=!_descExpanded;
+  const b=$('desc-body');
+  b.style.maxHeight=_descExpanded?'none':'72px';
+  b.style.overflow =_descExpanded?'visible':'hidden';
+  $('desc-toggle-lbl').textContent=_descExpanded?'Show less':'Show more';
+  $('desc-toggle-icon').className =_descExpanded?'bi bi-chevron-up':'bi bi-chevron-down';
+}
 
 async function load(){
-  if(!pid){hide('s-loading');show('s-notfound');return;}
+  if(!pid){ hide('s-loading'); show('s-notfound'); return; }
   try{
-    const sel='id,title,writer_name,edition,description,is_set,total_set,set_names,book_condition,binding_condition,has_missing_page,has_highlight,has_handwritten_notes,post_type,price,is_negotiable,delivery_type,meetup_location,photo_urls,view_count,created_at,book_status,districts(name),book_categories(name),campuses(name),users!posts_seller_id_fkey(full_name)';
-    const res=await fetch(`${SB}/rest/v1/posts?id=eq.${encodeURIComponent(pid)}&book_status=eq.active&select=${sel}&limit=1`,{headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}});
-    if(!res.ok){hide('s-loading');show('s-error');return;}
+    const sel=[
+      'id,title,writer_name,edition,description',
+      'is_set,total_set,set_names',
+      'book_condition,binding_condition',
+      'has_missing_page,has_highlight,has_handwritten_notes',
+      'post_type,price,is_negotiable',
+      'meetup_location,photo_urls',
+      'view_count,created_at,book_status,is_campus',
+      'districts(name)',
+      'book_categories(name)',
+      'campuses(name)',
+      'users!posts_seller_id_fkey(full_name,gender,profile_photo_url)'
+    ].join(',');
+
+    const res=await fetch(
+      `${SB}/rest/v1/posts?id=eq.${encodeURIComponent(pid)}&book_status=eq.active&select=${sel}&limit=1`,
+      {headers:{'apikey':KEY,'Authorization':'Bearer '+KEY}}
+    );
+    if(!res.ok){ hide('s-loading'); show('s-error'); return; }
     const rows=await res.json();
-    if(!rows||!rows.length){hide('s-loading');show('s-notfound');return;}
+    if(!rows||!rows.length){ hide('s-loading'); show('s-notfound'); return; }
     render(rows[0]);
-  }catch(e){hide('s-loading');show('s-error');}
+  }catch(e){ hide('s-loading'); show('s-error'); }
 }
 
 function render(p){
   document.title=p.title+' — Boi Campus';
   $('og-title').content=p.title;
-  if(p.photo_urls?.length)$('og-image').content=p.photo_urls[0];
+  if(p.photo_urls?.length) $('og-image').content=p.photo_urls[0];
 
   // Gallery
   const ci=$('ci');
   if(p.photo_urls?.length){
-    ci.innerHTML=p.photo_urls.map((u,i)=>`<div class="carousel-item${i?'':' active'}"><img src="${u}" alt="" loading="lazy"></div>`).join('');
+    ci.innerHTML=p.photo_urls.map((u,i)=>
+      `<div class="carousel-item${i?'':' active'}"><img src="${u}" alt="" loading="lazy"/></div>`
+    ).join('');
     if(p.photo_urls.length>1){
-      $('img-c').textContent='1 / '+p.photo_urls.length;show('img-c');
-      $('mainCarousel').addEventListener('slid.bs.carousel',e=>{$('img-c').textContent=(e.to+1)+' / '+p.photo_urls.length;});
+      $('img-c').textContent='1 / '+p.photo_urls.length; show('img-c');
+      $('mainCarousel').addEventListener('slid.bs.carousel',e=>{
+        $('img-c').textContent=(e.to+1)+' / '+p.photo_urls.length;
+      });
     }
-  }else{ci.innerHTML='<div class="carousel-item active"><div class="ph">📖</div></div>';}
+  } else {
+    ci.innerHTML='<div class="carousel-item active"><div class="ph">📖</div></div>';
+  }
 
-  // Title
+  // Status banner
+  if(p.book_status!=='active'){
+    $('st-word').textContent=p.book_status; show('st-banner');
+  }
+
+  // ① Book Info
   $('book-title').textContent=p.title;
-  $('book-by').textContent=p.writer_name?'by '+p.writer_name:'';
-
-  // Chips
-  const chips=[
-    `<span class="chip"><i class="bi bi-clock"></i>${timeAgo(p.created_at)}</span>`,
-    `<span class="chip"><i class="bi bi-eye"></i>${fmtN(p.view_count)} views</span>`,
-  ];
-  if(p.edition)chips.splice(1,0,`<span class="chip"><i class="bi bi-calendar3"></i>Edition ${esc(p.edition)}</span>`);
-  $('chips').innerHTML=chips.join('');
-
-  // Attrs
-  let at='';
-  if(p.districts?.name||p.book_categories?.name||p.is_set||p.campuses?.name){
-    if(p.districts?.name)at+=arow('Location',esc(p.districts.name));
-    if(p.book_categories?.name)at+=arow('Category',esc(p.book_categories.name));
-    if(p.is_set&&p.total_set)at+=arow('Total Set',esc(p.total_set)+' books',true);
-    if(p.campuses?.name)at+=arow('Campus',esc(p.campuses.name));
-    $('attrs').innerHTML=at;
-  }else{$('attrs').style.display='none';}
-
-  // Price
-  let ph='';
-  if(p.post_type==='free'){ph=`<div class="free-lbl"><i class="bi bi-gift-fill me-2"></i>FREE</div><div style="font-size:13px;color:var(--t3);margin-top:4px">This book is free</div>`;}
-  else{
-    ph=`<div><span class="price-num">৳${Number(p.price).toLocaleString()}</span><span class="price-cur">BDT</span></div>`;
-    if(p.is_negotiable)ph+=`<div class="neg-badge"><i class="bi bi-chat-dots-fill"></i>Price is negotiable</div>`;
+  if(p.writer_name){ const el=$('book-by'); el.textContent='by '+p.writer_name; el.style.display=''; }
+  if(p.districts?.name){
+    ['loc-icon','loc-txt','loc-dot'].forEach(id=>$(id).style.display='');
+    $('loc-txt').textContent=p.districts.name;
   }
-  $('price-c').innerHTML=ph;
+  $('time-ago').textContent=timeAgo(p.created_at);
 
-  // Condition header chip
-  $('cond-dot').style.background=condDots[p.book_condition]||'#9E9E9E';
+  // Price card
+  const pr=$('price-row');
+  if(p.post_type==='free'){
+    pr.innerHTML='<span class="price-free">FREE</span>';
+  } else {
+    const neg=p.is_negotiable
+      ?`<span class="neg-badge"><i class="bi bi-chat-dots-fill" style="font-size:11px"></i>Negotiable</span>`
+      :'';
+    pr.innerHTML=`<div class="price-amount"><span>৳${Number(p.price).toLocaleString()}</span>${neg}</div>`;
+  }
+
+  // ② Description
+  if(p.description?.trim()){
+    $('desc-body').textContent=p.description;
+    show('desc-sec');
+    requestAnimationFrame(()=>{
+      const el=$('desc-body');
+      if(el.scrollHeight>el.clientHeight+4) show('desc-toggle');
+    });
+  }
+
+  // ③ Info Grid
+  const gridRows=[];
+  const hasLoc=!!p.districts?.name, hasCat=!!p.book_categories?.name;
+  if(hasLoc||hasCat){
+    let r='<div class="igrow">';
+    if(hasLoc) r+=`<div class="igcell"><i class="bi bi-geo-alt"></i><span class="ig-lbl">Location</span><span class="ig-sep">:</span><span class="ig-val">${esc(p.districts.name)}</span></div>`;
+    if(hasLoc&&hasCat) r+='<div class="igdiv"></div>';
+    if(hasCat) r+=`<div class="igcell grow"><i class="bi bi-book"></i><span class="ig-lbl">Category</span><span class="ig-sep">:</span><span class="ig-val">${esc(p.book_categories.name)}</span></div>`;
+    gridRows.push(r+'</div>');
+  }
+  if(p.is_campus&&p.campuses?.name){
+    gridRows.push(`<div class="igrow"><div class="igcell grow"><i class="bi bi-mortarboard"></i><span class="ig-lbl">Campus</span><span class="ig-sep">:</span><span class="ig-val">${esc(p.campuses.name)}</span></div></div>`);
+  }
+  {
+    let r=`<div class="igrow"><div class="igcell"><i class="bi bi-eye"></i><span class="ig-lbl">Views</span><span class="ig-sep">:</span><span class="ig-val">${fmtN(p.view_count)}</span></div>`;
+    if(p.is_set&&p.total_set) r+=`<div class="igdiv"></div><div class="igcell"><i class="bi bi-collection"></i><span class="ig-lbl">Set</span><span class="ig-sep">:</span><span class="ig-val">${p.total_set} books</span></div>`;
+    if(p.edition) r+=`<div class="igdiv"></div><div class="igcell grow"><i class="bi bi-calendar2"></i><span class="ig-lbl">Edition</span><span class="ig-sep">:</span><span class="ig-val">${esc(p.edition)}</span></div>`;
+    gridRows.push(r+'</div>');
+  }
+  $('info-grid').innerHTML=gridRows.join('');
+
+  // ④ Seller Info
+  const seller=p.users||{};
+  const sName=seller.full_name||'Seller';
+  $('seller-name').textContent=sName;
+  const av=$('seller-av');
+  if(seller.profile_photo_url){
+    const ini=initials(sName);
+    av.innerHTML=`<img src="${seller.profile_photo_url}" alt="" onerror="this.parentNode.textContent='${ini}'"/>`;
+  } else { av.textContent=initials(sName); }
+  if(seller.gender){
+    const gIcon=seller.gender==='male'?'bi-gender-male':'bi-gender-female';
+    const gText=seller.gender==='male'?'Male':'Female';
+    const el=$('seller-gender');
+    el.innerHTML=`<i class="bi ${gIcon}"></i><span>${gText}</span>`;
+    el.style.display='flex';
+  }
+
+  // ⑤ Condition
+  $('cond-dot').style.background=condDots[p.book_condition]||'#BA1A1A';
   $('cond-lbl').textContent=condLabels[p.book_condition]||p.book_condition;
-  // Detail rows
-  const bc=bindColors[p.binding_condition]||'#9E9E9E';
-  $('bind-v').textContent=bindLabels[p.binding_condition]||p.binding_condition;
-  $('bind-v').style.color=bc;
-  function boolV(el,v){el.textContent=v?'Yes':'No';el.style.color=v?'#E53935':'#4CAF50';}
-  boolV($('miss-v'),p.has_missing_page);
-  boolV($('hi-v'),p.has_highlight);
-  boolV($('hw-v'),p.has_handwritten_notes);
+  const bv=$('bind-v');
+  bv.textContent=bindLabels[p.binding_condition]||p.binding_condition||'—';
+  bv.style.color=bindColors[p.binding_condition]||'#9E9E9E';
+  boolEl($('miss-v'),p.has_missing_page);
+  boolEl($('hi-v'),  p.has_highlight);
+  boolEl($('hw-v'),  p.has_handwritten_notes);
 
-  // Set list
+  // ⑥ Set List
   if(p.is_set&&p.set_names?.length){
-    $('set-list').innerHTML=p.set_names.map((n,i)=>`<div class="set-item"><div class="set-n">${i+1}</div>${esc(n)}</div>`).join('');
-    show('set-card');
+    $('set-list').innerHTML=p.set_names.map((n,i)=>
+      `<div class="set-item"><div class="set-badge">${i+1}</div><span class="set-name">${esc(n)}</span></div>`
+    ).join('');
+    show('set-sec');
   }
 
-  // Description
-  if(p.description?.trim()){$('desc-t').textContent=p.description;show('desc-card');}
+  // ⑦ Meetup
+  if(p.meetup_location){ $('meetup-txt').textContent=p.meetup_location; show('meetup-sec'); }
 
-  // Delivery — only show if there is a meetup location (no section label)
-  if(p.meetup_location){
-    $('del-c').innerHTML=arow('Meetup at',`<i class="bi bi-geo-alt-fill me-1" style="color:var(--green)"></i>${esc(p.meetup_location)}`);
-    show('del-card');
-  }
-
-  // Seller
-  const sn=p.users?.full_name||'Seller';
-  $('seller-nm').textContent=sn;
-  $('seller-av').textContent=initials(sn);
-
-  hide('s-loading');show('content');show('cta');
+  hide('s-loading'); show('content'); show('cta');
 }
+
 load();
 </script>
 </body>
