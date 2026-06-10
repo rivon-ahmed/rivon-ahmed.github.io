@@ -5,27 +5,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <meta name="theme-color" content="#5B7C42"/>
 <title>About — Boi Campus (বই ক্যাম্পাস)</title>
-<meta name="description" content="Boi Campus is Bangladesh's book marketplace for polytechnic and engineering students. Learn about features, permissions, ads, and the developer team."/>
+<meta name="description" content="About Boi Campus — Bangladesh's student book marketplace. Features, permissions, ads, developer info and more."/>
 <meta name="robots" content="index,follow"/>
 <link rel="canonical" href="https://rivon-ahmed.github.io/about/"/>
-
-<!-- Open Graph -->
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="About Boi Campus — Bangladesh Students' Book Marketplace"/>
-<meta property="og:description" content="Buy, sell, and exchange textbooks within your campus community — quickly, easily, and at affordable prices."/>
+<meta property="og:title" content="About — Boi Campus (বই ক্যাম্পাস)"/>
+<meta property="og:description" content="Learn about Boi Campus — features, permissions, ads policy, and developer info."/>
 <meta property="og:url" content="https://rivon-ahmed.github.io/about/"/>
 
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-
-<!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
 
 <style>
 /* ════════════════════════════════════════════
-   DESIGN TOKENS  (mirrors AppColors.dart)
+   DESIGN TOKENS — mirrors AppColors.dart
 ════════════════════════════════════════════ */
 :root {
   --primary:        #5B7C42;
@@ -61,7 +56,6 @@
   --shadow-lg: 0 8px 32px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.06);
 }
 
-/* ── Reset & Base ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -75,16 +69,9 @@ body{
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
-/* ── Layout helpers ── */
-.container{width:100%;max-width:680px;margin:0 auto;padding:0 20px}
-.section{padding:44px 0 0}
-.section-last{padding:44px 0 60px}
-
-/* ── Chip / Badge ── */
-.chip{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;
-}
+/* ── Layout ── */
+.container{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
+.section{padding:32px 0 0;scroll-margin-top:72px}
 
 /* ════════════════════════════════════════════
    NAVIGATION
@@ -102,25 +89,25 @@ a{text-decoration:none;color:inherit}
   background:linear-gradient(135deg,var(--primary-l),var(--primary-d));
   border-radius:9px;
   display:flex;align-items:center;justify-content:center;
-  font-size:17px;
+  color:#fff;font-size:16px;
 }
 .nav-brand{font-size:16px;font-weight:800;color:var(--primary);line-height:1.1}
 .nav-brand-bn{font-size:11px;color:var(--t3);font-weight:500}
-.nav-back{
+.nav-btn{
   margin-left:auto;
   display:flex;align-items:center;gap:6px;
   background:var(--primary-ctr);color:var(--primary-d);
   padding:7px 14px;border-radius:var(--radius-m);
-  font-size:13px;font-weight:700;transition:.15s;
+  font-size:13px;font-weight:700;transition:.15s;white-space:nowrap;
 }
-.nav-back:hover{opacity:.85}
+.nav-btn:hover{opacity:.85}
 
 /* ════════════════════════════════════════════
    HERO
 ════════════════════════════════════════════ */
 .hero{
   background:linear-gradient(160deg,var(--primary-d) 0%,var(--primary) 60%,var(--primary-l) 100%);
-  padding:52px 20px 84px;text-align:center;
+  padding:52px 20px 72px;text-align:center;
   position:relative;overflow:hidden;
 }
 .hero::before{
@@ -129,57 +116,44 @@ a{text-decoration:none;color:inherit}
   pointer-events:none;
 }
 .hero-icon{
-  width:88px;height:88px;
+  width:80px;height:80px;
   background:rgba(255,255,255,.15);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border-radius:24px;margin:0 auto 20px;
+  border-radius:22px;margin:0 auto 18px;
   display:flex;align-items:center;justify-content:center;
-  font-size:44px;
+  color:#fff;font-size:36px;
   box-shadow:0 8px 32px rgba(0,0,0,.22);
-  animation:float 3s ease-in-out infinite;
 }
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.hero h1{font-size:32px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.15;margin-bottom:4px}
-.hero-bn{font-size:16px;font-weight:600;color:rgba(255,255,255,.72);margin-bottom:16px}
-.hero-tagline{font-size:14px;color:rgba(255,255,255,.72);max-width:320px;margin:0 auto 24px;line-height:1.7}
-.hero-version{
+.hero-badge{
   display:inline-flex;align-items:center;gap:6px;
   background:rgba(255,255,255,.15);backdrop-filter:blur(4px);
   border:1px solid rgba(255,255,255,.25);
   padding:5px 14px;border-radius:999px;
-  font-size:12px;font-weight:600;color:#fff;margin-bottom:28px;
+  font-size:12px;font-weight:600;color:#fff;margin-bottom:14px;
 }
-.hero-cta{
-  display:inline-flex;align-items:center;gap:10px;
-  background:#fff;color:var(--primary-d);
-  padding:14px 28px;border-radius:var(--radius-l);
-  font-size:15px;font-weight:800;
-  box-shadow:0 6px 24px rgba(0,0,0,.22);
-  transition:.2s;
-}
-.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.28);color:var(--primary-d)}
-.hero-note{margin-top:12px;font-size:12px;color:rgba(255,255,255,.52)}
+.hero h1{font-size:clamp(24px,5vw,32px);font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.2;margin-bottom:10px}
+.hero p{font-size:14px;color:rgba(255,255,255,.75);max-width:380px;margin:0 auto 20px;line-height:1.7}
+.hero-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px}
+.hero-meta-item{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-size:12px;font-weight:500}
 
 /* ════════════════════════════════════════════
-   STATS STRIP
+   INFO BAR  (floats over hero bottom)
 ════════════════════════════════════════════ */
-.stats-wrap{padding:0 20px}
-.stats{
-  display:flex;
+.info-bar-wrap{padding:0 20px}
+.info-bar{
   background:var(--surface);
+  border:0.6px solid var(--outline-var);
   border-radius:var(--radius-l);
-  margin-top:-44px;
+  padding:12px 18px;
+  margin-top:-36px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;
   box-shadow:var(--shadow-lg);
-  overflow:hidden;
   position:relative;z-index:10;
 }
-.stat{
-  flex:1;padding:20px 10px;text-align:center;
-  border-right:1px solid var(--divider);
-}
-.stat:last-child{border-right:none}
-.stat-n{font-size:20px;font-weight:900;color:var(--primary)}
-.stat-l{font-size:11px;font-weight:500;color:var(--t3);margin-top:2px}
+.info-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--t2)}
+.info-item i{color:var(--primary);font-size:14px}
+.info-item strong{color:var(--t1);font-weight:700}
+.info-sep{color:var(--outline-var);font-size:14px;line-height:1}
 
 /* ════════════════════════════════════════════
    SECTION LABEL
@@ -190,138 +164,233 @@ a{text-decoration:none;color:inherit}
 }
 
 /* ════════════════════════════════════════════
-   CARDS
+   TABLE OF CONTENTS
 ════════════════════════════════════════════ */
-.card{
+.toc-card{
   background:var(--surface);
   border:0.6px solid var(--outline-var);
   border-radius:var(--radius-l);
   overflow:hidden;
+  margin-top:12px;
 }
-.card-body{padding:18px}
-.card-row{
-  display:flex;align-items:flex-start;gap:14px;
+.toc-header{
   padding:14px 18px;
+  background:var(--surface-var);
+  border-bottom:1px solid var(--divider);
+  display:flex;align-items:center;gap:10px;
 }
-.card-row+.card-row{border-top:1px solid var(--divider)}
+.toc-header-icon{
+  width:34px;height:34px;flex-shrink:0;
+  background:var(--primary-ctr);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary);font-size:16px;
+}
+.toc-header-title{font-size:14px;font-weight:700;color:var(--t1)}
+.toc-body{padding:14px 18px}
+.toc-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:4px}
+.toc-list a{
+  display:flex;align-items:center;gap:8px;
+  color:var(--t2);font-size:13px;font-weight:500;
+  padding:7px 10px;border-radius:var(--radius-s);
+  transition:.14s;
+}
+.toc-list a:hover{background:var(--primary-ctr);color:var(--primary-d)}
+.toc-list a.active{background:var(--primary-ctr);color:var(--primary-d)}
+.toc-num{
+  width:22px;height:22px;flex-shrink:0;
+  background:var(--primary-ctr);color:var(--primary-d);
+  border-radius:6px;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
 
-/* ── Icon badge ── */
-.icon-badge{
+/* ════════════════════════════════════════════
+   SECTION CARDS  (matches privacy page exactly)
+════════════════════════════════════════════ */
+.sec-card{
+  background:var(--surface);
+  border:0.6px solid var(--outline-var);
+  border-radius:var(--radius-l);
+  overflow:hidden;
+  margin-top:10px;
+}
+.sec-head{
+  display:flex;align-items:center;gap:12px;
+  padding:16px 18px;
+  background:var(--surface-var);
+  border-bottom:1px solid var(--divider);
+}
+.sec-icon{
   width:38px;height:38px;flex-shrink:0;
   border-radius:10px;
   display:flex;align-items:center;justify-content:center;
-  font-size:18px;
+  font-size:17px;
 }
-.icon-badge i{font-size:18px}
+.sec-head h2{font-size:15px;font-weight:800;color:var(--t1);flex:1}
+.sec-num{
+  font-size:11px;font-weight:700;color:var(--t3);
+  background:var(--bg);padding:3px 9px;
+  border-radius:999px;border:0.6px solid var(--outline-var);
+}
+.sec-body{padding:18px}
+.sec-body p{font-size:13.5px;color:var(--t2);line-height:1.75;margin-bottom:12px}
+.sec-body p:last-child{margin-bottom:0}
 
-/* ════════════════════════════════════════════
-   ABOUT SECTION
-════════════════════════════════════════════ */
-.about-text{font-size:14px;color:var(--t2);line-height:1.8}
-
-/* ════════════════════════════════════════════
-   FEATURES
-════════════════════════════════════════════ */
-.feat-title{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:2px}
-.feat-sub{font-size:13px;color:var(--t2);line-height:1.6}
-
-/* ════════════════════════════════════════════
-   PERMISSIONS
-════════════════════════════════════════════ */
-.perm-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:2px}
-.perm-sub{font-size:13px;color:var(--t2);line-height:1.6}
-
-/* ════════════════════════════════════════════
-   ADS DISCLOSURE
-════════════════════════════════════════════ */
-.ad-title{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:2px}
-.ad-sub{font-size:13px;color:var(--t2);line-height:1.6}
-.ad-tag{
-  display:inline-flex;align-items:center;gap:4px;
-  background:var(--warning-ctr);color:#92400E;
-  padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;
-  margin-top:6px;
+/* ── Subsection title ── */
+.sub-title{
+  font-size:13px;font-weight:700;color:var(--t1);
+  margin:18px 0 10px;
+  display:flex;align-items:center;gap:7px;
+}
+.sub-title::before{
+  content:'';width:3px;height:14px;
+  background:var(--primary);border-radius:2px;flex-shrink:0;
 }
 
 /* ════════════════════════════════════════════
-   HOW IT WORKS
+   FEATURE GRID  (card-based)
 ════════════════════════════════════════════ */
-.steps{display:flex;flex-direction:column;gap:0}
-.step{display:flex;gap:14px;padding:14px 18px}
-.step+.step{border-top:1px solid var(--divider)}
-.step-num{
-  width:34px;height:34px;flex-shrink:0;
-  border-radius:50%;background:var(--primary-ctr);
+.feat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:10px;margin-top:10px;
+}
+.feat-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:14px;
+  background:var(--bg);
+  border:0.6px solid var(--outline-var);
+  border-radius:var(--radius-m);
+}
+.feat-icon{
+  width:36px;height:36px;flex-shrink:0;
+  border-radius:9px;
   display:flex;align-items:center;justify-content:center;
-  font-size:14px;font-weight:800;color:var(--primary-d);margin-top:2px;
+  font-size:16px;margin-top:1px;
 }
-.step-title{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:3px}
-.step-text{font-size:13px;color:var(--t2);line-height:1.6}
+.feat-title{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:3px}
+.feat-desc{font-size:12px;color:var(--t2);line-height:1.55}
 
 /* ════════════════════════════════════════════
-   CATEGORIES
+   CARD ROWS
 ════════════════════════════════════════════ */
-.cat-grid{display:flex;flex-wrap:wrap;gap:8px}
-.cat-item{
+.card-rows{margin-top:0}
+.card-row{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 18px;border-bottom:1px solid var(--divider);
+}
+.card-row:last-child{border-bottom:none}
+.row-icon{
+  width:36px;height:36px;flex-shrink:0;
+  border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;margin-top:1px;
+}
+.row-title{font-size:13.5px;font-weight:700;color:var(--t1);margin-bottom:3px}
+.row-desc{font-size:12.5px;color:var(--t2);line-height:1.6}
+
+/* ════════════════════════════════════════════
+   TAG CHIPS
+════════════════════════════════════════════ */
+.chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 10px;border-radius:999px;
+  font-size:11px;font-weight:600;
+}
+.chip-warn{background:var(--warning-ctr);color:#92400E}
+.chip-green{background:var(--success-ctr);color:#0A3D0C}
+.chip-blue{background:var(--secondary-ctr);color:#002E38}
+.chip-muted{background:var(--surface-var);color:var(--t2)}
+.chip-primary{background:var(--primary-ctr);color:var(--primary-d)}
+
+/* ════════════════════════════════════════════
+   CATEGORY CLOUD
+════════════════════════════════════════════ */
+.cat-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.cat-chip{
   background:var(--primary-ctr);color:var(--primary-d);
-  padding:6px 12px;border-radius:999px;
+  padding:5px 12px;border-radius:999px;
   font-size:12px;font-weight:600;
+  display:inline-flex;align-items:center;gap:5px;
 }
 
 /* ════════════════════════════════════════════
-   DEVELOPER
+   VERSION TABLE
 ════════════════════════════════════════════ */
-.dev-link{color:var(--secondary);font-size:13px}
-.dev-link:hover{text-decoration:underline}
+.ver-table{width:100%;margin-top:4px}
+.ver-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px solid var(--divider);
+}
+.ver-row:last-child{border-bottom:none}
+.ver-key{font-size:13px;color:var(--t2);font-weight:500}
+.ver-val{font-size:13px;color:var(--t1);font-weight:700;text-align:right}
+.ver-val.mono{font-family:ui-monospace,monospace;font-size:11.5px;color:var(--t2)}
 
 /* ════════════════════════════════════════════
-   VERSION INFO
+   INFO NOTES
 ════════════════════════════════════════════ */
-.version-info{background:var(--surface-var);border-radius:var(--radius-l);padding:16px 18px}
-.version-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0}
-.version-row+.version-row{border-top:1px solid var(--divider)}
-.version-key{font-size:13px;color:var(--t2);font-weight:500}
-.version-val{font-size:13px;color:var(--t1);font-weight:700}
+.note{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:12px 14px;border-radius:var(--radius-m);margin-top:12px;
+}
+.note i{font-size:16px;flex-shrink:0;margin-top:1px}
+.note p{font-size:12.5px;line-height:1.65;margin:0}
+.note strong{color:var(--t1)}
+.note.green{background:var(--primary-ctr);border:0.6px solid #C5DBA8}
+.note.green i,.note.green{color:var(--on-primary-ctr)}
+.note.green i{color:var(--primary)}
+.note.yellow{background:var(--warning-ctr);border:0.6px solid #FDE68A}
+.note.yellow i{color:var(--warning)}
+.note.yellow p{color:#78350F}
+.note.blue{background:var(--secondary-ctr);border:0.6px solid #90CAF9}
+.note.blue i{color:#1565C0}
+.note.blue p{color:#002E38}
+
+/* ════════════════════════════════════════════
+   HIGHLIGHT SPAN
+════════════════════════════════════════════ */
+.hl{
+  background:var(--primary-ctr);color:var(--primary-d);
+  font-weight:700;padding:1px 6px;border-radius:5px;font-size:.88em;
+}
 
 /* ════════════════════════════════════════════
    DOWNLOAD CTA
 ════════════════════════════════════════════ */
-.dl-card{
+.cta-card{
   background:linear-gradient(135deg,var(--primary-d),var(--primary));
-  border-radius:var(--radius-2xl);padding:36px 24px;
-  text-align:center;position:relative;overflow:hidden;
+  border-radius:var(--radius-2xl);padding:34px 24px;
+  text-align:center;position:relative;overflow:hidden;margin-top:32px;
 }
-.dl-card::after{
-  content:'📚';position:absolute;right:-8px;bottom:-18px;
-  font-size:96px;opacity:.1;transform:rotate(15deg);pointer-events:none;
+.cta-card::after{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
 }
-.dl-card h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3}
-.dl-card p{font-size:14px;color:rgba(255,255,255,.72);margin-bottom:24px;line-height:1.6}
+.cta-card h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3;position:relative;z-index:1}
+.cta-card p{font-size:14px;color:rgba(255,255,255,.75);margin-bottom:22px;line-height:1.6;position:relative;z-index:1}
 .btn-play{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   background:#fff;color:var(--primary-d);
   padding:14px 28px;border-radius:var(--radius-l);
   font-size:15px;font-weight:800;
   box-shadow:0 4px 18px rgba(0,0,0,.18);
-  transition:.2s;
+  transition:.2s;position:relative;z-index:1;
 }
 .btn-play:hover{opacity:.92;transform:translateY(-1px);color:var(--primary-d)}
-.dl-note{margin-top:12px;font-size:12px;color:rgba(255,255,255,.52)}
+.cta-note{margin-top:12px;font-size:12px;color:rgba(255,255,255,.52);position:relative;z-index:1}
 
 /* ════════════════════════════════════════════
-   LINKS ROW
+   LINKS ROW + FOOTER
 ════════════════════════════════════════════ */
 .links-row{
   display:flex;flex-wrap:wrap;justify-content:center;
-  align-items:center;gap:6px 4px;padding:20px 20px 0;
+  align-items:center;gap:6px 4px;padding:28px 20px 0;
 }
 .lnk{font-size:12px;color:var(--secondary);font-weight:500}
 .lnk:hover{text-decoration:underline}
 .dot{color:var(--t3);font-size:14px;padding:0 2px}
-
-/* ════════════════════════════════════════════
-   FOOTER
-════════════════════════════════════════════ */
 footer{
   background:var(--t1);padding:24px 20px;
   text-align:center;margin-top:44px;
@@ -331,553 +400,661 @@ footer a{color:rgba(255,255,255,.5)}
 footer a:hover{color:rgba(255,255,255,.85)}
 
 /* ════════════════════════════════════════════
-   ANIMATIONS
+   FADE-IN ANIMATION
 ════════════════════════════════════════════ */
-.fade-in{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity .45s ease,transform .45s ease}
 .fade-in.visible{opacity:1;transform:none}
 
 /* ════════════════════════════════════════════
    RESPONSIVE
 ════════════════════════════════════════════ */
-@media(max-width:400px){
-  .hero h1{font-size:26px}
-  .hero-cta{padding:13px 22px;font-size:14px}
+@media(max-width:480px){
+  .hero{padding:40px 20px 64px}
+  .hero h1{font-size:24px}
+  .info-bar{flex-direction:column;align-items:flex-start;gap:8px}
+  .info-sep{display:none}
+  .feat-grid{grid-template-columns:1fr}
 }
 @media(min-width:600px){
-  .hero{padding:64px 24px 96px}
-  .hero h1{font-size:36px}
+  .hero{padding:64px 24px 88px}
 }
 </style>
 </head>
 <body>
 
-<!-- ── Nav ──────────────────────────────────────────────────── -->
+<!-- ════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
 <nav class="nav">
-  <div class="nav-logo">📚</div>
-  <div>
-    <div class="nav-brand">Boi Campus</div>
-    <div class="nav-brand-bn">বই ক্যাম্পাস</div>
-  </div>
-  <a class="nav-back" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener">
+  <a href="/" style="display:flex;align-items:center;gap:9px">
+    <div class="nav-logo"><i class="bi bi-book-half"></i></div>
+    <div>
+      <div class="nav-brand">Boi Campus</div>
+      <div class="nav-brand-bn">বই ক্যাম্পাস</div>
+    </div>
+  </a>
+  <a class="nav-btn" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener">
     <i class="bi bi-google-play"></i> Get App
   </a>
 </nav>
 
-<!-- ── Hero ─────────────────────────────────────────────────── -->
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
 <div class="hero">
-  <div class="hero-icon">📚</div>
+  <div class="hero-icon"><i class="bi bi-book-half"></i></div>
+  <div class="hero-badge"><i class="bi bi-tag-fill"></i> Version 1.0.0 · Build 1</div>
   <h1>About Boi Campus</h1>
-  <div class="hero-bn">বই ক্যাম্পাসের পরিচয়</div>
-  <p class="hero-tagline">Bangladesh's student book marketplace — built exclusively for polytechnic &amp; engineering students.</p>
-  <div class="hero-version">
-    <i class="bi bi-tag-fill"></i> Version 1.0.0 · Build 1
-  </div>
-  <br/>
-  <a class="hero-cta" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
-    Download on Google Play
-  </a>
-  <p class="hero-note">Free · Android · Bangladesh</p>
-</div>
-
-<!-- ── Stats Strip ──────────────────────────────────────────── -->
-<div class="stats-wrap fade-in">
-  <div class="stats">
-    <div class="stat"><div class="stat-n">500+</div><div class="stat-l">Books Listed</div></div>
-    <div class="stat"><div class="stat-n">1K+</div><div class="stat-l">Students</div></div>
-    <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Campuses</div></div>
-    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Free to Use</div></div>
+  <p>Bangladesh's student book marketplace — built for polytechnic &amp; engineering students across the country.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><i class="bi bi-google-play"></i> Android</div>
+    <div class="hero-meta-item"><i class="bi bi-people-fill"></i> Students Only</div>
+    <div class="hero-meta-item"><i class="bi bi-check-circle-fill"></i> 100% Free</div>
+    <div class="hero-meta-item"><i class="bi bi-geo-alt-fill"></i> Bangladesh</div>
   </div>
 </div>
 
-<!-- ── About ─────────────────────────────────────────────────── -->
+<!-- ════════════════════════════════════════
+     INFO BAR
+════════════════════════════════════════ -->
+<div class="info-bar-wrap fade-in">
+  <div class="info-bar">
+    <div class="info-item">
+      <i class="bi bi-box-seam"></i>
+      <span>Package: <strong>com.boicampustrn.app</strong></span>
+    </div>
+    <span class="info-sep">|</span>
+    <div class="info-item">
+      <i class="bi bi-code-slash"></i>
+      <span>Developer: <strong>BanglaByteStudio</strong></span>
+    </div>
+    <span class="info-sep">|</span>
+    <div class="info-item">
+      <i class="bi bi-globe2"></i>
+      <span>Platform: <strong>Android</strong></span>
+    </div>
+    <span class="info-sep">|</span>
+    <div class="info-item">
+      <i class="bi bi-calendar3"></i>
+      <span>Released: <strong>2025</strong></span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     TABLE OF CONTENTS
+════════════════════════════════════════ -->
 <div class="container section fade-in">
-  <p class="sec-label">About the App</p>
-  <div class="card">
-    <div class="card-body">
-      <p class="about-text">
-        <strong style="color:var(--t1)">Boi Campus</strong> is a student-first book marketplace built exclusively for Bangladesh's polytechnic and engineering students. The app lets you buy, sell, and exchange textbooks within your campus community — quickly, easily, and at affordable prices.
+  <p class="sec-label">Contents</p>
+  <div class="toc-card">
+    <div class="toc-header">
+      <div class="toc-header-icon"><i class="bi bi-list-ul"></i></div>
+      <span class="toc-header-title">Table of Contents</span>
+    </div>
+    <div class="toc-body">
+      <ul class="toc-list">
+        <li><a href="#about"><div class="toc-num">1</div> About the App</a></li>
+        <li><a href="#features"><div class="toc-num">2</div> Features</a></li>
+        <li><a href="#how-it-works"><div class="toc-num">3</div> How It Works</a></li>
+        <li><a href="#categories"><div class="toc-num">4</div> Departments</a></li>
+        <li><a href="#permissions"><div class="toc-num">5</div> Permissions</a></li>
+        <li><a href="#ads"><div class="toc-num">6</div> Ads &amp; Monetization</a></li>
+        <li><a href="#privacy"><div class="toc-num">7</div> Data &amp; Privacy</a></li>
+        <li><a href="#version"><div class="toc-num">8</div> Version Info</a></li>
+        <li><a href="#developer"><div class="toc-num">9</div> Developer</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     1. ABOUT THE APP
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="about">
+  <p class="sec-label">Section 01</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:var(--primary-ctr);color:var(--primary)"><i class="bi bi-book-open"></i></div>
+      <h2>About the App</h2>
+      <span class="sec-num">01</span>
+    </div>
+    <div class="sec-body">
+      <p>
+        <strong style="color:var(--t1)">Boi Campus (বই ক্যাম্পাস)</strong> is a student-first book marketplace built exclusively for Bangladesh's polytechnic and engineering students. Buy, sell, and exchange textbooks within your campus community — quickly, easily, and at prices that actually make sense for students.
       </p>
-      <br/>
-      <p class="about-text">
+      <p>
         Whether you're looking for a specific semester textbook or want to sell books you no longer need, Boi Campus connects you with fellow students near your campus. No middlemen, no hassle — just students helping students.
       </p>
+      <div class="note green">
+        <i class="bi bi-info-circle-fill"></i>
+        <p>Boi Campus is <strong>completely free to download and use</strong>. The app is supported by ads, which keeps the platform running at no cost to students.</p>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ── Features ──────────────────────────────────────────────── -->
-<div class="container section fade-in">
-  <p class="sec-label">Features</p>
-  <div class="card">
+<!-- ════════════════════════════════════════
+     2. FEATURES
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="features">
+  <p class="sec-label">Section 02</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#BDE8F2;color:#428A9B"><i class="bi bi-stars"></i></div>
+      <h2>Features</h2>
+      <span class="sec-num">02</span>
+    </div>
+    <div class="sec-body" style="padding-bottom:14px">
+      <p>Everything you need to buy and sell textbooks on campus — built specifically for Bangladeshi students.</p>
+      <div class="feat-grid">
 
-    <div class="card-row">
-      <div class="icon-badge" style="background:#BDE8F2">
-        <i class="bi bi-search" style="color:#428A9B"></i>
-      </div>
-      <div>
-        <p class="feat-title">Smart Search &amp; Filter</p>
-        <p class="feat-sub">Find books by campus, department, semester, subject, condition, and price range. Powerful filters help you find exactly what you need.</p>
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#BDE8F2;color:#428A9B"><i class="bi bi-search"></i></div>
+          <div>
+            <div class="feat-title">Smart Search &amp; Filter</div>
+            <div class="feat-desc">Filter by campus, department, semester, condition &amp; price to find exactly what you need.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#C8EDD5;color:#4C8B5E"><i class="bi bi-chat-dots"></i></div>
+          <div>
+            <div class="feat-title">Real-time Chat</div>
+            <div class="feat-desc">Message sellers directly inside the app. Send photos, negotiate, and arrange meetups safely.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon" style="background:var(--warning-ctr);color:#E65100"><i class="bi bi-bell"></i></div>
+          <div>
+            <div class="feat-title">Push Notifications</div>
+            <div class="feat-desc">Instant alerts for new messages and when a requested book becomes available on campus.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon" style="background:var(--tertiary-ctr);color:#B45309"><i class="bi bi-inbox"></i></div>
+          <div>
+            <div class="feat-title">Book Requests</div>
+            <div class="feat-desc">Can't find a book? Post a request and get notified automatically when someone lists it.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#E8EAF6;color:#3949AB"><i class="bi bi-heart"></i></div>
+          <div>
+            <div class="feat-title">Wishlist</div>
+            <div class="feat-desc">Save books you're interested in and revisit them anytime — never miss a good deal.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon" style="background:var(--primary-ctr);color:var(--primary-d)"><i class="bi bi-plus-circle"></i></div>
+          <div>
+            <div class="feat-title">Post &amp; Sell Books</div>
+            <div class="feat-desc">List your books in minutes — add photos, set a price, describe condition, choose delivery method.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon" style="background:var(--error-ctr);color:var(--error)"><i class="bi bi-coin"></i></div>
+          <div>
+            <div class="feat-title">Credit System</div>
+            <div class="feat-desc">Post listings using ad credits. Earn free credits by watching short reward ads.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon" style="background:#BDE8F2;color:#428A9B"><i class="bi bi-share"></i></div>
+          <div>
+            <div class="feat-title">Share Book Posts</div>
+            <div class="feat-desc">Share a listing with anyone — even people who haven't installed the app get a full preview.</div>
+          </div>
+        </div>
+
+        <div class="feat-item">
+          <div class="feat-icon" style="background:var(--primary-ctr);color:var(--primary-d)"><i class="bi bi-shield-check"></i></div>
+          <div>
+            <div class="feat-title">Verified Profiles</div>
+            <div class="feat-desc">Email OTP verification ensures all users are real. Report listings or users to keep the community safe.</div>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#C8EDD5">
-        <i class="bi bi-chat-dots" style="color:#4C8B5E"></i>
-      </div>
-      <div>
-        <p class="feat-title">Real-time Chat</p>
-        <p class="feat-sub">Message sellers directly inside the app — no phone number sharing required. Send photos, negotiate prices, and arrange meetups safely.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#FEF3C7">
-        <i class="bi bi-bell" style="color:#F59E0B"></i>
-      </div>
-      <div>
-        <p class="feat-title">Instant Push Notifications</p>
-        <p class="feat-sub">Get notified immediately when you receive a new message or when a requested book becomes available on campus. Granular notification settings let you control what alerts you want.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#F9E4CE">
-        <i class="bi bi-bookmark-check" style="color:#E6B187"></i>
-      </div>
-      <div>
-        <p class="feat-title">Book Requests</p>
-        <p class="feat-sub">Can't find a specific book? Post a request and get notified automatically when someone lists it. Never miss a book you're looking for.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#E8EAF6">
-        <i class="bi bi-heart" style="color:#7986CB"></i>
-      </div>
-      <div>
-        <p class="feat-title">Wishlist</p>
-        <p class="feat-sub">Save books you're interested in to your wishlist and come back to them anytime. Never lose track of a great deal.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#D6E8C4">
-        <i class="bi bi-plus-circle" style="color:#5B7C42"></i>
-      </div>
-      <div>
-        <p class="feat-title">Post &amp; Sell Books</p>
-        <p class="feat-sub">List your textbooks in minutes — add photos, set a price, describe the condition, and choose your preferred delivery method. Your listing reaches all students on your campus.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#FFDAD6">
-        <i class="bi bi-coin" style="color:#BA1A1A"></i>
-      </div>
-      <div>
-        <p class="feat-title">Credit System</p>
-        <p class="feat-sub">Post listings using ad credits. Earn free credits by watching short reward ads, or use existing credits to post. A fair system that keeps the app free for everyone.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#BDE8F2">
-        <i class="bi bi-share" style="color:#428A9B"></i>
-      </div>
-      <div>
-        <p class="feat-title">Share Book Posts</p>
-        <p class="feat-sub">Share a book listing with anyone — even people who haven't installed the app yet. They'll see a full preview with photos, price, and details.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#D6E8C4">
-        <i class="bi bi-shield-check" style="color:#5B7C42"></i>
-      </div>
-      <div>
-        <p class="feat-title">Verified Profiles &amp; Reports</p>
-        <p class="feat-sub">OTP phone verification ensures all users are real. If you encounter any issue, you can report listings or users to keep the community safe.</p>
-      </div>
-    </div>
-
   </div>
 </div>
 
-<!-- ── How it works ───────────────────────────────────────────── -->
-<div class="container section fade-in">
-  <p class="sec-label">How It Works</p>
-  <div class="card">
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
+<!-- ════════════════════════════════════════
+     3. HOW IT WORKS
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="how-it-works">
+  <p class="sec-label">Section 03</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:var(--tertiary-ctr);color:#B45309"><i class="bi bi-list-ol"></i></div>
+      <h2>How It Works</h2>
+      <span class="sec-num">03</span>
+    </div>
+    <div class="card-rows">
+      <div class="card-row">
+        <div style="width:36px;height:36px;flex-shrink:0;border-radius:50%;background:var(--primary-ctr);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--primary-d);margin-top:1px">1</div>
         <div>
-          <p class="step-title">Create your account</p>
-          <p class="step-text">Sign up with your phone number. Verify via OTP and complete your profile with your institute, campus, and department.</p>
+          <div class="row-title">Create Your Account</div>
+          <div class="row-desc">Sign up with your email address. Verify via OTP and complete your profile — add your institute, campus, and department.</div>
         </div>
       </div>
-      <div class="step">
-        <div class="step-num">2</div>
+      <div class="card-row">
+        <div style="width:36px;height:36px;flex-shrink:0;border-radius:50%;background:var(--primary-ctr);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--primary-d);margin-top:1px">2</div>
         <div>
-          <p class="step-title">Browse or post</p>
-          <p class="step-text">Search for books available near your campus with detailed filters — or list your own books with photos and a price in minutes.</p>
+          <div class="row-title">Browse or Post a Book</div>
+          <div class="row-desc">Search for books near your campus with powerful filters — or list your own books with photos and a price in just a few minutes.</div>
         </div>
       </div>
-      <div class="step">
-        <div class="step-num">3</div>
+      <div class="card-row">
+        <div style="width:36px;height:36px;flex-shrink:0;border-radius:50%;background:var(--primary-ctr);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--primary-d);margin-top:1px">3</div>
         <div>
-          <p class="step-title">Chat &amp; close the deal</p>
-          <p class="step-text">Message the seller directly through the in-app chat. Negotiate, agree on a price, and meet up on campus to exchange the book.</p>
+          <div class="row-title">Chat &amp; Close the Deal</div>
+          <div class="row-desc">Message the seller directly through in-app chat. Negotiate a price, agree on a meetup spot, and exchange the book on campus.</div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── Book Categories ────────────────────────────────────────── -->
-<div class="container section fade-in">
-  <p class="sec-label">Supported Departments &amp; Categories</p>
-  <div class="card">
-    <div class="card-body">
-      <p class="feat-sub" style="margin-bottom:14px">Books are organized by BTEB department and semester (1st – 8th) for easy discovery.</p>
-      <div class="cat-grid">
-        <span class="cat-item"><i class="bi bi-building"></i> Civil</span>
-        <span class="cat-item"><i class="bi bi-lightning-charge"></i> Electrical</span>
-        <span class="cat-item"><i class="bi bi-gear"></i> Mechanical</span>
-        <span class="cat-item"><i class="bi bi-laptop"></i> Computer</span>
-        <span class="cat-item"><i class="bi bi-scissors"></i> Textile</span>
-        <span class="cat-item"><i class="bi bi-rulers"></i> Architecture</span>
-        <span class="cat-item"><i class="bi bi-cpu"></i> Electronics</span>
-        <span class="cat-item"><i class="bi bi-cup-hot"></i> Food</span>
-        <span class="cat-item"><i class="bi bi-droplet"></i> Chemical</span>
-        <span class="cat-item"><i class="bi bi-three-dots"></i> Others</span>
+<!-- ════════════════════════════════════════
+     4. DEPARTMENTS & CATEGORIES
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="categories">
+  <p class="sec-label">Section 04</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:#E8EAF6;color:#3949AB"><i class="bi bi-grid-3x3-gap"></i></div>
+      <h2>Supported Departments &amp; Categories</h2>
+      <span class="sec-num">04</span>
+    </div>
+    <div class="sec-body">
+      <p>Books are organized by BTEB department and semester (1st–8th) for fast, targeted discovery. All major polytechnic departments are supported.</p>
+      <div class="cat-cloud">
+        <span class="cat-chip"><i class="bi bi-building"></i> Civil</span>
+        <span class="cat-chip"><i class="bi bi-lightning-charge"></i> Electrical</span>
+        <span class="cat-chip"><i class="bi bi-gear"></i> Mechanical</span>
+        <span class="cat-chip"><i class="bi bi-laptop"></i> Computer</span>
+        <span class="cat-chip"><i class="bi bi-scissors"></i> Textile</span>
+        <span class="cat-chip"><i class="bi bi-rulers"></i> Architecture</span>
+        <span class="cat-chip"><i class="bi bi-cpu"></i> Electronics</span>
+        <span class="cat-chip"><i class="bi bi-cup-hot"></i> Food Technology</span>
+        <span class="cat-chip"><i class="bi bi-droplet"></i> Chemical</span>
+        <span class="cat-chip"><i class="bi bi-three-dots"></i> Others</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ── Permissions ────────────────────────────────────────────── -->
-<div class="container section fade-in">
-  <p class="sec-label">App Permissions</p>
-  <div class="card">
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#FEF3C7">
-        <i class="bi bi-camera" style="color:#F59E0B"></i>
-      </div>
-      <div>
-        <p class="perm-title">Camera</p>
-        <p class="perm-sub">Used to take photos directly from the chat screen to send to buyers or sellers. The camera is never accessed in the background.</p>
-        <span class="chip" style="background:var(--warning-ctr);color:#92400E;margin-top:6px;font-size:11px">
-          <i class="bi bi-shield"></i> When you choose to send a photo
-        </span>
-      </div>
+<!-- ════════════════════════════════════════
+     5. PERMISSIONS
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="permissions">
+  <p class="sec-label">Section 05</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:var(--warning-ctr);color:#E65100"><i class="bi bi-shield-lock"></i></div>
+      <h2>App Permissions</h2>
+      <span class="sec-num">05</span>
     </div>
+    <div class="sec-body" style="padding:0">
 
-    <div class="card-row">
-      <div class="icon-badge" style="background:#D6E8C4">
-        <i class="bi bi-image" style="color:#5B7C42"></i>
+      <div class="card-row">
+        <div class="row-icon" style="background:var(--warning-ctr);color:#E65100"><i class="bi bi-camera"></i></div>
+        <div>
+          <div class="row-title">Camera</div>
+          <div class="row-desc">Used to take photos directly in the chat screen to send to buyers or sellers. The camera is <strong>never accessed in the background</strong>.</div>
+          <div class="chip-row">
+            <span class="chip chip-warn"><i class="bi bi-shield"></i> Only when you take a photo</span>
+          </div>
+        </div>
       </div>
-      <div>
-        <p class="perm-title">Photo Library / Gallery</p>
-        <p class="perm-sub">Used to pick photos from your gallery to send in chat conversations or to attach to book listings. No photos are uploaded without your explicit action.</p>
-        <span class="chip" style="background:var(--primary-ctr);color:var(--primary-d);margin-top:6px;font-size:11px">
-          <i class="bi bi-shield"></i> Only when you pick a photo
-        </span>
+
+      <div class="card-row">
+        <div class="row-icon" style="background:var(--primary-ctr);color:var(--primary-d)"><i class="bi bi-image"></i></div>
+        <div>
+          <div class="row-title">Photo Library / Gallery</div>
+          <div class="row-desc">Used to pick photos from your gallery for chat or book listings. <strong>No photos are uploaded without your explicit action.</strong></div>
+          <div class="chip-row">
+            <span class="chip chip-primary"><i class="bi bi-shield"></i> Only when you pick a photo</span>
+          </div>
+        </div>
       </div>
+
+      <div class="card-row">
+        <div class="row-icon" style="background:var(--secondary-ctr);color:#428A9B"><i class="bi bi-bell"></i></div>
+        <div>
+          <div class="row-title">Notifications</div>
+          <div class="row-desc">Required for push notifications — new chat messages and book request matches. Fully controllable from the app's Settings screen.</div>
+          <div class="chip-row">
+            <span class="chip chip-blue"><i class="bi bi-shield"></i> Requested once on first launch</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-row">
+        <div class="row-icon" style="background:var(--surface-var);color:var(--t2)"><i class="bi bi-wifi"></i></div>
+        <div>
+          <div class="row-title">Internet Access</div>
+          <div class="row-desc">Required to load listings, send/receive chat messages, sync your profile, and receive push notifications. Standard for all online apps.</div>
+          <div class="chip-row">
+            <span class="chip chip-muted"><i class="bi bi-info-circle"></i> Required for core functionality</span>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#BDE8F2">
-        <i class="bi bi-bell" style="color:#428A9B"></i>
-      </div>
-      <div>
-        <p class="perm-title">Notifications</p>
-        <p class="perm-sub">Required for push notifications — new chat messages and book request matches. You can fully control notification preferences inside the app's Settings screen.</p>
-        <span class="chip" style="background:var(--secondary-ctr);color:#002E38;margin-top:6px;font-size:11px">
-          <i class="bi bi-shield"></i> Requested once on first launch
-        </span>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:var(--surface-var)">
-        <i class="bi bi-wifi" style="color:var(--t2)"></i>
-      </div>
-      <div>
-        <p class="perm-title">Internet Access</p>
-        <p class="perm-sub">Required to load book listings, send and receive chat messages, sync your profile, and load push notifications. Standard for all online apps.</p>
-        <span class="chip" style="background:var(--surface-var);color:var(--t2);margin-top:6px;font-size:11px">
-          <i class="bi bi-info-circle"></i> Required for core functionality
-        </span>
-      </div>
-    </div>
-
   </div>
 </div>
 
-<!-- ── Ads & Monetization ─────────────────────────────────────── -->
-<div class="container section fade-in">
-  <p class="sec-label">Advertising &amp; Monetization</p>
-
-  <!-- Info banner -->
-  <div style="background:var(--primary-ctr);border-radius:var(--radius-l);padding:14px 16px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start">
-    <i class="bi bi-info-circle-fill" style="color:var(--primary);font-size:18px;flex-shrink:0;margin-top:1px"></i>
-    <p style="font-size:13px;color:var(--on-primary-ctr);line-height:1.7">
-      Boi Campus is <strong>completely free to download and use</strong>. Ads are how we keep the platform running. All ads are served by Google AdMob and follow Google's content policies. Ads never block critical user actions and we follow fair frequency limits so browsing stays enjoyable.
-    </p>
-  </div>
-
-  <div class="card">
-
-    <!-- App Open -->
-    <div class="card-row">
-      <div class="icon-badge" style="background:#F9E4CE">
-        <i class="bi bi-box-arrow-in-right" style="color:#E6B187"></i>
+<!-- ════════════════════════════════════════
+     6. ADS & MONETIZATION
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="ads">
+  <p class="sec-label">Section 06</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:var(--tertiary-ctr);color:#B45309"><i class="bi bi-megaphone"></i></div>
+      <h2>Advertising &amp; Monetization</h2>
+      <span class="sec-num">06</span>
+    </div>
+    <div class="sec-body" style="padding-bottom:0">
+      <div class="note green">
+        <i class="bi bi-info-circle-fill"></i>
+        <p>Boi Campus is <strong>completely free</strong>. Ads are how we keep the platform running. All ads are served by <strong>Google AdMob</strong> and follow Google's content policies. Ads never block critical user actions.</p>
       </div>
-      <div>
-        <p class="ad-title">App Open Ad</p>
-        <p class="ad-sub">Shown when you open the app after it has been in the background for at least 30 seconds. Designed to appear at natural app entry points, not during active use.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
-          <span class="ad-tag"><i class="bi bi-clock"></i> Max 2 per day</span>
-          <span class="ad-tag"><i class="bi bi-hourglass-split"></i> Min. 4 hours between shows</span>
-          <span class="ad-tag"><i class="bi bi-moon"></i> App must be backgrounded 30s+</span>
+    </div>
+    <div class="sec-body" style="padding-top:0;padding-bottom:0">
+
+      <div class="sub-title">Ad Types</div>
+
+      <div class="card-rows">
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--tertiary-ctr);color:#B45309"><i class="bi bi-box-arrow-in-right"></i></div>
+          <div>
+            <div class="row-title">App Open Ad</div>
+            <div class="row-desc">Shown when you open the app after it has been in the background for 30+ seconds. Appears at natural entry points, not during active use.</div>
+            <div class="chip-row">
+              <span class="chip chip-warn"><i class="bi bi-clock"></i> Max 2 per day</span>
+              <span class="chip chip-warn"><i class="bi bi-hourglass-split"></i> Min. 4 hours between shows</span>
+              <span class="chip chip-warn"><i class="bi bi-moon"></i> App must be backgrounded 30s+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--primary-ctr);color:var(--primary-d)"><i class="bi bi-layout-text-window-reverse"></i></div>
+          <div>
+            <div class="row-title">Banner Ad</div>
+            <div class="row-desc">A small banner at the bottom of the <span class="hl">Book Details</span> screen and the <span class="hl">Search</span> screen. Never covers content and doesn't interfere with navigation.</div>
+            <div class="chip-row">
+              <span class="chip chip-primary"><i class="bi bi-window-stack"></i> Book Details screen</span>
+              <span class="chip chip-primary"><i class="bi bi-search"></i> Search screen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--secondary-ctr);color:#428A9B"><i class="bi bi-fullscreen"></i></div>
+          <div>
+            <div class="row-title">Interstitial Ad (Full Screen)</div>
+            <div class="row-desc">A full-screen ad at natural navigation points — after successfully posting a listing, or every 5th book opened. Frequency is strictly limited.</div>
+            <div class="chip-row">
+              <span class="chip chip-blue"><i class="bi bi-check-circle"></i> After submitting a listing</span>
+              <span class="chip chip-blue"><i class="bi bi-5-circle"></i> Every 5th book navigation</span>
+              <span class="chip chip-blue"><i class="bi bi-clock-history"></i> Min. 3 minutes between shows</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--success-ctr);color:#2E7D32"><i class="bi bi-gift"></i></div>
+          <div>
+            <div class="row-title">Rewarded Ad <span style="font-size:11px;font-weight:600;background:var(--success-ctr);color:#0A3D0C;padding:2px 7px;border-radius:6px;margin-left:4px">Opt-in</span></div>
+            <div class="row-desc">Completely <strong>optional</strong>. Watch a short ad to earn 1 free posting credit. You are <strong>never forced</strong> to watch this ad — it's always your choice.</div>
+            <div class="chip-row">
+              <span class="chip chip-green"><i class="bi bi-hand-thumbs-up"></i> Always opt-in, never forced</span>
+              <span class="chip chip-green"><i class="bi bi-coin"></i> Earns 1 posting credit</span>
+              <span class="chip chip-warn"><i class="bi bi-clock"></i> Max 5 per 24 hours</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-row" style="padding-left:0;padding-right:0;background:var(--surface-var);margin:0 -18px;padding-left:18px;padding-right:18px">
+          <div class="row-icon" style="background:var(--surface);color:#4285F4"><i class="bi bi-google"></i></div>
+          <div>
+            <div class="row-title">Ad Provider: Google AdMob</div>
+            <div class="row-desc">All ads are served by Google AdMob. Google may use your device advertising ID for personalization. Opt out via <strong>Google Settings → Ads → Opt out of Ads Personalization</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     7. DATA & PRIVACY
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="privacy">
+  <p class="sec-label">Section 07</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:var(--primary-ctr);color:var(--primary-d)"><i class="bi bi-lock"></i></div>
+      <h2>Data &amp; Privacy</h2>
+      <span class="sec-num">07</span>
+    </div>
+    <div class="sec-body" style="padding-bottom:0">
+
+      <div class="card-rows">
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--primary-ctr);color:var(--primary-d)"><i class="bi bi-lock"></i></div>
+          <div>
+            <div class="row-title">Your Contact Info is Private</div>
+            <div class="row-desc">Your phone number is used only for OTP verification and is <strong>never shown to other users</strong>. All communication happens inside the app.</div>
+          </div>
+        </div>
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--secondary-ctr);color:#428A9B"><i class="bi bi-cloud-upload"></i></div>
+          <div>
+            <div class="row-title">Secure Data Transmission</div>
+            <div class="row-desc">All data is transmitted over <strong>HTTPS (TLS)</strong>. Authentication is handled by Supabase with row-level security policies enforced on every query.</div>
+          </div>
+        </div>
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--warning-ctr);color:#E65100"><i class="bi bi-eye-slash"></i></div>
+          <div>
+            <div class="row-title">Minimal Data Collection</div>
+            <div class="row-desc">We collect only what's needed: your email (auth), profile info you provide, and book listings you create. <strong>We do not sell your data.</strong></div>
+          </div>
+        </div>
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--surface-var);color:var(--t2)"><i class="bi bi-file-text"></i></div>
+          <div>
+            <div class="row-title">Full Privacy Policy</div>
+            <div class="row-desc">Read our complete privacy policy for detailed information about data collection, usage, and your rights.</div>
+            <a href="/privacy/" style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:13px;font-weight:700;color:var(--primary)">
+              <i class="bi bi-arrow-up-right-square"></i> View Privacy Policy
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     8. VERSION INFO
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="version">
+  <p class="sec-label">Section 08</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:var(--surface-var);color:var(--t2)"><i class="bi bi-info-circle"></i></div>
+      <h2>Version Information</h2>
+      <span class="sec-num">08</span>
+    </div>
+    <div class="sec-body">
+      <div class="ver-table">
+        <div class="ver-row">
+          <span class="ver-key">App Name</span>
+          <span class="ver-val">Boi Campus (বই ক্যাম্পাস)</span>
+        </div>
+        <div class="ver-row">
+          <span class="ver-key">Version</span>
+          <span class="ver-val">1.0.0 (Build 1)</span>
+        </div>
+        <div class="ver-row">
+          <span class="ver-key">Platform</span>
+          <span class="ver-val">Android</span>
+        </div>
+        <div class="ver-row">
+          <span class="ver-key">Package ID</span>
+          <span class="ver-val mono">com.boicampustrn.app</span>
+        </div>
+        <div class="ver-row">
+          <span class="ver-key">Target Audience</span>
+          <span class="ver-val">BTEB / Polytechnic Students (BD)</span>
+        </div>
+        <div class="ver-row">
+          <span class="ver-key">Language</span>
+          <span class="ver-val">English / বাংলা</span>
+        </div>
+        <div class="ver-row">
+          <span class="ver-key">Backend</span>
+          <span class="ver-val">Supabase (PostgreSQL)</span>
+        </div>
+        <div class="ver-row">
+          <span class="ver-key">Release Year</span>
+          <span class="ver-val">2025</span>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Banner -->
-    <div class="card-row">
-      <div class="icon-badge" style="background:#D6E8C4">
-        <i class="bi bi-layout-text-window-reverse" style="color:#5B7C42"></i>
-      </div>
-      <div>
-        <p class="ad-title">Banner Ad</p>
-        <p class="ad-sub">A small banner appears at the bottom of the <strong>Book Details</strong> screen and the <strong>Search</strong> screen. It never covers content and doesn't interfere with reading or navigation.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
-          <span class="ad-tag"><i class="bi bi-window-stack"></i> Book Details screen</span>
-          <span class="ad-tag"><i class="bi bi-search"></i> Search screen</span>
+<!-- ════════════════════════════════════════
+     9. DEVELOPER
+════════════════════════════════════════ -->
+<div class="container section fade-in" id="developer">
+  <p class="sec-label">Section 09</p>
+  <div class="sec-card">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:linear-gradient(135deg,var(--primary-l),var(--primary-d));color:#fff"><i class="bi bi-code-slash"></i></div>
+      <h2>Developer</h2>
+      <span class="sec-num">09</span>
+    </div>
+    <div class="sec-body" style="padding-bottom:0">
+      <div class="card-rows">
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:linear-gradient(135deg,var(--primary-l),var(--primary-d));color:#fff"><i class="bi bi-building"></i></div>
+          <div>
+            <div class="row-title">BanglaByteStudio</div>
+            <div class="row-desc">Software Development Team · Bangladesh<br/>Building student-focused digital tools made for Bangladesh.</div>
+          </div>
+        </div>
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:var(--surface-var);color:var(--t2)"><i class="bi bi-envelope"></i></div>
+          <div>
+            <div class="row-title">Support Email</div>
+            <a href="mailto:support@banglabyteStudio.com" style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-size:13px;font-weight:600;color:var(--secondary)">
+              <i class="bi bi-arrow-up-right-square"></i> support@banglabyteStudio.com
+            </a>
+          </div>
+        </div>
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:#E7F0FD;color:#1877F2"><i class="bi bi-facebook"></i></div>
+          <div>
+            <div class="row-title">Facebook Page</div>
+            <a href="https://facebook.com/boicampusbd" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-size:13px;font-weight:600;color:var(--secondary)">
+              <i class="bi bi-arrow-up-right-square"></i> facebook.com/boicampusbd
+            </a>
+          </div>
+        </div>
+        <div class="card-row" style="padding-left:0;padding-right:0">
+          <div class="row-icon" style="background:#E8F5E9;color:#2E7D32"><i class="bi bi-google-play"></i></div>
+          <div>
+            <div class="row-title">Google Play Store</div>
+            <a href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-size:13px;font-weight:600;color:var(--secondary)">
+              <i class="bi bi-arrow-up-right-square"></i> View on Play Store
+            </a>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Interstitial -->
-    <div class="card-row">
-      <div class="icon-badge" style="background:#BDE8F2">
-        <i class="bi bi-fullscreen" style="color:#428A9B"></i>
-      </div>
-      <div>
-        <p class="ad-title">Interstitial Ad (Full Screen)</p>
-        <p class="ad-sub">A full-screen ad that may appear at natural navigation points — after successfully posting a book listing, or occasionally while browsing (every 5th book you open). Frequency is limited so browsing stays smooth.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
-          <span class="ad-tag"><i class="bi bi-check-circle"></i> After submitting a listing</span>
-          <span class="ad-tag"><i class="bi bi-5-circle"></i> Every 5th book navigation</span>
-          <span class="ad-tag"><i class="bi bi-clock-history"></i> Min. 3 minutes between shows</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Rewarded -->
-    <div class="card-row">
-      <div class="icon-badge" style="background:#CEEFCF">
-        <i class="bi bi-gift" style="color:#4CAF50"></i>
-      </div>
-      <div>
-        <p class="ad-title">Rewarded Ad (Opt-in)</p>
-        <p class="ad-sub">Completely <strong>optional</strong>. You can choose to watch a short ad to earn 1 free ad credit for posting a book listing. You are never forced to watch this ad — it's always your choice.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">
-          <span class="ad-tag" style="background:#CEEFCF;color:#0A3D0C"><i class="bi bi-hand-thumbs-up"></i> Always opt-in, never forced</span>
-          <span class="ad-tag" style="background:#CEEFCF;color:#0A3D0C"><i class="bi bi-coin"></i> Earns 1 posting credit</span>
-          <span class="ad-tag"><i class="bi bi-clock"></i> Max 5 per 24 hours</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Ad Provider note -->
-    <div class="card-row" style="background:var(--surface-var)">
-      <div class="icon-badge" style="background:var(--surface)">
-        <i class="bi bi-google" style="color:#4285F4"></i>
-      </div>
-      <div>
-        <p class="perm-title">Ad Provider: Google AdMob</p>
-        <p class="perm-sub">All ads are served by Google AdMob. Google may use device advertising ID for ad personalization. You can opt out via your device's <strong>Google Settings → Ads → Opt out of Ads Personalization</strong>.</p>
-      </div>
-    </div>
-
   </div>
 </div>
 
-<!-- ── Data & Privacy ─────────────────────────────────────────── -->
-<div class="container section fade-in">
-  <p class="sec-label">Data &amp; Privacy</p>
-  <div class="card">
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#D6E8C4">
-        <i class="bi bi-lock" style="color:#5B7C42"></i>
-      </div>
-      <div>
-        <p class="perm-title">Your Contact Info is Private</p>
-        <p class="perm-sub">Your phone number is used only for OTP verification and is never shown to other users. Chat happens inside the app — no number sharing needed.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#BDE8F2">
-        <i class="bi bi-cloud-upload" style="color:#428A9B"></i>
-      </div>
-      <div>
-        <p class="perm-title">Secure Data Transmission</p>
-        <p class="perm-sub">All data between the app and our servers is transmitted over HTTPS (TLS). Authentication is handled by Supabase with row-level security policies.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#FEF3C7">
-        <i class="bi bi-eye-slash" style="color:#F59E0B"></i>
-      </div>
-      <div>
-        <p class="perm-title">No Unnecessary Data Collection</p>
-        <p class="perm-sub">We collect only what's needed to make the app work: your phone number (auth), profile info you provide, and book listings you create. We do not sell your data.</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:var(--surface-var)">
-        <i class="bi bi-file-text" style="color:var(--t2)"></i>
-      </div>
-      <div>
-        <p class="perm-title">Full Privacy Policy</p>
-        <p class="perm-sub">Read our complete privacy policy for detailed information about what data we collect, how we use it, and your rights.</p>
-        <a href="https://banglabyteStudio.github.io/boi-campus-privacy" target="_blank" rel="noopener" class="dev-link" style="margin-top:6px;display:inline-flex;align-items:center;gap:4px;font-weight:600">
-          <i class="bi bi-arrow-up-right-square"></i> View Privacy Policy
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ── Version Info ───────────────────────────────────────────── -->
-<div class="container section fade-in">
-  <p class="sec-label">Version Information</p>
-  <div class="version-info">
-    <div class="version-row">
-      <span class="version-key">App Name</span>
-      <span class="version-val">Boi Campus (বই ক্যাম্পাস)</span>
-    </div>
-    <div class="version-row">
-      <span class="version-key">Version</span>
-      <span class="version-val">1.0.0 (Build 1)</span>
-    </div>
-    <div class="version-row">
-      <span class="version-key">Platform</span>
-      <span class="version-val">Android</span>
-    </div>
-    <div class="version-row">
-      <span class="version-key">Package ID</span>
-      <span class="version-val" style="font-size:12px;font-family:monospace">com.boicampustrn.app</span>
-    </div>
-    <div class="version-row">
-      <span class="version-key">Target Users</span>
-      <span class="version-val">BTEB Students (BD)</span>
-    </div>
-    <div class="version-row">
-      <span class="version-key">Language</span>
-      <span class="version-val">English / বাংলা</span>
-    </div>
-  </div>
-</div>
-
-<!-- ── Developer ─────────────────────────────────────────────── -->
-<div class="container section fade-in">
-  <p class="sec-label">Developed By</p>
-  <div class="card">
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:linear-gradient(135deg,var(--primary-l),var(--primary-d));font-size:18px">
-        <i class="bi bi-code-slash" style="color:#fff"></i>
-      </div>
-      <div>
-        <p class="perm-title">BanglaByteStudio</p>
-        <p class="perm-sub">Software Development Team · Bangladesh</p>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:var(--surface-var)">
-        <i class="bi bi-envelope" style="color:var(--t2)"></i>
-      </div>
-      <div>
-        <p class="perm-title">Support Email</p>
-        <a href="mailto:support@banglabyteStudio.com" class="dev-link" style="display:inline-flex;align-items:center;gap:4px;margin-top:2px">
-          <i class="bi bi-arrow-up-right-square"></i> support@banglabyteStudio.com
-        </a>
-      </div>
-    </div>
-
-    <div class="card-row">
-      <div class="icon-badge" style="background:#E7F0FD">
-        <i class="bi bi-facebook" style="color:#1877F2"></i>
-      </div>
-      <div>
-        <p class="perm-title">Facebook Page</p>
-        <a href="https://facebook.com/boicampusbd" target="_blank" rel="noopener" class="dev-link" style="display:inline-flex;align-items:center;gap:4px;margin-top:2px">
-          <i class="bi bi-arrow-up-right-square"></i> facebook.com/boicampusbd
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ── Download CTA ───────────────────────────────────────────── -->
-<div class="container section-last fade-in">
-  <div class="dl-card">
+<!-- ════════════════════════════════════════
+     DOWNLOAD CTA
+════════════════════════════════════════ -->
+<div class="container section fade-in" style="padding-bottom:0">
+  <div class="cta-card">
     <h2>Ready to save on textbooks?</h2>
-    <p>Join thousands of students buying and selling books near their campus — free, fast, and safe.</p>
+    <p>Join thousands of students across Bangladesh buying and selling books near their campus.</p>
     <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.24.98.2L15.88 12 12.12 8.24 3.18 23.76zm17.45-11.09-3.06-1.76-3.43 3.43 3.43 3.43 3.08-1.77c.88-.5.88-1.82-.02-2.33zM3 1.04c-.06.18-.09.38-.09.58v20.76c0 .2.03.4.09.58l12.45-12.45L3 1.04zm9.12 10.52L3.18.24A1.2 1.2 0 003 .2v.03l9.12 11.33z"/></svg>
       Download on Google Play
     </a>
-    <p class="dl-note">Free · Android · Bangladesh</p>
+    <div class="cta-note">Free · Android · Bangladesh</div>
   </div>
 </div>
 
-<!-- ── Links Row ─────────────────────────────────────────────── -->
+<!-- ════════════════════════════════════════
+     LINKS ROW
+════════════════════════════════════════ -->
 <div class="links-row">
-  <a href="https://banglabyteStudio.github.io/boi-campus-privacy" target="_blank" rel="noopener" class="lnk">Privacy Policy</a>
+  <a href="/" class="lnk"><i class="bi bi-house"></i> Home</a>
   <span class="dot">·</span>
-  <a href="https://banglabyteStudio.github.io/boi-campus-terms" target="_blank" rel="noopener" class="lnk">Terms of Use</a>
+  <a href="/privacy/" class="lnk">Privacy Policy</a>
+  <span class="dot">·</span>
+  <a href="mailto:support@banglabyteStudio.com" class="lnk">Contact</a>
   <span class="dot">·</span>
   <a href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener" class="lnk">Rate Us ⭐</a>
-  <span class="dot">·</span>
-  <a href="https://rivon-ahmed.github.io/" class="lnk">Home</a>
 </div>
 
-<!-- ── Footer ────────────────────────────────────────────────── -->
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
 <footer>
   <p>
-    © 2025 BanglaByteStudio · Made with ❤️ in Bangladesh<br/>
-    <a href="https://rivon-ahmed.github.io/" style="margin:0 6px">Home</a>·
-    <a href="mailto:support@banglabyteStudio.com" style="margin:0 6px">Contact</a>·
-    <a href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener" style="margin:0 6px">Google Play</a>
+    &copy; 2025 BanglaByteStudio &nbsp;&middot;&nbsp; Made with &hearts; in Bangladesh<br/>
+    <a href="/">Home</a> &nbsp;&middot;&nbsp;
+    <a href="/privacy/">Privacy Policy</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:support@banglabyteStudio.com">Contact</a> &nbsp;&middot;&nbsp;
+    <a href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener">Google Play</a>
   </p>
 </footer>
 
 <script>
-// Intersection Observer — fade-in on scroll
 (function(){
-  var els = document.querySelectorAll('.fade-in');
-  var io = new IntersectionObserver(function(entries){
+  var els=document.querySelectorAll('.fade-in');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:0.06,rootMargin:'0px 0px -20px 0px'});
+  els.forEach(function(el){io.observe(el);});
+
+  // TOC active link highlight on scroll
+  var sections=document.querySelectorAll('[id]');
+  var tocLinks=document.querySelectorAll('.toc-list a');
+  var scrollIO=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
+        tocLinks.forEach(function(l){l.classList.remove('active');});
+        var active=document.querySelector('.toc-list a[href="#'+e.target.id+'"]');
+        if(active)active.classList.add('active');
       }
     });
-  },{threshold:0.08,rootMargin:'0px 0px -20px 0px'});
-  els.forEach(function(el){ io.observe(el); });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  sections.forEach(function(s){scrollIO.observe(s);});
 })();
 </script>
 
