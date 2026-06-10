@@ -1,1122 +1,716 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Boi Campus</title>
-  <meta name="description" content="Privacy Policy for Boi Campus — the student book marketplace app by BanglaByteStudio." />
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Privacy Policy — Boi Campus" />
-  <meta property="og:description" content="Learn how Boi Campus collects, uses, and protects your personal data." />
-  <meta property="og:type" content="website" />
-
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-
-  <style>
-    /* ── Design Tokens (matches Boi Campus app) ─────────────── */
-    :root {
-      --primary:        #5B7C42;
-      --primary-l:      #7A9E5C;
-      --primary-d:      #3E5A2B;
-      --primary-ctr:    #D6E8C4;
-      --on-primary-ctr: #1A3109;
-      --bg:             #F4F6F1;
-      --surface:        #FFFFFF;
-      --surface-var:    #F0F4EB;
-      --t1:             #1C1C0E;
-      --t2:             #5A5A48;
-      --t3:             #8A8A78;
-      --divider:        #E0E0D8;
-      --outline:        #D0D4C8;
-      --shadow:         rgba(60, 80, 40, 0.08);
-      --radius-s:       8px;
-      --radius-m:       12px;
-      --radius-l:       16px;
-      --radius-xl:      20px;
-    }
-
-    /* ── Reset & Base ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--t1);
-      font-size: 15px;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── Navbar ─────────────────────────────────────────────── */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--surface);
-      border-bottom: 1px solid var(--divider);
-      padding: 13px 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .navbar-brand {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      text-decoration: none;
-    }
-
-    .navbar-logo {
-      width: 34px;
-      height: 34px;
-      background: linear-gradient(135deg, var(--primary-l), var(--primary-d));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 17px;
-      flex-shrink: 0;
-    }
-
-    .navbar-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--primary);
-      letter-spacing: -0.2px;
-    }
-
-    .navbar-sub {
-      font-size: 11px;
-      color: var(--t3);
-      font-weight: 500;
-    }
-
-    .navbar-back {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      text-decoration: none;
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 7px 14px;
-      border: 1.5px solid var(--primary-ctr);
-      border-radius: 20px;
-      background: var(--primary-ctr);
-      transition: opacity 0.15s;
-      white-space: nowrap;
-    }
-
-    .navbar-back:hover { opacity: 0.8; color: var(--primary); }
-
-    /* ── Hero / Page Header ─────────────────────────────────── */
-    .hero {
-      background: linear-gradient(145deg, var(--primary-d) 0%, var(--primary) 55%, var(--primary-l) 100%);
-      padding: 52px 24px 56px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      padding: 5px 14px;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 18px;
-      letter-spacing: 0.3px;
-    }
-
-    .hero h1 {
-      font-size: clamp(26px, 5vw, 38px);
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      color: rgba(255,255,255,0.80);
-      font-size: 14px;
-      max-width: 420px;
-      margin: 0 auto 20px;
-      line-height: 1.6;
-    }
-
-    .hero-meta {
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .hero-meta-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      color: rgba(255,255,255,0.75);
-      font-size: 12px;
-    }
-
-    /* ── Layout ─────────────────────────────────────────────── */
-    .page-wrapper {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 16px 80px;
-    }
-
-    /* ── Table of Contents ──────────────────────────────────── */
-    .toc-card {
-      background: var(--surface);
-      border: 1px solid var(--divider);
-      border-radius: var(--radius-l);
-      padding: 22px 24px;
-      margin-top: 28px;
-      margin-bottom: 8px;
-    }
-
-    .toc-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--t3);
-      letter-spacing: 0.9px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .toc-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 6px;
-    }
-
-    .toc-list li a {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      text-decoration: none;
-      color: var(--t2);
-      font-size: 13px;
-      font-weight: 500;
-      padding: 6px 8px;
-      border-radius: var(--radius-s);
-      transition: all 0.15s;
-    }
-
-    .toc-list li a:hover {
-      background: var(--primary-ctr);
-      color: var(--primary-d);
-    }
-
-    .toc-list li a .toc-num {
-      background: var(--primary-ctr);
-      color: var(--primary-d);
-      font-weight: 700;
-      font-size: 11px;
-      width: 20px;
-      height: 20px;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* ── Section ────────────────────────────────────────────── */
-    .section {
-      margin-top: 32px;
-      scroll-margin-top: 80px;
-    }
-
-    .section-card {
-      background: var(--surface);
-      border: 1px solid var(--divider);
-      border-radius: var(--radius-l);
-      overflow: hidden;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 18px 22px;
-      border-bottom: 1px solid var(--divider);
-      background: var(--surface-var);
-    }
-
-    .section-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--primary-ctr);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 17px;
-      flex-shrink: 0;
-    }
-
-    .section-header h2 {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--t1);
-      letter-spacing: -0.1px;
-      margin: 0;
-    }
-
-    .section-num {
-      margin-left: auto;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--t3);
-      background: var(--bg);
-      padding: 3px 9px;
-      border-radius: 10px;
-      border: 1px solid var(--outline);
-    }
-
-    .section-body {
-      padding: 20px 22px;
-    }
-
-    .section-body p {
-      color: var(--t2);
-      font-size: 14px;
-      line-height: 1.75;
-      margin-bottom: 12px;
-    }
-
-    .section-body p:last-child { margin-bottom: 0; }
-
-    /* ── Subsection heading ─────────────────────────────────── */
-    .subsection-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--t1);
-      margin-top: 18px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .subsection-title::before {
-      content: '';
-      width: 3px;
-      height: 14px;
-      background: var(--primary);
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-
-    /* ── Data Items (what we collect) ───────────────────────── */
-    .data-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .data-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 12px 14px;
-      background: var(--bg);
-      border: 1px solid var(--outline);
-      border-radius: var(--radius-m);
-    }
-
-    .data-item-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      background: var(--primary-ctr);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 14px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .data-item-content { flex: 1; }
-
-    .data-item-label {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--t1);
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .data-item-desc {
-      font-size: 12px;
-      color: var(--t2);
-      line-height: 1.5;
-    }
-
-    /* ── Permission Table ───────────────────────────────────── */
-    .perm-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin-top: 10px;
-    }
-
-    .perm-table thead th {
-      background: var(--surface-var);
-      padding: 10px 14px;
-      text-align: left;
-      font-weight: 700;
-      color: var(--t1);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      border-bottom: 1px solid var(--divider);
-    }
-
-    .perm-table tbody tr { border-bottom: 1px solid var(--divider); }
-    .perm-table tbody tr:last-child { border-bottom: none; }
-
-    .perm-table tbody td {
-      padding: 11px 14px;
-      color: var(--t2);
-      vertical-align: top;
-      line-height: 1.5;
-    }
-
-    .perm-table tbody td:first-child {
-      font-weight: 600;
-      color: var(--t1);
-      white-space: nowrap;
-    }
-
-    .badge-platform {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 6px;
-      line-height: 1.4;
-    }
-
-    .badge-android { background: #E8F5E9; color: #2E7D32; }
-    .badge-ios     { background: #E3F2FD; color: #1565C0; }
-    .badge-both    { background: var(--primary-ctr); color: var(--primary-d); }
-
-    /* ── Third-party Service Cards ──────────────────────────── */
-    .service-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .service-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 14px 16px;
-      background: var(--bg);
-      border: 1px solid var(--outline);
-      border-radius: var(--radius-m);
-    }
-
-    .service-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .service-icon.green  { background: var(--primary-ctr); color: var(--primary); }
-    .service-icon.blue   { background: #E3F2FD; color: #1565C0; }
-    .service-icon.orange { background: #FFF3E0; color: #E65100; }
-    .service-icon.red    { background: #FFEBEE; color: #C62828; }
-
-    .service-content { flex: 1; }
-
-    .service-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--t1);
-      margin-bottom: 3px;
-    }
-
-    .service-role {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--primary);
-      background: var(--primary-ctr);
-      display: inline-block;
-      padding: 1px 8px;
-      border-radius: 6px;
-      margin-bottom: 5px;
-    }
-
-    .service-desc {
-      font-size: 12.5px;
-      color: var(--t2);
-      line-height: 1.55;
-    }
-
-    .service-link {
-      font-size: 12px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      margin-top: 4px;
-    }
-
-    .service-link:hover { text-decoration: underline; color: var(--primary-d); }
-
-    /* ── Ad Types ───────────────────────────────────────────── */
-    .ad-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .ad-card {
-      padding: 14px;
-      background: var(--bg);
-      border: 1px solid var(--outline);
-      border-radius: var(--radius-m);
-      text-align: center;
-    }
-
-    .ad-card-icon {
-      font-size: 24px;
-      color: var(--primary);
-      margin-bottom: 6px;
-    }
-
-    .ad-card-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--t1);
-      margin-bottom: 3px;
-    }
-
-    .ad-card-desc {
-      font-size: 11.5px;
-      color: var(--t2);
-      line-height: 1.4;
-    }
-
-    /* ── Rights List ────────────────────────────────────────── */
-    .rights-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .rights-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 12px 14px;
-      background: var(--bg);
-      border: 1px solid var(--outline);
-      border-radius: var(--radius-m);
-    }
-
-    .rights-check {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--primary-ctr);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 13px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .rights-content { flex: 1; }
-    .rights-title { font-size: 13px; font-weight: 700; color: var(--t1); margin-bottom: 2px; }
-    .rights-desc  { font-size: 12.5px; color: var(--t2); line-height: 1.5; }
-
-    /* ── Info Note ──────────────────────────────────────────── */
-    .info-note {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 13px 16px;
-      background: #FFF8E1;
-      border: 1px solid #FFE082;
-      border-radius: var(--radius-m);
-      margin-top: 12px;
-    }
-
-    .info-note.green {
-      background: var(--primary-ctr);
-      border-color: #C5DBA8;
-    }
-
-    .info-note.blue {
-      background: #E3F2FD;
-      border-color: #90CAF9;
-    }
-
-    .info-note i { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-    .info-note.green  i { color: var(--primary); }
-    .info-note.blue   i { color: #1565C0; }
-    .info-note        i { color: #F57F17; }
-
-    .info-note p {
-      font-size: 12.5px;
-      color: var(--t2);
-      line-height: 1.6;
-      margin: 0 !important;
-    }
-
-    .info-note strong { color: var(--t1); }
-
-    /* ── Contact Card ───────────────────────────────────────── */
-    .contact-card {
-      background: linear-gradient(135deg, var(--primary-d), var(--primary));
-      border-radius: var(--radius-xl);
-      padding: 28px 24px;
-      color: #fff;
-      text-align: center;
-      margin-top: 32px;
-    }
-
-    .contact-card h3 {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 8px;
-      letter-spacing: -0.3px;
-    }
-
-    .contact-card p {
-      font-size: 13.5px;
-      color: rgba(255,255,255,0.80);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
-    .contact-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: opacity 0.15s, transform 0.12s;
-    }
-
-    .contact-btn:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    .contact-btn-primary {
-      background: rgba(255,255,255,0.20);
-      border: 1.5px solid rgba(255,255,255,0.35);
-      color: #fff;
-      backdrop-filter: blur(8px);
-    }
-
-    .contact-btn-secondary {
-      background: #fff;
-      color: var(--primary-d);
-    }
-
-    /* ── Footer ─────────────────────────────────────────────── */
-    .footer {
-      text-align: center;
-      padding: 28px 20px 16px;
-      color: var(--t3);
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    .footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-    .footer a:hover { text-decoration: underline; }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 4px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-
-    .footer-links a {
-      padding: 3px 8px;
-      color: var(--t3);
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .footer-links span { color: var(--divider); }
-
-    /* ── Inline highlight ───────────────────────────────────── */
-    .hl { background: var(--primary-ctr); color: var(--primary-d); font-weight: 700; padding: 1px 6px; border-radius: 5px; font-size: 0.9em; }
-
-    /* ── Effective date bar ─────────────────────────────────── */
-    .date-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 12px 18px;
-      background: var(--surface);
-      border: 1px solid var(--divider);
-      border-radius: var(--radius-m);
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .date-bar-item {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 12.5px;
-      color: var(--t2);
-    }
-
-    .date-bar-item i { color: var(--primary); font-size: 14px; }
-    .date-bar-item strong { color: var(--t1); font-weight: 700; }
-
-    /* ── Smooth divider between sections ───────────────────── */
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--divider), transparent);
-      margin: 4px 0;
-      border: none;
-    }
-
-    /* ── Responsive ─────────────────────────────────────────── */
-    @media (max-width: 600px) {
-      .hero { padding: 40px 18px 44px; }
-      .section-body { padding: 16px 16px; }
-      .section-header { padding: 14px 16px; }
-      .toc-card { padding: 16px 16px; }
-      .toc-list { grid-template-columns: 1fr; }
-      .data-grid { grid-template-columns: 1fr; }
-      .ad-grid   { grid-template-columns: 1fr 1fr; }
-      .perm-table { font-size: 12px; display: block; overflow-x: auto; }
-      .contact-card { padding: 22px 18px; }
-      .navbar-sub { display: none; }
-    }
-
-    @media (max-width: 380px) {
-      .ad-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#5B7C42"/>
+<title>Privacy Policy — Boi Campus (বই ক্যাম্পাস)</title>
+<meta name="description" content="Privacy Policy for Boi Campus — the student book marketplace app by BanglaByteStudio. Learn how we collect, use, and protect your personal data."/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://rivon-ahmed.github.io/privacy/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Privacy Policy — Boi Campus"/>
+<meta property="og:description" content="Learn how Boi Campus collects, uses, and protects your personal data."/>
+<meta property="og:url" content="https://rivon-ahmed.github.io/privacy/"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+<style>
+/* ════════════════════════════════════════════
+   DESIGN TOKENS — mirrors AppColors.dart & about page
+════════════════════════════════════════════ */
+:root {
+  --primary:        #5B7C42;
+  --primary-l:      #7A9E5C;
+  --primary-d:      #3E5A2B;
+  --primary-ctr:    #D6E8C4;
+  --on-primary-ctr: #1A3109;
+  --secondary:      #428A9B;
+  --secondary-ctr:  #BDE8F2;
+  --tertiary:       #E6B187;
+  --tertiary-ctr:   #F9E4CE;
+  --bg:             #FAF3E4;
+  --surface:        #FFFFFF;
+  --surface-var:    #F0EAD6;
+  --t1:             #1C1C0E;
+  --t2:             #5A5A48;
+  --t3:             #9E9E9E;
+  --divider:        #EDE8D4;
+  --outline-var:    #E5E0C8;
+  --error:          #BA1A1A;
+  --error-ctr:      #FFDAD6;
+  --success:        #4CAF50;
+  --success-ctr:    #CEEFCF;
+  --warning:        #F59E0B;
+  --warning-ctr:    #FEF3C7;
+  --radius-s:   8px;
+  --radius-m:   12px;
+  --radius-l:   16px;
+  --radius-xl:  20px;
+  --radius-2xl: 24px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.06), 0 2px 8px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.06);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--t1);
+  line-height:1.6;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* ── Layout ── */
+.container{width:100%;max-width:720px;margin:0 auto;padding:0 20px}
+.section{padding:32px 0 0;scroll-margin-top:72px}
+
+/* ════════════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════════════ */
+.nav{
+  background:var(--surface);
+  border-bottom:1px solid var(--divider);
+  padding:12px 20px;
+  display:flex;align-items:center;gap:10px;
+  position:sticky;top:0;z-index:200;
+  box-shadow:var(--shadow-sm);
+}
+.nav-logo{
+  width:32px;height:32px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--primary-l),var(--primary-d));
+  border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;
+}
+.nav-brand{font-size:16px;font-weight:800;color:var(--primary);line-height:1.1}
+.nav-brand-bn{font-size:11px;color:var(--t3);font-weight:500}
+.nav-btn{
+  margin-left:auto;
+  display:flex;align-items:center;gap:6px;
+  background:var(--primary-ctr);color:var(--primary-d);
+  padding:7px 14px;border-radius:var(--radius-m);
+  font-size:13px;font-weight:700;transition:.15s;white-space:nowrap;
+}
+.nav-btn:hover{opacity:.85}
+
+/* ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(160deg,var(--primary-d) 0%,var(--primary) 60%,var(--primary-l) 100%);
+  padding:52px 20px 72px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.hero-icon{
+  width:80px;height:80px;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-radius:22px;margin:0 auto 18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:38px;
+  box-shadow:0 8px 32px rgba(0,0,0,.22);
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.15);backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.25);
+  padding:5px 14px;border-radius:999px;
+  font-size:12px;font-weight:600;color:#fff;margin-bottom:14px;
+}
+.hero h1{font-size:clamp(24px,5vw,32px);font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.2;margin-bottom:10px}
+.hero p{font-size:14px;color:rgba(255,255,255,.75);max-width:380px;margin:0 auto 20px;line-height:1.7}
+.hero-meta{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:14px}
+.hero-meta-item{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.72);font-size:12px;font-weight:500}
+
+/* ════════════════════════════════════════════
+   DATE BAR
+════════════════════════════════════════════ */
+.date-bar-wrap{padding:0 20px}
+.date-bar{
+  background:var(--surface);
+  border:0.6px solid var(--outline-var);
+  border-radius:var(--radius-l);
+  padding:12px 18px;
+  margin-top:-36px;
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;
+  box-shadow:var(--shadow-lg);
+  position:relative;z-index:10;
+}
+.date-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--t2)}
+.date-item i{color:var(--primary);font-size:14px}
+.date-item strong{color:var(--t1);font-weight:700}
+
+/* ════════════════════════════════════════════
+   SECTION LABEL
+════════════════════════════════════════════ */
+.sec-label{
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  color:var(--t3);text-transform:uppercase;margin-bottom:10px;
+}
+
+/* ════════════════════════════════════════════
+   TABLE OF CONTENTS
+════════════════════════════════════════════ */
+.toc-card{
+  background:var(--surface);
+  border:0.6px solid var(--outline-var);
+  border-radius:var(--radius-l);
+  overflow:hidden;
+  margin-top:12px;
+}
+.toc-header{
+  padding:14px 18px;
+  background:var(--surface-var);
+  border-bottom:1px solid var(--divider);
+  display:flex;align-items:center;gap:10px;
+}
+.toc-header-icon{
+  width:34px;height:34px;flex-shrink:0;
+  background:var(--primary-ctr);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary);font-size:16px;
+}
+.toc-header-title{font-size:14px;font-weight:700;color:var(--t1)}
+.toc-body{padding:14px 18px}
+.toc-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:4px}
+.toc-list a{
+  display:flex;align-items:center;gap:8px;
+  color:var(--t2);font-size:13px;font-weight:500;
+  padding:7px 10px;border-radius:var(--radius-s);
+  transition:.14s;
+}
+.toc-list a:hover{background:var(--primary-ctr);color:var(--primary-d)}
+.toc-list a.active{background:var(--primary-ctr);color:var(--primary-d)}
+.toc-num{
+  width:22px;height:22px;flex-shrink:0;
+  background:var(--primary-ctr);color:var(--primary-d);
+  border-radius:6px;font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ════════════════════════════════════════════
+   SECTION CARDS
+════════════════════════════════════════════ */
+.sec-card{
+  background:var(--surface);
+  border:0.6px solid var(--outline-var);
+  border-radius:var(--radius-l);
+  overflow:hidden;
+  margin-top:10px;
+}
+.sec-head{
+  display:flex;align-items:center;gap:12px;
+  padding:16px 18px;
+  background:var(--surface-var);
+  border-bottom:1px solid var(--divider);
+}
+.sec-icon{
+  width:38px;height:38px;flex-shrink:0;
+  background:var(--primary-ctr);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary);font-size:17px;
+}
+.sec-head h2{font-size:15px;font-weight:800;color:var(--t1);flex:1}
+.sec-num{
+  font-size:11px;font-weight:700;color:var(--t3);
+  background:var(--bg);padding:3px 9px;
+  border-radius:999px;border:0.6px solid var(--outline-var);
+}
+.sec-body{padding:18px}
+.sec-body p{font-size:13.5px;color:var(--t2);line-height:1.75;margin-bottom:12px}
+.sec-body p:last-child{margin-bottom:0}
+
+/* ── Subsection title ── */
+.sub-title{
+  font-size:13px;font-weight:700;color:var(--t1);
+  margin:18px 0 10px;
+  display:flex;align-items:center;gap:7px;
+}
+.sub-title::before{
+  content:'';width:3px;height:14px;
+  background:var(--primary);border-radius:2px;flex-shrink:0;
+}
+
+/* ════════════════════════════════════════════
+   DATA GRID
+════════════════════════════════════════════ */
+.data-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:10px;margin-top:10px;
+}
+.data-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:12px 14px;
+  background:var(--bg);
+  border:0.6px solid var(--outline-var);
+  border-radius:var(--radius-m);
+}
+.data-icon{
+  width:32px;height:32px;flex-shrink:0;
+  background:var(--primary-ctr);border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary);font-size:14px;margin-top:1px;
+}
+.data-label{font-size:13px;font-weight:700;color:var(--t1);display:block;margin-bottom:2px}
+.data-desc{font-size:12px;color:var(--t2);line-height:1.55}
+
+/* ════════════════════════════════════════════
+   CARD ROWS  (used in rights/use sections)
+════════════════════════════════════════════ */
+.card-rows{margin-top:10px}
+.card-row{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:13px 0;border-bottom:1px solid var(--divider);
+}
+.card-row:last-child{border-bottom:none}
+.row-icon{
+  width:34px;height:34px;flex-shrink:0;
+  background:var(--primary-ctr);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--primary);font-size:15px;margin-top:1px;
+}
+.row-title{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.row-desc{font-size:12.5px;color:var(--t2);line-height:1.6}
+
+/* ════════════════════════════════════════════
+   PERMISSION TABLE
+════════════════════════════════════════════ */
+.perm-table{
+  width:100%;border-collapse:collapse;
+  font-size:13px;margin-top:10px;
+}
+.perm-table thead th{
+  background:var(--surface-var);
+  padding:10px 14px;text-align:left;
+  font-weight:700;color:var(--t1);
+  font-size:11px;text-transform:uppercase;letter-spacing:.5px;
+  border-bottom:1px solid var(--divider);
+}
+.perm-table tbody tr{border-bottom:1px solid var(--divider)}
+.perm-table tbody tr:last-child{border-bottom:none}
+.perm-table tbody td{padding:11px 14px;color:var(--t2);vertical-align:top;line-height:1.55}
+.perm-table tbody td:first-child{font-weight:600;color:var(--t1);white-space:nowrap}
+.badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;line-height:1.4}
+.badge-android{background:#E8F5E9;color:#2E7D32}
+.badge-ios{background:#E3F2FD;color:#1565C0}
+.badge-both{background:var(--primary-ctr);color:var(--primary-d)}
+
+/* ════════════════════════════════════════════
+   SERVICE CARDS  (third-party section)
+════════════════════════════════════════════ */
+.service-list{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.service-card{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 16px;
+  background:var(--bg);
+  border:0.6px solid var(--outline-var);
+  border-radius:var(--radius-m);
+}
+.svc-icon{
+  width:40px;height:40px;flex-shrink:0;
+  border-radius:11px;font-size:18px;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+}
+.svc-icon.green{background:var(--primary-ctr);color:var(--primary)}
+.svc-icon.blue{background:#E3F2FD;color:#1565C0}
+.svc-icon.orange{background:#FFF3E0;color:#E65100}
+.svc-icon.red{background:#FFEBEE;color:#C62828}
+.svc-name{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.svc-role{
+  display:inline-block;font-size:11px;font-weight:600;
+  color:var(--primary);background:var(--primary-ctr);
+  padding:1px 8px;border-radius:6px;margin-bottom:5px;
+}
+.svc-desc{font-size:12.5px;color:var(--t2);line-height:1.6}
+.svc-link{
+  display:inline-flex;align-items:center;gap:4px;
+  color:var(--primary);font-size:12px;font-weight:600;margin-top:6px;
+}
+.svc-link:hover{text-decoration:underline;color:var(--primary-d)}
+
+/* ════════════════════════════════════════════
+   AD GRID
+════════════════════════════════════════════ */
+.ad-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(165px,1fr));
+  gap:10px;margin-top:10px;
+}
+.ad-card{
+  padding:16px;
+  background:var(--bg);
+  border:0.6px solid var(--outline-var);
+  border-radius:var(--radius-m);
+  text-align:center;
+}
+.ad-icon{font-size:22px;color:var(--primary);margin-bottom:7px}
+.ad-name{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:3px}
+.ad-desc{font-size:11.5px;color:var(--t2);line-height:1.5}
+
+/* ════════════════════════════════════════════
+   INFO NOTES
+════════════════════════════════════════════ */
+.note{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:12px 14px;border-radius:var(--radius-m);margin-top:12px;
+}
+.note i{font-size:16px;flex-shrink:0;margin-top:1px}
+.note p{font-size:12.5px;line-height:1.65;margin:0}
+.note strong{color:var(--t1)}
+.note.yellow{background:var(--warning-ctr);border:0.6px solid #FDE68A}
+.note.yellow i{color:var(--warning)}
+.note.yellow p{color:#78350F}
+.note.green{background:var(--primary-ctr);border:0.6px solid #C5DBA8}
+.note.green i{color:var(--primary)}
+.note.green p{color:var(--on-primary-ctr)}
+.note.blue{background:var(--secondary-ctr);border:0.6px solid #90CAF9}
+.note.blue i{color:#1565C0}
+.note.blue p{color:#002E38}
+
+/* ════════════════════════════════════════════
+   HIGHLIGHT CHIP
+════════════════════════════════════════════ */
+.hl{
+  background:var(--primary-ctr);color:var(--primary-d);
+  font-weight:700;padding:1px 6px;border-radius:5px;font-size:.88em;
+}
+
+/* ════════════════════════════════════════════
+   CONTACT CTA
+════════════════════════════════════════════ */
+.cta-card{
+  background:linear-gradient(135deg,var(--primary-d),var(--primary));
+  border-radius:var(--radius-2xl);padding:34px 24px;
+  text-align:center;position:relative;overflow:hidden;margin-top:32px;
+}
+.cta-card::after{
+  content:'🔒';position:absolute;right:-8px;bottom:-16px;
+  font-size:88px;opacity:.1;transform:rotate(10deg);pointer-events:none;
+}
+.cta-card h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px}
+.cta-card p{font-size:13.5px;color:rgba(255,255,255,.75);margin-bottom:22px;line-height:1.6}
+.cta-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:11px 20px;border-radius:var(--radius-m);
+  font-size:13px;font-weight:700;transition:.15s;
+}
+.cta-btn:hover{opacity:.88;transform:translateY(-1px)}
+.cta-btn-white{background:#fff;color:var(--primary-d)}
+.cta-btn-outline{
+  background:rgba(255,255,255,.15);color:#fff;
+  border:1.5px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(6px);
+}
+
+/* ════════════════════════════════════════════
+   LINKS ROW
+════════════════════════════════════════════ */
+.links-row{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  align-items:center;gap:6px 4px;padding:28px 20px 0;
+}
+.lnk{font-size:12px;color:var(--secondary);font-weight:500}
+.lnk:hover{text-decoration:underline}
+.dot{color:var(--t3);font-size:14px;padding:0 2px}
+
+/* ════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════ */
+footer{
+  background:var(--t1);padding:24px 20px;
+  text-align:center;margin-top:40px;
+}
+footer p{font-size:12px;color:rgba(255,255,255,.38);line-height:1.8}
+footer a{color:rgba(255,255,255,.5)}
+footer a:hover{color:rgba(255,255,255,.85)}
+
+/* ════════════════════════════════════════════
+   FADE-IN ANIMATION
+════════════════════════════════════════════ */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
+@media(max-width:600px){
+  .hero{padding:40px 20px 64px}
+  .hero h1{font-size:24px}
+  .data-grid{grid-template-columns:1fr}
+  .ad-grid{grid-template-columns:1fr 1fr}
+  .perm-table{font-size:12px;display:block;overflow-x:auto}
+  .toc-list{grid-template-columns:1fr}
+  .date-bar{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:380px){
+  .ad-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
 
-<!-- ── Navbar ────────────────────────────────────────────── -->
-<nav class="navbar">
-  <a href="/" class="navbar-brand">
-    <div class="navbar-logo">
-      <i class="bi bi-book-half"></i>
-    </div>
-    <div>
-      <div class="navbar-title">Boi Campus</div>
-      <div class="navbar-sub">বই ক্যাম্পাস</div>
-    </div>
-  </a>
-  <a href="/" class="navbar-back">
-    <i class="bi bi-arrow-left"></i>
-    Home
+<!-- ── Nav ── -->
+<nav class="nav">
+  <div class="nav-logo">📚</div>
+  <div>
+    <div class="nav-brand">Boi Campus</div>
+    <div class="nav-brand-bn">বই ক্যাম্পাস</div>
+  </div>
+  <a class="nav-btn" href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener">
+    <i class="bi bi-google-play"></i> Get App
   </a>
 </nav>
 
-<!-- ── Hero ─────────────────────────────────────────────── -->
-<section class="hero">
-  <div class="hero-badge">
-    <i class="bi bi-shield-check"></i>
-    Privacy Policy
-  </div>
+<!-- ── Hero ── -->
+<div class="hero">
+  <div class="hero-icon">🔒</div>
+  <div class="hero-badge"><i class="bi bi-shield-check"></i> Privacy Policy</div>
   <h1>Your Privacy Matters</h1>
   <p>We are committed to protecting your personal data. This policy explains exactly what we collect, how we use it, and your rights.</p>
   <div class="hero-meta">
-    <div class="hero-meta-item">
-      <i class="bi bi-building"></i>
-      <span>BanglaByteStudio</span>
-    </div>
-    <div class="hero-meta-item">
-      <i class="bi bi-phone"></i>
-      <span>Boi Campus App</span>
-    </div>
-    <div class="hero-meta-item">
-      <i class="bi bi-calendar3"></i>
-      <span>Effective: June 10, 2025</span>
-    </div>
+    <div class="hero-meta-item"><i class="bi bi-building"></i> BanglaByteStudio</div>
+    <div class="hero-meta-item"><i class="bi bi-phone"></i> Boi Campus App</div>
+    <div class="hero-meta-item"><i class="bi bi-calendar3"></i> Effective: June 10, 2025</div>
   </div>
-</section>
+</div>
 
-<!-- ── Page Content ──────────────────────────────────────── -->
-<div class="page-wrapper">
-
-  <!-- Date Bar -->
+<!-- ── Date Bar ── -->
+<div class="date-bar-wrap fade-in">
   <div class="date-bar">
-    <div class="date-bar-item">
-      <i class="bi bi-calendar-check"></i>
-      <span>Effective Date: <strong>June 10, 2025</strong></span>
-    </div>
-    <div class="date-bar-item">
-      <i class="bi bi-arrow-clockwise"></i>
-      <span>Last Updated: <strong>June 10, 2025</strong></span>
-    </div>
-    <div class="date-bar-item">
-      <i class="bi bi-translate"></i>
-      <span>Language: <strong>English</strong></span>
-    </div>
+    <div class="date-item"><i class="bi bi-calendar-check"></i><span>Effective: <strong>June 10, 2025</strong></span></div>
+    <div class="date-item"><i class="bi bi-arrow-clockwise"></i><span>Last Updated: <strong>June 10, 2025</strong></span></div>
+    <div class="date-item"><i class="bi bi-translate"></i><span>Language: <strong>English</strong></span></div>
   </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PAGE CONTENT
+══════════════════════════════════════════ -->
+<div class="container">
 
   <!-- Table of Contents -->
-  <div class="toc-card">
-    <div class="toc-title">Table of Contents</div>
-    <ul class="toc-list">
-      <li><a href="#intro"><span class="toc-num">1</span> Introduction</a></li>
-      <li><a href="#collect"><span class="toc-num">2</span> Information We Collect</a></li>
-      <li><a href="#permissions"><span class="toc-num">3</span> Device Permissions</a></li>
-      <li><a href="#use"><span class="toc-num">4</span> How We Use Your Data</a></li>
-      <li><a href="#ads"><span class="toc-num">5</span> Advertising (AdMob)</a></li>
-      <li><a href="#thirdparty"><span class="toc-num">6</span> Third-Party Services</a></li>
-      <li><a href="#storage"><span class="toc-num">7</span> Storage &amp; Security</a></li>
-      <li><a href="#sharing"><span class="toc-num">8</span> Data Sharing</a></li>
-      <li><a href="#retention"><span class="toc-num">9</span> Data Retention</a></li>
-      <li><a href="#rights"><span class="toc-num">10</span> Your Rights</a></li>
-      <li><a href="#children"><span class="toc-num">11</span> Children's Privacy</a></li>
-      <li><a href="#changes"><span class="toc-num">12</span> Policy Changes</a></li>
-      <li><a href="#contact"><span class="toc-num">13</span> Contact Us</a></li>
-    </ul>
+  <div class="section fade-in">
+    <p class="sec-label">Table of Contents</p>
+    <div class="toc-card">
+      <div class="toc-header">
+        <div class="toc-header-icon"><i class="bi bi-list-ul"></i></div>
+        <div class="toc-header-title">Jump to section</div>
+      </div>
+      <div class="toc-body">
+        <ul class="toc-list">
+          <li><a href="#intro"><span class="toc-num">1</span> Introduction</a></li>
+          <li><a href="#collect"><span class="toc-num">2</span> Information We Collect</a></li>
+          <li><a href="#permissions"><span class="toc-num">3</span> Device Permissions</a></li>
+          <li><a href="#use"><span class="toc-num">4</span> How We Use Your Data</a></li>
+          <li><a href="#ads"><span class="toc-num">5</span> Advertising (AdMob)</a></li>
+          <li><a href="#thirdparty"><span class="toc-num">6</span> Third-Party Services</a></li>
+          <li><a href="#storage"><span class="toc-num">7</span> Storage &amp; Security</a></li>
+          <li><a href="#sharing"><span class="toc-num">8</span> Data Sharing</a></li>
+          <li><a href="#retention"><span class="toc-num">9</span> Data Retention</a></li>
+          <li><a href="#rights"><span class="toc-num">10</span> Your Rights</a></li>
+          <li><a href="#children"><span class="toc-num">11</span> Children's Privacy</a></li>
+          <li><a href="#changes"><span class="toc-num">12</span> Policy Changes</a></li>
+          <li><a href="#contact"><span class="toc-num">13</span> Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 1 — Introduction                               -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="intro">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-info-circle"></i></div>
+  <!-- §1 Introduction -->
+  <div class="section fade-in" id="intro">
+    <p class="sec-label">§ 01</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-info-circle"></i></div>
         <h2>Introduction</h2>
-        <span class="section-num">§ 01</span>
+        <span class="sec-num">§ 01</span>
       </div>
-      <div class="section-body">
-        <p>
-          <strong>Boi Campus</strong> ("we", "us", or "our") is a student-first book marketplace application developed by
-          <strong>BanglaByteStudio</strong>. We built this app to help Bangladesh's polytechnic and engineering students
-          buy, sell, and exchange textbooks within their campus communities — quickly, easily, and at affordable prices.
-        </p>
-        <p>
-          This Privacy Policy describes how we collect, use, store, disclose, and protect your personal information
-          when you use the Boi Campus mobile application on Android or iOS.
-        </p>
-        <p>
-          By creating an account and using Boi Campus, <strong>you agree to the terms of this Privacy Policy</strong>.
-          If you do not agree, please discontinue use of the app.
-        </p>
-        <div class="info-note green">
+      <div class="sec-body">
+        <p><strong>Boi Campus</strong> ("we", "us", or "our") is a student-first book marketplace application developed by <strong>BanglaByteStudio</strong>. We built this app to help Bangladesh's polytechnic and engineering students buy, sell, and exchange textbooks within their campus communities — quickly, easily, and at affordable prices.</p>
+        <p>This Privacy Policy describes how we collect, use, store, disclose, and protect your personal information when you use the Boi Campus mobile application on Android or iOS.</p>
+        <p>By creating an account and using Boi Campus, <strong>you agree to the terms of this Privacy Policy</strong>. If you do not agree, please discontinue use of the app.</p>
+        <div class="note green">
           <i class="bi bi-check-circle-fill"></i>
-          <p>
-            <strong>Our commitment:</strong> We only collect data that is necessary to operate the app.
-            We do not sell your personal data to any third parties for profit.
-          </p>
+          <p><strong>Our commitment:</strong> We only collect data that is necessary to operate the app. We do not sell your personal data to any third parties for profit.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 2 — Information We Collect                     -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="collect">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-database"></i></div>
+  <!-- §2 Information We Collect -->
+  <div class="section fade-in" id="collect">
+    <p class="sec-label">§ 02</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-database"></i></div>
         <h2>Information We Collect</h2>
-        <span class="section-num">§ 02</span>
+        <span class="sec-num">§ 02</span>
       </div>
-      <div class="section-body">
+      <div class="sec-body">
 
-        <!-- 2.1 Account -->
-        <div class="subsection-title">2.1 Account Information</div>
+        <div class="sub-title">2.1 Account Information</div>
         <div class="data-grid">
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-envelope"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Email Address</span>
-              <span class="data-item-desc">Used for registration, login via OTP, and account recovery.</span>
+            <div class="data-icon"><i class="bi bi-envelope"></i></div>
+            <div>
+              <span class="data-label">Email Address</span>
+              <span class="data-desc">Used for registration, login via OTP, and account recovery.</span>
             </div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-lock"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Password</span>
-              <span class="data-item-desc">Encrypted with bcrypt. We never store or see your raw password.</span>
+            <div class="data-icon"><i class="bi bi-lock"></i></div>
+            <div>
+              <span class="data-label">Password</span>
+              <span class="data-desc">Encrypted with bcrypt. We never store or see your raw password.</span>
             </div>
           </div>
         </div>
 
-        <!-- 2.2 Profile -->
-        <div class="subsection-title">2.2 Profile Information</div>
+        <div class="sub-title">2.2 Profile Information</div>
         <p>Collected during the profile setup process after registration:</p>
         <div class="data-grid">
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-person"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Full Name</span>
-              <span class="data-item-desc">Displayed publicly on your listings and profile.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-person"></i></div>
+            <div><span class="data-label">Full Name</span><span class="data-desc">Displayed publicly on your listings and profile.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-gender-ambiguous"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Gender</span>
-              <span class="data-item-desc">Male or female — used for profile personalization.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-gender-ambiguous"></i></div>
+            <div><span class="data-label">Gender</span><span class="data-desc">Male or female — used for profile personalization.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-telephone"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Phone Number</span>
-              <span class="data-item-desc">Bangladeshi mobile number. Used for seller contact verification.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-telephone"></i></div>
+            <div><span class="data-label">Phone Number</span><span class="data-desc">Bangladeshi mobile number. Used for seller contact verification.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-image"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Profile Photo</span>
-              <span class="data-item-desc">Optional. Uploaded to our secure storage. Displayed on your profile.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-image"></i></div>
+            <div><span class="data-label">Profile Photo</span><span class="data-desc">Optional. Uploaded to secure storage. Displayed on your profile.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-geo-alt"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">District</span>
-              <span class="data-item-desc">Your location within Bangladesh for relevant book listings.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-geo-alt"></i></div>
+            <div><span class="data-label">District</span><span class="data-desc">Your location within Bangladesh for relevant book listings.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-mortarboard"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Study Level &amp; Campus</span>
-              <span class="data-item-desc">Educational level (SSC, HSC, Polytechnic, University) and your institution name.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-mortarboard"></i></div>
+            <div><span class="data-label">Study Level &amp; Campus</span><span class="data-desc">Educational level (Polytechnic, University, etc.) and institution name.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-card-text"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Short Bio</span>
-              <span class="data-item-desc">Optional. A brief self-description shown on your public profile.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-card-text"></i></div>
+            <div><span class="data-label">Short Bio</span><span class="data-desc">Optional. A brief self-description shown on your public profile.</span></div>
           </div>
         </div>
 
-        <!-- 2.3 Book Listings -->
-        <div class="subsection-title">2.3 Book Listing Data</div>
+        <div class="sub-title">2.3 Book Listing Data</div>
         <p>When you create a book listing on the marketplace:</p>
         <div class="data-grid">
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-book"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Book Details</span>
-              <span class="data-item-desc">Title, author/writer name, edition, category, tags, and description.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-book"></i></div>
+            <div><span class="data-label">Book Details</span><span class="data-desc">Title, author/writer, edition, category, tags, and description.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-camera"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Book Photos</span>
-              <span class="data-item-desc">Up to 5 photos per listing. Stored securely in Supabase Storage.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-camera"></i></div>
+            <div><span class="data-label">Book Photos</span><span class="data-desc">Up to 5 photos per listing. Stored securely in Supabase Storage.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-star"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Book Condition</span>
-              <span class="data-item-desc">Physical condition, binding state, missing pages, highlights, handwritten notes.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-star"></i></div>
+            <div><span class="data-label">Book Condition</span><span class="data-desc">Physical condition, binding state, missing pages, highlights, handwritten notes.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-tag"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Price &amp; Type</span>
-              <span class="data-item-desc">Selling price (৳10–৳10,000) or free listing. Negotiability flag.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-tag"></i></div>
+            <div><span class="data-label">Price &amp; Type</span><span class="data-desc">Selling price (৳10–৳10,000) or free listing. Negotiability flag.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-pin-map"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Meetup Location</span>
-              <span class="data-item-desc">A public text description of where you prefer to exchange the book.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-pin-map"></i></div>
+            <div><span class="data-label">Meetup Location</span><span class="data-desc">A public text description of where you prefer to exchange the book.</span></div>
           </div>
         </div>
 
-        <!-- 2.4 Chat & Messages -->
-        <div class="subsection-title">2.4 Chat &amp; Messages</div>
+        <div class="sub-title">2.4 Chat &amp; Messages</div>
         <div class="data-grid">
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-chat-left-text"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Message Content</span>
-              <span class="data-item-desc">Text messages sent between buyers and sellers. Stored server-side.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-chat-left-text"></i></div>
+            <div><span class="data-label">Message Content</span><span class="data-desc">Text messages sent between buyers and sellers. Stored server-side.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-images"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Chat Media</span>
-              <span class="data-item-desc">Up to 5 photos per message. Stored in the secure chat-media bucket.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-images"></i></div>
+            <div><span class="data-label">Chat Media</span><span class="data-desc">Up to 5 photos per message. Stored in the secure chat-media bucket.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-clock-history"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Timestamps &amp; Read Status</span>
-              <span class="data-item-desc">Message sent time and whether it has been read by the recipient.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-clock-history"></i></div>
+            <div><span class="data-label">Timestamps &amp; Read Status</span><span class="data-desc">Message sent time and whether it has been read by the recipient.</span></div>
           </div>
         </div>
 
-        <!-- 2.5 Usage & Activity -->
-        <div class="subsection-title">2.5 Usage &amp; Activity Data</div>
+        <div class="sub-title">2.5 Usage &amp; Activity Data</div>
         <div class="data-grid">
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-search"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Search Queries</span>
-              <span class="data-item-desc"><strong>Stored locally on your device only.</strong> We do not send search history to our servers.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-search"></i></div>
+            <div><span class="data-label">Search Queries</span><span class="data-desc"><strong>Stored locally on your device only.</strong> We do not send search history to our servers.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-bookmark"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Wishlist / Saved Books</span>
-              <span class="data-item-desc">Books you have saved/bookmarked — stored in our database linked to your account.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-bookmark"></i></div>
+            <div><span class="data-label">Wishlist / Saved Books</span><span class="data-desc">Books you have saved — stored in our database linked to your account.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-inbox"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Book Requests</span>
-              <span class="data-item-desc">Books you have requested via the Book Requests feature.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-inbox"></i></div>
+            <div><span class="data-label">Book Requests</span><span class="data-desc">Books you have requested via the Book Requests feature.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-coin"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Credit Transactions</span>
-              <span class="data-item-desc">Records of your ad-credit earnings and spending for post creation.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-coin"></i></div>
+            <div><span class="data-label">Credit Transactions</span><span class="data-desc">Records of your ad-credit earnings and spending for post creation.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-flag"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Reports Submitted</span>
-              <span class="data-item-desc">If you report a listing or user for violations, the report is stored.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-flag"></i></div>
+            <div><span class="data-label">Reports Submitted</span><span class="data-desc">If you report a listing or user for violations, the report is stored.</span></div>
           </div>
         </div>
 
-        <!-- 2.6 Device Data -->
-        <div class="subsection-title">2.6 Device &amp; Technical Data</div>
+        <div class="sub-title">2.6 Device &amp; Technical Data</div>
         <div class="data-grid">
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-bell"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">FCM Push Token</span>
-              <span class="data-item-desc">A device token used to send you push notifications. Stored in your user record. Cleared on logout.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-bell"></i></div>
+            <div><span class="data-label">FCM Push Token</span><span class="data-desc">A device token used to send push notifications. Stored in your user record. Cleared on logout.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-phone"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Device OS &amp; App Version</span>
-              <span class="data-item-desc">Operating system type (Android/iOS) and Boi Campus version — used for support and analytics.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-phone"></i></div>
+            <div><span class="data-label">Device OS &amp; App Version</span><span class="data-desc">OS type (Android/iOS) and app version — used for support and analytics.</span></div>
           </div>
         </div>
 
-        <div class="info-note blue" style="margin-top:14px;">
+        <div class="note blue" style="margin-top:14px">
           <i class="bi bi-info-circle-fill"></i>
-          <p>
-            <strong>We do NOT collect:</strong> Precise GPS location, contacts, call logs, SMS content, browsing history,
-            or any data outside what is listed above.
-          </p>
+          <p><strong>We do NOT collect:</strong> Precise GPS location, contacts, call logs, SMS content, browsing history, or any data outside what is listed above.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 3 — Device Permissions                         -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="permissions">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-shield-lock"></i></div>
+  <!-- §3 Device Permissions -->
+  <div class="section fade-in" id="permissions">
+    <p class="sec-label">§ 03</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-shield-lock"></i></div>
         <h2>Device Permissions</h2>
-        <span class="section-num">§ 03</span>
+        <span class="sec-num">§ 03</span>
       </div>
-      <div class="section-body">
-        <p>
-          Boi Campus requests only the permissions that are <strong>strictly necessary</strong> for the app to function.
-          Below is a full list of every permission the app requests and why.
-        </p>
+      <div class="sec-body">
+        <p>Boi Campus requests only the permissions that are <strong>strictly necessary</strong> for the app to function. Below is a full list of every permission the app requests and why.</p>
         <table class="perm-table">
           <thead>
             <tr>
@@ -1127,728 +721,553 @@
           </thead>
           <tbody>
             <tr>
-              <td><i class="bi bi-camera" style="color:var(--primary);margin-right:5px;"></i>Camera</td>
-              <td><span class="badge-platform badge-android">Android</span>&nbsp;<span class="badge-platform badge-ios">iOS</span></td>
+              <td><i class="bi bi-camera" style="color:var(--primary);margin-right:5px"></i>Camera</td>
+              <td><span class="badge badge-android">Android</span>&nbsp;<span class="badge badge-ios">iOS</span></td>
               <td>Taking photos of books when creating a listing, and sending photos in chat conversations.</td>
             </tr>
             <tr>
-              <td><i class="bi bi-images" style="color:var(--primary);margin-right:5px;"></i>Photo Library</td>
-              <td><span class="badge-platform badge-ios">iOS</span></td>
+              <td><i class="bi bi-images" style="color:var(--primary);margin-right:5px"></i>Photo Library</td>
+              <td><span class="badge badge-ios">iOS</span></td>
               <td>Selecting existing photos from your gallery for book listings and chat messages.</td>
             </tr>
             <tr>
-              <td><i class="bi bi-bell" style="color:var(--primary);margin-right:5px;"></i>Push Notifications</td>
-              <td><span class="badge-platform badge-both">Both</span></td>
+              <td><i class="bi bi-bell" style="color:var(--primary);margin-right:5px"></i>Push Notifications</td>
+              <td><span class="badge badge-both">Both</span></td>
               <td>Receiving alerts for new chat messages and book request match notifications. Requested at runtime — you can decline.</td>
             </tr>
             <tr>
-              <td><i class="bi bi-telephone" style="color:var(--primary);margin-right:5px;"></i>Dial Phone (Query)</td>
-              <td><span class="badge-platform badge-android">Android</span></td>
-              <td>Allows tapping a phone number to open your phone dialer. No calls are made automatically. Required on Android 11+ by OS policy.</td>
+              <td><i class="bi bi-telephone" style="color:var(--primary);margin-right:5px"></i>Dial Phone (Query)</td>
+              <td><span class="badge badge-android">Android</span></td>
+              <td>Allows tapping a phone number to open your dialer. No calls are made automatically. Required on Android 11+.</td>
             </tr>
             <tr>
-              <td><i class="bi bi-envelope" style="color:var(--primary);margin-right:5px;"></i>Send Email (Query)</td>
-              <td><span class="badge-platform badge-android">Android</span></td>
-              <td>Allows tapping a "mailto:" link to open your email app. Required on Android 11+ by OS policy. No emails are sent automatically.</td>
+              <td><i class="bi bi-envelope" style="color:var(--primary);margin-right:5px"></i>Send Email (Query)</td>
+              <td><span class="badge badge-android">Android</span></td>
+              <td>Allows tapping a "mailto:" link to open your email app. Required on Android 11+. No emails are sent automatically.</td>
             </tr>
           </tbody>
         </table>
-        <div class="info-note" style="margin-top:14px;">
+        <div class="note yellow" style="margin-top:14px">
           <i class="bi bi-exclamation-triangle-fill"></i>
-          <p>
-            You can revoke any permission at any time from your device's <strong>App Settings</strong>. Revoking Camera or Photo Library will prevent uploading photos in listings and chat. Revoking notifications will stop push alerts.
-          </p>
+          <p>You can revoke any permission at any time from your device's <strong>App Settings</strong>. Revoking Camera or Photo Library will prevent uploading photos. Revoking notifications will stop push alerts.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 4 — How We Use Your Data                       -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="use">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-gear"></i></div>
+  <!-- §4 How We Use Your Data -->
+  <div class="section fade-in" id="use">
+    <p class="sec-label">§ 04</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-gear"></i></div>
         <h2>How We Use Your Data</h2>
-        <span class="section-num">§ 04</span>
+        <span class="sec-num">§ 04</span>
       </div>
-      <div class="section-body">
+      <div class="sec-body">
         <p>We use the information we collect for the following purposes:</p>
-        <div class="rights-list">
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-person-check"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Account Management</div>
-              <div class="rights-desc">Creating and managing your account, authenticating your identity via OTP, and securing your session.</div>
-            </div>
+        <div class="card-rows">
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-person-check"></i></div>
+            <div><div class="row-title">Account Management</div><div class="row-desc">Creating and managing your account, authenticating your identity via OTP, and securing your session.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-shop"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Book Marketplace</div>
-              <div class="rights-desc">Displaying your book listings publicly, enabling search and filtering by campus/district/category, and managing post status (active, sold, removed).</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-shop"></i></div>
+            <div><div class="row-title">Book Marketplace</div><div class="row-desc">Displaying your book listings publicly, enabling search and filtering by campus/district/category, and managing post status.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-chat-dots"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Real-Time Communication</div>
-              <div class="rights-desc">Enabling chat between buyers and sellers through our secure messaging system with real-time delivery.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-chat-dots"></i></div>
+            <div><div class="row-title">Real-Time Communication</div><div class="row-desc">Enabling chat between buyers and sellers through our secure messaging system with real-time delivery.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-bell-fill"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Push Notifications</div>
-              <div class="rights-desc">Sending alerts for new chat messages and when a book you requested becomes available. Notification preferences can be managed in app settings.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-bell-fill"></i></div>
+            <div><div class="row-title">Push Notifications</div><div class="row-desc">Sending alerts for new chat messages and when a book you requested becomes available. Notification preferences managed in app settings.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-compass"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Personalization &amp; Discovery</div>
-              <div class="rights-desc">Showing books from your campus, district, and matching your study level to help you find relevant textbooks faster.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-compass"></i></div>
+            <div><div class="row-title">Personalization &amp; Discovery</div><div class="row-desc">Showing books from your campus, district, and matching your study level to help you find relevant textbooks faster.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-coin"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Credit System</div>
-              <div class="rights-desc">Managing your ad-credit balance so you can create book listings. Credits are earned by watching ads and spent on post creation.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-coin"></i></div>
+            <div><div class="row-title">Credit System</div><div class="row-desc">Managing your ad-credit balance for creating book listings. Credits are earned by watching ads and spent on post creation.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-bar-chart"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Analytics &amp; Improvement</div>
-              <div class="rights-desc">Understanding how users interact with the app via Firebase Analytics to improve features, fix bugs, and enhance user experience.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-bar-chart"></i></div>
+            <div><div class="row-title">Analytics &amp; Improvement</div><div class="row-desc">Understanding how users interact with the app via Firebase Analytics to improve features, fix bugs, and enhance experience.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-shield-exclamation"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Safety &amp; Moderation</div>
-              <div class="rights-desc">Detecting spam, fraudulent listings, and policy violations. Reviewing user reports to maintain a safe marketplace.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-shield-exclamation"></i></div>
+            <div><div class="row-title">Safety &amp; Moderation</div><div class="row-desc">Detecting spam, fraudulent listings, and policy violations. Reviewing user reports to maintain a safe marketplace.</div></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 5 — Advertising (AdMob)                        -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="ads">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-megaphone"></i></div>
+  <!-- §5 Advertising -->
+  <div class="section fade-in" id="ads">
+    <p class="sec-label">§ 05</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-megaphone"></i></div>
         <h2>Advertising (Google AdMob)</h2>
-        <span class="section-num">§ 05</span>
+        <span class="sec-num">§ 05</span>
       </div>
-      <div class="section-body">
-        <p>
-          Boi Campus is a <strong>free app</strong> funded in part by advertisements served through
-          <strong>Google AdMob</strong>. These ads help us keep the app free for all students.
-        </p>
+      <div class="sec-body">
+        <p>Boi Campus is a <strong>free app</strong> funded in part by advertisements served through <strong>Google AdMob</strong>. These ads help us keep the app free for all students.</p>
 
-        <div class="subsection-title">Types of Ads Displayed</div>
+        <div class="sub-title">Types of Ads Displayed</div>
         <div class="ad-grid">
           <div class="ad-card">
-            <div class="ad-card-icon"><i class="bi bi-layout-text-window"></i></div>
-            <div class="ad-card-name">Banner Ads</div>
-            <div class="ad-card-desc">Fixed ads displayed at the bottom of certain screens.</div>
+            <div class="ad-icon"><i class="bi bi-box-arrow-in-right"></i></div>
+            <div class="ad-name">App Open</div>
+            <div class="ad-desc">Shown on cold start or after 30s+ in background. Max 2/day.</div>
           </div>
           <div class="ad-card">
-            <div class="ad-card-icon"><i class="bi bi-fullscreen"></i></div>
-            <div class="ad-card-name">Interstitial Ads</div>
-            <div class="ad-card-desc">Full-screen ads that appear between certain app transitions.</div>
+            <div class="ad-icon"><i class="bi bi-layout-text-window"></i></div>
+            <div class="ad-name">Banner</div>
+            <div class="ad-desc">Fixed at bottom of Book Details and Search screens.</div>
           </div>
           <div class="ad-card">
-            <div class="ad-card-icon"><i class="bi bi-card-image"></i></div>
-            <div class="ad-card-name">Native Ads</div>
-            <div class="ad-card-desc">Ads that blend with the app's content layout for a natural look.</div>
+            <div class="ad-icon"><i class="bi bi-fullscreen"></i></div>
+            <div class="ad-name">Interstitial</div>
+            <div class="ad-desc">Full-screen between natural app transitions. Every 5th navigation.</div>
+          </div>
+          <div class="ad-card">
+            <div class="ad-icon"><i class="bi bi-gift"></i></div>
+            <div class="ad-name">Rewarded</div>
+            <div class="ad-desc">Opt-in only. Watch to earn 1 posting credit. Max 5/24h.</div>
           </div>
         </div>
 
-        <div class="subsection-title" style="margin-top:18px;">What AdMob May Collect</div>
+        <div class="sub-title" style="margin-top:18px">What AdMob May Collect</div>
         <p>Google AdMob may collect and use the following data when you interact with ads:</p>
         <div class="data-grid">
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-fingerprint"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Advertising ID</span>
-              <span class="data-item-desc">Google Advertising ID (GAID) on Android, IDFA on iOS — used for ad targeting and frequency capping.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-fingerprint"></i></div>
+            <div><span class="data-label">Advertising ID</span><span class="data-desc">Google GAID (Android) or IDFA (iOS) — for ad targeting and frequency capping.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-cursor"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Ad Interactions</span>
-              <span class="data-item-desc">Ad views, clicks, and engagement events to measure ad performance.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-cursor"></i></div>
+            <div><span class="data-label">Ad Interactions</span><span class="data-desc">Ad views, clicks, and engagement events to measure ad performance.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-phone"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Device Information</span>
-              <span class="data-item-desc">Device model, OS version, screen resolution, language — for ad compatibility.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-phone"></i></div>
+            <div><span class="data-label">Device Information</span><span class="data-desc">Device model, OS version, screen resolution, language — for ad compatibility.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-geo"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">General Location</span>
-              <span class="data-item-desc">Approximate region/country inferred from IP address — for regionally relevant ads.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-geo"></i></div>
+            <div><span class="data-label">General Location</span><span class="data-desc">Approximate region inferred from IP address — for regionally relevant ads.</span></div>
           </div>
         </div>
 
-        <div class="info-note" style="margin-top:14px;">
-          <i class="bi bi-apple" style="color: #5A5A48;"></i>
-          <p>
-            <strong>iOS Users (iOS 14+):</strong> We use SKAdNetwork for privacy-preserving attribution. You will be asked for App Tracking Transparency (ATT) permission before personalized ads are shown. You may decline and still use all app features — you will see non-personalized ads instead.
-          </p>
+        <div class="note yellow" style="margin-top:14px">
+          <i class="bi bi-apple" style="color:#5A5A48"></i>
+          <p><strong>iOS Users (iOS 14+):</strong> We use SKAdNetwork for privacy-preserving attribution. You will be asked for App Tracking Transparency (ATT) permission before personalized ads are shown. You may decline and still use all app features — you will see non-personalized ads instead.</p>
         </div>
 
-        <p style="margin-top:12px;">
-          Google's collection and use of advertising data is governed by the
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">Google Privacy Policy</a>.
-          You can opt out of personalized advertising by adjusting your device's advertising settings:
-        </p>
-        <div class="rights-list" style="margin-top:10px;">
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-android2"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Android</div>
-              <div class="rights-desc">Settings → Privacy → Ads → "Opt out of Ads Personalization"</div>
-            </div>
+        <p style="margin-top:12px">You can opt out of personalized advertising from your device settings:</p>
+        <div class="card-rows" style="margin-top:8px">
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-android2"></i></div>
+            <div><div class="row-title">Android</div><div class="row-desc">Settings → Privacy → Ads → "Opt out of Ads Personalization"</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-apple"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">iOS</div>
-              <div class="rights-desc">Settings → Privacy &amp; Security → Tracking → Disable "Allow Apps to Request to Track"</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-apple"></i></div>
+            <div><div class="row-title">iOS</div><div class="row-desc">Settings → Privacy &amp; Security → Tracking → Disable "Allow Apps to Request to Track"</div></div>
           </div>
         </div>
+
+        <p style="margin-top:12px">Google's full ad data policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600">Google Privacy Policy ↗</a></p>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 6 — Third-Party Services                       -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="thirdparty">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-puzzle"></i></div>
+  <!-- §6 Third-Party Services -->
+  <div class="section fade-in" id="thirdparty">
+    <p class="sec-label">§ 06</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-puzzle"></i></div>
         <h2>Third-Party Services</h2>
-        <span class="section-num">§ 06</span>
+        <span class="sec-num">§ 06</span>
       </div>
-      <div class="section-body">
-        <p>
-          Boi Campus integrates the following third-party services to operate. Each service has its own privacy policy governing its data use.
-        </p>
+      <div class="sec-body">
+        <p>Boi Campus integrates the following third-party services to operate. Each service has its own privacy policy governing its data use.</p>
         <div class="service-list">
-
-          <!-- Supabase -->
           <div class="service-card">
-            <div class="service-icon green"><i class="bi bi-server"></i></div>
-            <div class="service-content">
-              <div class="service-name">Supabase</div>
-              <div class="service-role">Backend, Database &amp; Storage</div>
-              <div class="service-desc">
-                Powers our entire backend infrastructure — user authentication (email + OTP), database (user profiles, posts, messages, wishlist, credits), and file storage (book photos, chat images, profile photos). All data is stored on Supabase's secure cloud servers. Row-Level Security (RLS) ensures each user can only access data they are authorized to view.
-              </div>
-              <a href="https://supabase.com/privacy" target="_blank" rel="noopener" class="service-link">
-                <i class="bi bi-box-arrow-up-right"></i> Privacy Policy
-              </a>
+            <div class="svc-icon green"><i class="bi bi-server"></i></div>
+            <div>
+              <div class="svc-name">Supabase</div>
+              <div class="svc-role">Backend, Database &amp; Storage</div>
+              <div class="svc-desc">Powers our entire backend — user authentication (OTP), database (profiles, posts, messages, wishlist, credits), and file storage (book photos, chat images, profile photos). Row-Level Security (RLS) ensures each user can only access data they are authorized to view.</div>
+              <a href="https://supabase.com/privacy" target="_blank" rel="noopener" class="svc-link"><i class="bi bi-box-arrow-up-right"></i> Privacy Policy</a>
             </div>
           </div>
-
-          <!-- Firebase -->
           <div class="service-card">
-            <div class="service-icon orange"><i class="bi bi-fire"></i></div>
-            <div class="service-content">
-              <div class="service-name">Google Firebase</div>
-              <div class="service-role">Push Notifications &amp; Analytics</div>
-              <div class="service-desc">
-                <strong>Firebase Cloud Messaging (FCM):</strong> Sends push notifications for new chat messages and book request alerts. Your FCM token is stored in our database and cleared when you log out.<br/><br/>
-                <strong>Firebase Analytics:</strong> Collects anonymized usage events (screen views, sessions, feature interactions) to help us understand how the app is used and improve it. No personally identifiable information is tied to analytics events.
-              </div>
-              <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="service-link">
-                <i class="bi bi-box-arrow-up-right"></i> Privacy Policy
-              </a>
+            <div class="svc-icon orange"><i class="bi bi-fire"></i></div>
+            <div>
+              <div class="svc-name">Google Firebase</div>
+              <div class="svc-role">Push Notifications &amp; Analytics</div>
+              <div class="svc-desc"><strong>FCM:</strong> Sends push notifications for new chat messages and book request alerts. Your FCM token is stored in our database and cleared when you log out.<br/><br/><strong>Firebase Analytics:</strong> Collects anonymized usage events to help us improve the app. No personally identifiable information is tied to analytics events.</div>
+              <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener" class="svc-link"><i class="bi bi-box-arrow-up-right"></i> Privacy Policy</a>
             </div>
           </div>
-
-          <!-- AdMob -->
           <div class="service-card">
-            <div class="service-icon blue"><i class="bi bi-megaphone"></i></div>
-            <div class="service-content">
-              <div class="service-name">Google AdMob</div>
-              <div class="service-role">In-App Advertising</div>
-              <div class="service-desc">
-                Serves banner, interstitial, and native ads within the app. AdMob may use device identifiers and general usage data to show relevant advertisements. The app's AdMob App ID is <span class="hl">ca-app-pub-8889253960614189</span>. See Section 5 for full details on ad data collection.
-              </div>
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="service-link">
-                <i class="bi bi-box-arrow-up-right"></i> Privacy Policy
-              </a>
+            <div class="svc-icon blue"><i class="bi bi-megaphone"></i></div>
+            <div>
+              <div class="svc-name">Google AdMob</div>
+              <div class="svc-role">In-App Advertising</div>
+              <div class="svc-desc">Serves App Open, banner, interstitial, and rewarded ads within the app. AdMob may use device identifiers and general usage data to show relevant advertisements. The app's AdMob App ID is <span class="hl">ca-app-pub-8889253960614189</span>. See Section 5 for full details.</div>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="svc-link"><i class="bi bi-box-arrow-up-right"></i> Privacy Policy</a>
             </div>
           </div>
-
-          <!-- Google Fonts -->
           <div class="service-card">
-            <div class="service-icon blue"><i class="bi bi-fonts"></i></div>
-            <div class="service-content">
-              <div class="service-name">Google Fonts</div>
-              <div class="service-role">Typography</div>
-              <div class="service-desc">
-                The app loads the Inter font from Google Fonts CDN for consistent, readable typography. Standard HTTP request logs (IP, user agent) may be processed by Google. No personal data is collected for this purpose.
-              </div>
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="service-link">
-                <i class="bi bi-box-arrow-up-right"></i> Privacy Policy
-              </a>
+            <div class="svc-icon blue"><i class="bi bi-fonts"></i></div>
+            <div>
+              <div class="svc-name">Google Fonts</div>
+              <div class="svc-role">Typography (Web only)</div>
+              <div class="svc-desc">The Inter font is loaded from Google Fonts CDN for this website. Standard HTTP request logs may be processed by Google. No personal data is collected for this purpose.</div>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="svc-link"><i class="bi bi-box-arrow-up-right"></i> Privacy Policy</a>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 7 — Storage & Security                         -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="storage">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-shield-check"></i></div>
+  <!-- §7 Storage & Security -->
+  <div class="section fade-in" id="storage">
+    <p class="sec-label">§ 07</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-shield-check"></i></div>
         <h2>Storage &amp; Security</h2>
-        <span class="section-num">§ 07</span>
+        <span class="sec-num">§ 07</span>
       </div>
-      <div class="section-body">
-        <p>
-          We take the security of your data seriously. Below are the technical and organizational measures we have in place:
-        </p>
-        <div class="rights-list">
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-lock-fill"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Encrypted Passwords</div>
-              <div class="rights-desc">Passwords are hashed with bcrypt via Supabase Auth. Your raw password is never stored, transmitted, or visible to us.</div>
-            </div>
+      <div class="sec-body">
+        <p>We take the security of your data seriously. Below are the technical and organizational measures we have in place:</p>
+        <div class="card-rows">
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-lock-fill"></i></div>
+            <div><div class="row-title">Encrypted Passwords</div><div class="row-desc">Passwords are hashed with bcrypt via Supabase Auth. Your raw password is never stored, transmitted, or visible to us.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-shield-lock-fill"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">HTTPS / TLS Encryption</div>
-              <div class="rights-desc">All data transmitted between the app and our servers is encrypted using industry-standard TLS (HTTPS). No data is sent over unencrypted connections.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-shield-lock-fill"></i></div>
+            <div><div class="row-title">HTTPS / TLS Encryption</div><div class="row-desc">All data transmitted between the app and our servers is encrypted using industry-standard TLS. No data is sent over unencrypted connections.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-database-lock"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Row-Level Security (RLS)</div>
-              <div class="rights-desc">Our Supabase database enforces Row-Level Security policies. Users can only read and write data they are explicitly authorized to access — no user can access another user's private data.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-database-lock"></i></div>
+            <div><div class="row-title">Row-Level Security (RLS)</div><div class="row-desc">Our Supabase database enforces RLS policies. Users can only read and write data they are explicitly authorized to access — no user can access another user's private data.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-folder-lock"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Secure File Storage</div>
-              <div class="rights-desc">Profile photos, book images, and chat media are stored in Supabase Storage buckets with proper access controls. Files are only accessible to authorized users.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-folder-lock"></i></div>
+            <div><div class="row-title">Secure File Storage</div><div class="row-desc">Profile photos, book images, and chat media are stored in Supabase Storage buckets with proper access controls. Files are only accessible to authorized users.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-key-fill"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Token Management</div>
-              <div class="rights-desc">Your push notification (FCM) token is stored securely and is automatically cleared from our database when you log out of the app.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-key-fill"></i></div>
+            <div><div class="row-title">Token Management</div><div class="row-desc">Your FCM push token is stored securely and automatically cleared from our database when you log out of the app.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-eye-slash-fill"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Sensitive Data Wiping</div>
-              <div class="rights-desc">Password fields are cleared from device memory immediately after use. Sensitive form controllers are wiped on screen dispose to prevent memory exposure.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-eye-slash-fill"></i></div>
+            <div><div class="row-title">Sensitive Data Wiping</div><div class="row-desc">Password fields are cleared from device memory immediately after use. Sensitive form controllers are wiped on screen dispose to prevent memory exposure.</div></div>
           </div>
         </div>
-        <div class="info-note" style="margin-top:14px;">
+        <div class="note yellow" style="margin-top:14px">
           <i class="bi bi-exclamation-triangle-fill"></i>
-          <p>
-            While we employ strong security measures, no system can guarantee 100% security. If you believe your account has been compromised, please contact us immediately at <strong>support@banglabyteStudio.com</strong>.
-          </p>
+          <p>While we employ strong security measures, no system can guarantee 100% security. If you believe your account has been compromised, please contact us immediately at <strong>support@banglabyteStudio.com</strong>.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 8 — Data Sharing                               -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="sharing">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-share"></i></div>
+  <!-- §8 Data Sharing -->
+  <div class="section fade-in" id="sharing">
+    <p class="sec-label">§ 08</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-share"></i></div>
         <h2>Data Sharing</h2>
-        <span class="section-num">§ 08</span>
+        <span class="sec-num">§ 08</span>
       </div>
-      <div class="section-body">
-        <div class="info-note green">
+      <div class="sec-body">
+        <div class="note green">
           <i class="bi bi-check-circle-fill"></i>
           <p><strong>We do not sell your personal data.</strong> We do not trade, rent, or sell user information to data brokers or third-party advertisers.</p>
         </div>
-        <p style="margin-top:14px;">We share data only in the following limited circumstances:</p>
-        <div class="rights-list" style="margin-top:10px;">
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-cloud"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Service Providers</div>
-              <div class="rights-desc">We share data with Supabase (backend), Google Firebase (notifications/analytics), and Google AdMob (ads) — only as necessary to provide the service. These providers are bound by their own data protection agreements.</div>
-            </div>
+        <p style="margin-top:14px">We share data only in the following limited circumstances:</p>
+        <div class="card-rows" style="margin-top:8px">
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-cloud"></i></div>
+            <div><div class="row-title">Service Providers</div><div class="row-desc">We share data with Supabase, Google Firebase, and Google AdMob — only as necessary to provide the service. These providers are bound by their own data protection agreements.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-people"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Other Users (Public Profile)</div>
-              <div class="rights-desc">Your public profile (name, study level, campus) and your book listings are visible to other app users. Your phone number, email, and private messages are never shown publicly.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-people"></i></div>
+            <div><div class="row-title">Other Users (Public Profile)</div><div class="row-desc">Your public profile (name, study level, campus) and book listings are visible to other app users. Your phone number, email, and private messages are never shown publicly.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-building-check"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Legal Requirements</div>
-              <div class="rights-desc">We may disclose data if required by law, court order, or to protect the safety and rights of our users, the public, or BanglaByteStudio.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-building-check"></i></div>
+            <div><div class="row-title">Legal Requirements</div><div class="row-desc">We may disclose data if required by law, court order, or to protect the safety and rights of our users, the public, or BanglaByteStudio.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-arrow-left-right"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Business Transfer</div>
-              <div class="rights-desc">In the event of a merger, acquisition, or sale of assets, user data may be transferred. We will notify users before any such transfer occurs.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-arrow-left-right"></i></div>
+            <div><div class="row-title">Business Transfer</div><div class="row-desc">In the event of a merger, acquisition, or sale of assets, user data may be transferred. We will notify users before any such transfer occurs.</div></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 9 — Data Retention                             -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="retention">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-clock"></i></div>
+  <!-- §9 Data Retention -->
+  <div class="section fade-in" id="retention">
+    <p class="sec-label">§ 09</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-clock"></i></div>
         <h2>Data Retention</h2>
-        <span class="section-num">§ 09</span>
+        <span class="sec-num">§ 09</span>
       </div>
-      <div class="section-body">
+      <div class="sec-body">
         <div class="data-grid">
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-person-fill"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Account &amp; Profile</span>
-              <span class="data-item-desc">Retained as long as your account is active. Deleted upon account deletion request (within 30 days).</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-person-fill"></i></div>
+            <div><span class="data-label">Account &amp; Profile</span><span class="data-desc">Retained while account is active. Deleted on account deletion request (within 30 days).</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-book-fill"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Book Listings</span>
-              <span class="data-item-desc">Active, sold, and removed listings are retained for service continuity and moderation. Deleted with account.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-book-fill"></i></div>
+            <div><span class="data-label">Book Listings</span><span class="data-desc">Active, sold, and removed listings retained for continuity and moderation. Deleted with account.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-chat-fill"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Chat Messages</span>
-              <span class="data-item-desc">Retained to support ongoing conversations. Users can delete individual messages. All messages deleted with account.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-chat-fill"></i></div>
+            <div><span class="data-label">Chat Messages</span><span class="data-desc">Retained to support ongoing conversations. All messages deleted with account.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-search"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Search History</span>
-              <span class="data-item-desc">Stored locally on your device only. Cleared when you clear app data or uninstall.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-search"></i></div>
+            <div><span class="data-label">Search History</span><span class="data-desc">Stored locally on your device only. Cleared when you clear app data or uninstall.</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-bar-chart-fill"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">Analytics Data</span>
-              <span class="data-item-desc">Anonymized analytics events retained by Firebase per their standard retention policy (up to 14 months).</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-bar-chart-fill"></i></div>
+            <div><span class="data-label">Analytics Data</span><span class="data-desc">Anonymized analytics events retained by Firebase per their standard policy (up to 14 months).</span></div>
           </div>
           <div class="data-item">
-            <div class="data-item-icon"><i class="bi bi-bell-fill"></i></div>
-            <div class="data-item-content">
-              <span class="data-item-label">FCM Token</span>
-              <span class="data-item-desc">Immediately deleted from our database when you log out. Re-registered on next login if notifications are enabled.</span>
-            </div>
+            <div class="data-icon"><i class="bi bi-bell-fill"></i></div>
+            <div><span class="data-label">FCM Token</span><span class="data-desc">Immediately deleted from our database when you log out. Re-registered on next login if notifications enabled.</span></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 10 — Your Rights                               -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="rights">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-person-badge"></i></div>
+  <!-- §10 Your Rights -->
+  <div class="section fade-in" id="rights">
+    <p class="sec-label">§ 10</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-person-badge"></i></div>
         <h2>Your Rights</h2>
-        <span class="section-num">§ 10</span>
+        <span class="sec-num">§ 10</span>
       </div>
-      <div class="section-body">
+      <div class="sec-body">
         <p>You have the following rights regarding your personal data:</p>
-        <div class="rights-list">
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-eye"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Right to Access</div>
-              <div class="rights-desc">View your profile, listings, chat history, wishlist, and credit transactions directly within the app at any time.</div>
-            </div>
+        <div class="card-rows">
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-eye"></i></div>
+            <div><div class="row-title">Right to Access</div><div class="row-desc">View your profile, listings, chat history, wishlist, and credit transactions directly within the app at any time.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-pencil"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Right to Edit</div>
-              <div class="rights-desc">Update your profile information (name, photo, phone, campus, bio) at any time from the Profile → Edit Profile screen.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-pencil"></i></div>
+            <div><div class="row-title">Right to Edit</div><div class="row-desc">Update your profile information (name, photo, phone, campus, bio) at any time from Profile → Edit Profile.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-trash"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Right to Delete</div>
-              <div class="rights-desc">Delete any of your book listings at any time. To delete your entire account and all associated data, contact us at <strong>support@banglabyteStudio.com</strong>. We will process the deletion within 30 days.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-trash"></i></div>
+            <div><div class="row-title">Right to Delete</div><div class="row-desc">Delete any of your book listings at any time. To delete your entire account and all associated data, contact us at <strong>support@banglabyteStudio.com</strong>. Processed within 30 days.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-bell-slash"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Right to Opt Out of Notifications</div>
-              <div class="rights-desc">Disable push notifications for chat or book requests independently from Profile → Settings → Notifications, or from your device's notification settings.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-bell-slash"></i></div>
+            <div><div class="row-title">Right to Opt Out of Notifications</div><div class="row-desc">Disable push notifications independently from Profile → Settings → Notifications, or from your device's notification settings.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-megaphone-fill" style="opacity:0.5;"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Right to Opt Out of Personalized Ads</div>
-              <div class="rights-desc">Disable ad personalization from your device's advertising settings (see Section 5). You will continue to see non-personalized ads.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-megaphone-fill" style="opacity:.5"></i></div>
+            <div><div class="row-title">Right to Opt Out of Personalized Ads</div><div class="row-desc">Disable ad personalization from your device's advertising settings (see Section 5). You will continue to see non-personalized ads.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-download"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Right to Data Portability</div>
-              <div class="rights-desc">Request a copy of your personal data by contacting us at support@banglabyteStudio.com. We will respond within 30 days.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-download"></i></div>
+            <div><div class="row-title">Right to Data Portability</div><div class="row-desc">Request a copy of your personal data by contacting support@banglabyteStudio.com. We will respond within 30 days.</div></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 11 — Children's Privacy                        -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="children">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-people"></i></div>
+  <!-- §11 Children's Privacy -->
+  <div class="section fade-in" id="children">
+    <p class="sec-label">§ 11</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-people"></i></div>
         <h2>Children's Privacy</h2>
-        <span class="section-num">§ 11</span>
+        <span class="sec-num">§ 11</span>
       </div>
-      <div class="section-body">
-        <p>
-          Boi Campus is designed for <strong>students aged 13 and above</strong>. The app is intended for use by
-          polytechnic, HSC, SSC, and university students in Bangladesh.
-        </p>
-        <p>
-          We do not knowingly collect personal information from children under the age of 13.
-          If a parent or guardian believes that a child under 13 has provided us with personal information,
-          please contact us immediately at <strong>support@banglabyteStudio.com</strong>.
-          We will promptly delete any such information from our systems.
-        </p>
-        <div class="info-note blue">
+      <div class="sec-body">
+        <p>Boi Campus is designed for <strong>students aged 13 and above</strong>. The app is intended for polytechnic, HSC, SSC, and university students in Bangladesh.</p>
+        <p>We do not knowingly collect personal information from children under the age of 13. If a parent or guardian believes that a child under 13 has provided us with personal information, please contact us immediately at <strong>support@banglabyteStudio.com</strong>. We will promptly delete any such information from our systems.</p>
+        <div class="note blue">
           <i class="bi bi-info-circle-fill"></i>
-          <p>
-            If you are between 13–18 years old, we recommend informing a parent or guardian about your use of this app and this Privacy Policy.
-          </p>
+          <p>If you are between 13–18 years old, we recommend informing a parent or guardian about your use of this app and this Privacy Policy.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 12 — Policy Changes                            -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="changes">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-arrow-clockwise"></i></div>
+  <!-- §12 Policy Changes -->
+  <div class="section fade-in" id="changes">
+    <p class="sec-label">§ 12</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-arrow-clockwise"></i></div>
         <h2>Policy Changes</h2>
-        <span class="section-num">§ 12</span>
+        <span class="sec-num">§ 12</span>
       </div>
-      <div class="section-body">
-        <p>
-          We may update this Privacy Policy from time to time as the app evolves or legal requirements change.
-          When we make significant changes, we will:
-        </p>
-        <div class="rights-list" style="margin-top:10px;">
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-phone-vibrate"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">In-App Notification</div>
-              <div class="rights-desc">Notify you within the app when materially significant changes are made to how your data is collected or used.</div>
-            </div>
+      <div class="sec-body">
+        <p>We may update this Privacy Policy from time to time as the app evolves or legal requirements change. When we make significant changes, we will:</p>
+        <div class="card-rows" style="margin-top:8px">
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-phone-vibrate"></i></div>
+            <div><div class="row-title">In-App Notification</div><div class="row-desc">Notify you within the app when materially significant changes are made to how your data is collected or used.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-envelope-open"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Email Notice</div>
-              <div class="rights-desc">Send an email notification to your registered address for major policy updates.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-envelope-open"></i></div>
+            <div><div class="row-title">Email Notice</div><div class="row-desc">Send an email notification to your registered address for major policy updates.</div></div>
           </div>
-          <div class="rights-item">
-            <div class="rights-check"><i class="bi bi-calendar3"></i></div>
-            <div class="rights-content">
-              <div class="rights-title">Updated Date</div>
-              <div class="rights-desc">The "Last Updated" date at the top of this page is always updated to reflect the date of the most recent revision.</div>
-            </div>
+          <div class="card-row">
+            <div class="row-icon"><i class="bi bi-calendar3"></i></div>
+            <div><div class="row-title">Updated Date</div><div class="row-desc">The "Last Updated" date at the top of this page is always updated to reflect the date of the most recent revision.</div></div>
           </div>
         </div>
-        <p style="margin-top:14px;">
-          Your continued use of Boi Campus after a policy update constitutes your acceptance of the revised policy.
-          We encourage you to review this page periodically.
-        </p>
+        <p style="margin-top:14px">Your continued use of Boi Campus after a policy update constitutes your acceptance of the revised policy. We encourage you to review this page periodically.</p>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- Section 13 — Contact Us                                -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <div class="section" id="contact">
-    <div class="section-card">
-      <div class="section-header">
-        <div class="section-icon"><i class="bi bi-envelope-heart"></i></div>
+  <!-- §13 Contact Us -->
+  <div class="section fade-in" id="contact">
+    <p class="sec-label">§ 13</p>
+    <div class="sec-card">
+      <div class="sec-head">
+        <div class="sec-icon"><i class="bi bi-envelope-heart"></i></div>
         <h2>Contact Us</h2>
-        <span class="section-num">§ 13</span>
+        <span class="sec-num">§ 13</span>
       </div>
-      <div class="section-body">
-        <p>
-          If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please reach out to us:
-        </p>
-        <div class="service-list" style="margin-top:10px;">
+      <div class="sec-body">
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please reach out to us:</p>
+        <div class="service-list" style="margin-top:10px">
           <div class="service-card">
-            <div class="service-icon green"><i class="bi bi-envelope"></i></div>
-            <div class="service-content">
-              <div class="service-name">Email Support</div>
-              <div class="service-desc">For privacy requests, account deletion, data access, and general inquiries:</div>
-              <a href="mailto:support@banglabyteStudio.com" class="service-link" style="font-size:13px;">
-                <i class="bi bi-envelope-fill"></i> support@banglabyteStudio.com
-              </a>
+            <div class="svc-icon green"><i class="bi bi-envelope"></i></div>
+            <div>
+              <div class="svc-name">Email Support</div>
+              <div class="svc-desc">For privacy requests, account deletion, data access, and general inquiries:</div>
+              <a href="mailto:support@banglabyteStudio.com" class="svc-link" style="font-size:13px"><i class="bi bi-envelope-fill"></i> support@banglabyteStudio.com</a>
             </div>
           </div>
           <div class="service-card">
-            <div class="service-icon blue"><i class="bi bi-facebook"></i></div>
-            <div class="service-content">
-              <div class="service-name">Facebook Page</div>
-              <div class="service-desc">Follow us and reach out via message for community support:</div>
-              <a href="https://facebook.com/boicampusbd" target="_blank" rel="noopener" class="service-link" style="font-size:13px;">
-                <i class="bi bi-box-arrow-up-right"></i> facebook.com/boicampusbd
-              </a>
+            <div class="svc-icon blue"><i class="bi bi-facebook"></i></div>
+            <div>
+              <div class="svc-name">Facebook Page</div>
+              <div class="svc-desc">Follow us and reach out via message for community support:</div>
+              <a href="https://facebook.com/boicampusbd" target="_blank" rel="noopener" class="svc-link" style="font-size:13px"><i class="bi bi-box-arrow-up-right"></i> facebook.com/boicampusbd</a>
             </div>
           </div>
         </div>
-        <div class="info-note green" style="margin-top:14px;">
+        <div class="note green" style="margin-top:14px">
           <i class="bi bi-stopwatch-fill"></i>
-          <p>
-            <strong>Response Time:</strong> We aim to respond to all privacy-related requests within <strong>7 business days</strong>. Account deletion requests are processed within <strong>30 days</strong>.
-          </p>
+          <p><strong>Response Time:</strong> We aim to respond to all privacy-related requests within <strong>7 business days</strong>. Account deletion requests are processed within <strong>30 days</strong>.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ─── Contact CTA Card ─────────────────────────────── -->
-  <div class="contact-card">
-    <h3>Questions about your privacy?</h3>
-    <p>We're here to help. Send us an email and we'll get back to you within 7 business days.</p>
-    <div class="contact-buttons">
-      <a href="mailto:support@banglabyteStudio.com" class="contact-btn contact-btn-primary">
-        <i class="bi bi-envelope-fill"></i>
-        Email Us
-      </a>
-      <a href="https://facebook.com/boicampusbd" target="_blank" rel="noopener" class="contact-btn contact-btn-secondary">
-        <i class="bi bi-facebook"></i>
-        Facebook
-      </a>
+  <!-- CTA Card -->
+  <div class="fade-in">
+    <div class="cta-card">
+      <h2>Questions about your privacy?</h2>
+      <p>We're here to help. Send us an email and we'll get back to you within 7 business days.</p>
+      <div class="cta-btns">
+        <a href="mailto:support@banglabyteStudio.com" class="cta-btn cta-btn-white">
+          <i class="bi bi-envelope-fill"></i> Email Us
+        </a>
+        <a href="https://facebook.com/boicampusbd" target="_blank" rel="noopener" class="cta-btn cta-btn-outline">
+          <i class="bi bi-facebook"></i> Facebook
+        </a>
+      </div>
     </div>
   </div>
 
-</div><!-- /page-wrapper -->
+</div><!-- /container -->
 
-<!-- ── Footer ────────────────────────────────────────────── -->
-<footer class="footer">
-  <p>© 2025 <strong>BanglaByteStudio</strong> · Boi Campus (বই ক্যাম্পাস)</p>
-  <p style="margin-top:4px;">Made with ❤️ for students across Bangladesh</p>
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <span>·</span>
-    <a href="/privacy/">Privacy Policy</a>
-    <span>·</span>
-    <a href="mailto:support@banglabyteStudio.com">Contact</a>
-    <span>·</span>
-    <a href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener">Play Store</a>
-  </div>
+<!-- Links Row -->
+<div class="links-row">
+  <a href="https://rivon-ahmed.github.io/" class="lnk">Home</a>
+  <span class="dot">·</span>
+  <a href="https://rivon-ahmed.github.io/about/" class="lnk">About App</a>
+  <span class="dot">·</span>
+  <a href="https://banglabyteStudio.github.io/boi-campus-terms" target="_blank" rel="noopener" class="lnk">Terms of Use</a>
+  <span class="dot">·</span>
+  <a href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener" class="lnk">Rate Us ⭐</a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 BanglaByteStudio · Made with ❤️ in Bangladesh<br/>
+  <a href="https://rivon-ahmed.github.io/">Home</a>&nbsp;·&nbsp;
+  <a href="https://rivon-ahmed.github.io/about/">About</a>&nbsp;·&nbsp;
+  <a href="mailto:support@banglabyteStudio.com">Contact</a>&nbsp;·&nbsp;
+  <a href="https://play.google.com/store/apps/details?id=com.boicampustrn.app" target="_blank" rel="noopener">Google Play</a>
+  </p>
 </footer>
 
-<!-- ── Smooth scroll polyfill (inline, no dependency) ─── -->
 <script>
-  // Smooth scroll for anchor links on browsers that don't support css scroll-behavior
-  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+(function(){
+  var els = document.querySelectorAll('.fade-in');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:0.06,rootMargin:'0px 0px -16px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
+
+// Smooth scroll + active TOC highlight
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+(function(){
+  var secs=document.querySelectorAll('.section[id]');
+  var links=document.querySelectorAll('.toc-list a');
+  if(!secs.length||!links.length)return;
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){l.classList.remove('active');});
+        var al=document.querySelector('.toc-list a[href="#'+e.target.id+'"]');
+        if(al)al.classList.add('active');
       }
     });
-  });
-
-  // Active section highlight in TOC on scroll
-  (function() {
-    var sections = document.querySelectorAll('.section[id]');
-    var tocLinks = document.querySelectorAll('.toc-list a');
-    if (!sections.length || !tocLinks.length) return;
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          tocLinks.forEach(function(link) {
-            link.style.background = '';
-            link.style.color = '';
-          });
-          var activeLink = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
-          if (activeLink) {
-            activeLink.style.background = 'var(--primary-ctr)';
-            activeLink.style.color = 'var(--primary-d)';
-          }
+  },{rootMargin:'-20% 0px -70% 0px',threshold:0}).observe&&
+  secs.forEach(function(s){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          var al=document.querySelector('.toc-list a[href="#'+e.target.id+'"]');
+          if(al)al.classList.add('active');
         }
       });
-    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
-
-    sections.forEach(function(section) { observer.observe(section); });
-  })();
+    },{rootMargin:'-20% 0px -70% 0px',threshold:0}).observe(s);
+  });
+})();
 </script>
 
 </body>
